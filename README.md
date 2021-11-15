@@ -24,8 +24,12 @@
 
 ## Project Status
 
+Project is: _in progress_.
+
 ## Acknowledgements
 
 ## License
 
 ## Author
+
+Created by [Nader Khamis](https://www.naderkhamis.com/) - feel free to contact me!
