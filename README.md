@@ -2,7 +2,14 @@
 
 ## Overview
 
-## Tabla of Contents
+## Table of Contents
+
+- [Preview](#preview)
+- [Development Strategy](#development-strategy)
+- [Getting Started](#getting-started)
+- [Built with](#built-with)
+- [License](#license)
+- [Author](#author)
 
 ## Preview
 
