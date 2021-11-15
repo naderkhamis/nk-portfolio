@@ -7,6 +7,8 @@
 - [Built with](#built-with)
 - [Getting Started](#getting-started)
 - [Preview](#preview)
+- [Project Status](#project-status)
+- [Acknowledgements](#acknowledgements)
 - [License](#license)
 - [Author](#author)
 
