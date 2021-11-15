@@ -29,6 +29,8 @@
 
 ## Preview
 
+![NK-Home Screen](NK-preview.jpg)
+
 ## Project Status
 
 Project is: _in progress_.
