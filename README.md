@@ -47,7 +47,9 @@ Many thanks to...
 ## License
 
 Only for educational purposes!
+
 You're not allowed to use the given images and content of this site publicly and/or commercially.
+
 However, you're allowed to use the code.
 
 ## Author
