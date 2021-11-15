@@ -1,5 +1,7 @@
 # NK-Portfolio
 
+This is my portfolio website for sharing some information about me, and my latest projects.
+
 ## Table of Contents
 
 - [Overview](#overview)
