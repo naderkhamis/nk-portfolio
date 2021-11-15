@@ -38,6 +38,12 @@ Project is: _in progress_.
 
 ## Acknowledgements
 
+Many thanks to...
+
+- [Udacity](https://www.udacity.com/)
+- [Senior Steps](http://www.seniorsteps.net/en?fbclid=IwAR3gcRbSVqUp8U2sPf5R4mDC9tRRunQZCjlADTMMUxJe-ywoDjdTWqxDeGQ)
+- [Elzero Academy](https://elzero.org/)
+
 ## License
 
 ## Author
