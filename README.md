@@ -16,6 +16,8 @@ This is my portfolio website for sharing some information about me, and my lates
 
 ## Overview
 
+The motive of this project is to give myself the opportunity to put all of the skills that I have learned into one project to build my own portfolio, in order to share some information about me, my education, career and achievements for the recruiters and clients that are interested to contact with a **Passionate Developer**.
+
 ## Development Strategy
 
 ## Built with
