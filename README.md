@@ -21,6 +21,7 @@ The motive of this project is to give myself the opportunity to put all of the s
 ## Development Strategy
 
 1.  Analyse The Business
+
     Review the project's prototype that we have designed using [Adobe XD](https://www.adobe.com/products/xd.html), in order to determine the technologies that we have going to use to develop that project - check the technologies at [Built with](#built-with).
 
 2.  Draw The Entity Relationship Diagram - ERD
@@ -34,20 +35,24 @@ The motive of this project is to give myself the opportunity to put all of the s
     - Draw the ERD using [Visual Paradigm](https://www.visual-paradigm.com/).
 
 3.  Create The Database
+
     Using MySQL - RDBMS:
 
     - Create new database called "nk-portfolio".
     - Crate the entities that we have got from the previous step.
 
 4.  Create The Repository
-    Using git Commands: - Create a local repository.
 
+    Using git Commands:
+
+    - Create a local repository.
     - Create a public repository.
     - Connect the local repository with the public one.
     - Create .gitignore file.
     - Create README file.
 
 5.  Build The Project's Structure
+
     Divide the project directory "nk-portfolio" to:
 
     - client directory - that will include the web application for **`users`**.
@@ -57,6 +62,7 @@ The motive of this project is to give myself the opportunity to put all of the s
     - README.md file.
 
 6.  Create The Dashboard
+
     Using [Laravel 8](https://laravel.com/docs/8.x), create the dashboard that will handle the data stored in the database:
 
     - Install [Laravel 8](https://laravel.com/docs/8.x) using [Composer](https://getcomposer.org/).
@@ -64,6 +70,7 @@ The motive of this project is to give myself the opportunity to put all of the s
     - Produce APIs for the client side application.
 
 7.  Create The User Interface - UI
+
     Using [Angular 13](https://angular.io/start), develop the user interface that will show the data in:
 
     - Install [Angular 13](https://angular.io/start) using [npm](https://www.npmjs.com/).
@@ -72,9 +79,11 @@ The motive of this project is to give myself the opportunity to put all of the s
     - Produce an API holding the contact form data to be stored in the database, in order to show it in the dashboard.
 
 8.  Offline Availability
+
     Use [Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers#what_is_a_service_worker) to create a cached version of the website that can be accessed offline if the server can not be reached.
 
 9.  Deployment
+
     Using [cPanel](https://www.cpanel.net/) web hosting control panel software, upload the project on a live server for the users.
 
 ## Built with
