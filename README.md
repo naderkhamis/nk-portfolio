@@ -24,6 +24,7 @@
 4. [Webpack](https://webpack.js.org/) - Javascript Bundler
 5. [Laravel](https://laravel.com/) - PHP Web Framework
 6. [MySQL](https://dev.mysql.com/) - RDBMS
+7. [Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers) - For Offline Capability
 
 ## Getting Started
 
