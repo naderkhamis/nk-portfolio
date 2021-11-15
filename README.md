@@ -18,6 +18,13 @@
 
 ## Built with
 
+1. [Angular](https://angular.io/) - Web Development Platform
+2. [Bootstrap](https://getbootstrap.com/) - CSS Framework
+3. [Sass](https://sass-lang.com/) - CSS Preprocessor
+4. [Webpack](https://webpack.js.org/) - Javascript Bundler
+5. [Laravel](https://laravel.com/) - PHP Web Framework
+6. [MySQL](https://dev.mysql.com/) - RDBMS
+
 ## Getting Started
 
 ## Preview
