@@ -20,6 +20,10 @@
 
 ## Preview
 
+## Project Status
+
+## Acknowledgements
+
 ## License
 
 ## Author
