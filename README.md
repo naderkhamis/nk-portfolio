@@ -1,23 +1,24 @@
 # NK-Portfolio
 
-## Overview
-
 ## Table of Contents
 
-- [Preview](#preview)
+- [Overview](#overview)
 - [Development Strategy](#development-strategy)
-- [Getting Started](#getting-started)
 - [Built with](#built-with)
+- [Getting Started](#getting-started)
+- [Preview](#preview)
 - [License](#license)
 - [Author](#author)
 
-## Preview
+## Overview
 
 ## Development Strategy
 
+## Built with
+
 ## Getting Started
 
-## Built with
+## Preview
 
 ## License
 
