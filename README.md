@@ -55,9 +55,8 @@ The motive of this project is to give myself the opportunity to put all of the s
 
     Divide the project directory "nk-portfolio" to:
 
-    - client directory - that will include the web application for **`users`**.
-    - server directory - that will include the website dashboard for **`admins`**.
-    - .gitignore file.
+    - nk-website directory - that will include the web application for **`users`**.
+    - nk-dashboard - that will include the website dashboard for **`admins`**.
     - NK-Preview.jpg image.
     - README.md file.
 
