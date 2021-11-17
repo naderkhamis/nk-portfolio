@@ -14,7 +14,9 @@ class CareerController extends Controller
      */
     public function index()
     {
-        //
+        $career = new Career();
+        $career = Career::get();
+        return view('career.index')->with('career', $career);
     }
 
     /**
@@ -24,7 +26,7 @@ class CareerController extends Controller
      */
     public function create()
     {
-        //
+        return view('career.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class CareerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $career = new Career();
+        $career->title = $request->title;
+        $career->company = $request->company;
+        $career->from_date = $request->from;
+        $career->to_date = $request->to;
+        $career->description = $request->description;
+        $career->save();
+        return redirect('/career/index');
     }
 
     /**
@@ -44,9 +53,10 @@ class CareerController extends Controller
      * @param  \App\Models\Career  $career
      * @return \Illuminate\Http\Response
      */
-    public function show(Career $career)
+    public function show($id)
     {
-        //
+        $career = Career::find($id);
+        return view('career.show')->with('career', $career);
     }
 
     /**
@@ -55,9 +65,10 @@ class CareerController extends Controller
      * @param  \App\Models\Career  $career
      * @return \Illuminate\Http\Response
      */
-    public function edit(Career $career)
+    public function edit($id)
     {
-        //
+        $career = Career::find($id);
+        return view('career.edit')->with('career', $career);
     }
 
     /**
@@ -69,7 +80,14 @@ class CareerController extends Controller
      */
     public function update(Request $request, Career $career)
     {
-        //
+        $career = Career::find($request->id);
+        $career->title = $request->title;
+        $career->company = $request->company;
+        $career->from_date = $request->from;
+        $career->to_date = $request->to;
+        $career->description = $request->description;
+        $career->save();
+        return redirect('/career/index');
     }
 
     /**
@@ -78,8 +96,10 @@ class CareerController extends Controller
      * @param  \App\Models\Career  $career
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Career $career)
+    public function destroy($id)
     {
-        //
+        $career = Career::find($id);
+        $career->delete();
+        return redirect('/career/index');
     }
 }

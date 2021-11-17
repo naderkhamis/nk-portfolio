@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::prefix('career')->group(function () {
+    Route::get('create', 'CareerController@create')->name('createCareer');
+    Route::post('store', 'CareerController@store')->name('storeCareer');
+    Route::get('index', 'CareerController@index')->name('careerIndex');
+    Route::get('show/{id}', 'CareerController@show')->name('showCareer');
+    Route::get('edit/{id}', 'CareerController@edit')->name('editCareer');
+    Route::post('update', 'CareerController@update')->name('updateCareer');
+    Route::get('delete/{id}', 'CareerController@destroy')->name('deleteCareer');
+});
