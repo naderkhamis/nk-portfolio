@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
-Route::prefix('career')->group(function () {
+Route::prefix('career')->middleware('auth')->group(function () {
     Route::get('create', 'CareerController@create')->name('createCareer');
     Route::post('store', 'CareerController@store')->name('storeCareer');
     Route::get('index', 'CareerController@index')->name('careerIndex');
@@ -27,3 +27,6 @@ Route::prefix('career')->group(function () {
     Route::post('update', 'CareerController@update')->name('updateCareer');
     Route::get('delete/{id}', 'CareerController@destroy')->name('deleteCareer');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
