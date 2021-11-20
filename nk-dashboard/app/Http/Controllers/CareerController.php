@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Career;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CareerController extends Controller
 {
@@ -42,6 +43,7 @@ class CareerController extends Controller
         $career->company = $request->company;
         $career->from_date = $request->from;
         $career->to_date = $request->to;
+        $career->status = $request->status;
         $career->description = $request->description;
         $career->save();
         return redirect('/career/index');
@@ -68,7 +70,8 @@ class CareerController extends Controller
     public function edit($id)
     {
         $career = Career::find($id);
-        return view('career.edit')->with('career', $career);
+        $currentDate = Carbon::now()->toDateString();
+        return view('career.edit', compact(['career', 'currentDate']));
     }
 
     /**
@@ -84,7 +87,12 @@ class CareerController extends Controller
         $career->title = $request->title;
         $career->company = $request->company;
         $career->from_date = $request->from;
-        $career->to_date = $request->to;
+        if ($request->status === 1) {
+            $career->to_date = Null;
+        } else {
+            $career->to_date = $request->to;
+        }
+        $career->status = $request->status;
         $career->description = $request->description;
         $career->save();
         return redirect('/career/index');

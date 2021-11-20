@@ -1,8 +1,11 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 // Variables
-@import 'variables';
+@import "variables";
+* {
+    font-family: $font-family-sans-serif;
+}
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+.btn {
+    min-width: 120px;
+}
