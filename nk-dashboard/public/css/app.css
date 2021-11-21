@@ -1,4 +1,29 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
-*{font-family:Roboto,sans-serif}.btn{min-width:120px}
+.btn {
+  border: 3px solid;
+  font-weight: 600;
+}
 
-/*# sourceMappingURL=app.css.map*/
+.card,
+.modal-content {
+  border: 3px solid;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+}
+
+.card-header:first-child,
+.modal-header {
+  border-radius: 35px 35px 0px 0px;
+  -webkit-border-radius: 35px 35px 0px 0px;
+  -moz-border-radius: 35px 35px 0px 0px;
+  -ms-border-radius: 35px 35px 0px 0px;
+  -o-border-radius: 35px 35px 0px 0px;
+}
+
+.card-footer,
+.modal-footer {
+  border-top: 3px solid;
+}

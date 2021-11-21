@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+###################################### INDEX-HOME ROUTES ######################################
+Route::group(['name', 'home'], function () {
+    Route::get('/home', 'HomeController@index');
+    Route::get('/', 'HomeController@index');
 });
+###################################### /INDEX-HOME ROUTES ######################################
 
-
+###################################### CAREER CONTROLLER ROUTES ######################################
 Route::prefix('career')->middleware('auth')->group(function () {
     Route::get('create', 'CareerController@create')->name('createCareer');
     Route::post('store', 'CareerController@store')->name('storeCareer');
@@ -27,6 +30,9 @@ Route::prefix('career')->middleware('auth')->group(function () {
     Route::post('update', 'CareerController@update')->name('updateCareer');
     Route::get('delete/{id}', 'CareerController@destroy')->name('deleteCareer');
 });
+###################################### /CAREER CONTROLLER ROUTES ######################################
+
+Auth::routes();
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

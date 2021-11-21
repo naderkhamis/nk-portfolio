@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'NK-Dashboard') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -19,12 +19,10 @@
     </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Icon -->
-    <link rel="icon" type="image/png" href="{{ asset('images/headerdarklogo.png') }} " sizes="16x16">
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -34,7 +32,7 @@
 
 <body class="bg-dark">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     <img src="{{ asset('images/headerdarklogo.png') }}" width="50" height="50"
@@ -48,10 +46,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('careerIndex') }}">Career<span
+                            <a class="nav-link" href="{{ route('home') }}">Home<span
                                     class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('careerIndex') }}">Career</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Clients Opinions</a>
@@ -66,6 +67,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -77,11 +79,14 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();                                                                                                                                   document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
                                         @csrf
@@ -93,6 +98,7 @@
                 </div>
             </div>
         </nav>
+
         <main class="py-4">
             <section class="container">
                 @yield('content')

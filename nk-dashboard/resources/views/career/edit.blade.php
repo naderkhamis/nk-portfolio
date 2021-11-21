@@ -72,15 +72,16 @@
                         <div class="modal-body text-white">
                             Are you sure?
                         </div>
-                        <div class="modal-footer border-warning">
-                            <button type="button" class="btn btn-warning rounded-pill" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-secondary rounded-pill">Update</button>
+                        <div class="modal-footer border-warning d-flex justify-content-center">
+                            <button type="submit" class="btn btn-outline-success rounded-pill">Update</button>
+                            <button type="button" class="btn btn-outline-danger rounded-pill"
+                                data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
             {{-- /Confirmation-Modal --}}
-            <button type="button" class="btn btn-warning rounded-pill" data-toggle="modal"
+            <button type="button" class="btn btn-outline-warning rounded-pill" data-toggle="modal"
                 data-target="#exampleModal">Update</button>
         </form>
     @endif

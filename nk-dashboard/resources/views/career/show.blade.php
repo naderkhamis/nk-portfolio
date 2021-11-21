@@ -22,13 +22,14 @@
                         </p>
                     </div>
                     <div class="card-footer bg-transparent border-warning">
-                        <a href="{{ route('editCareer', $career->id) }}" class="btn btn-warning rounded-pill">Edit</a>
+                        <a href="{{ route('editCareer', $career->id) }}"
+                            class="btn btn-outline-success rounded-pill">Edit</a>
                         <a href="{{ route('deleteCareer', $career->id) }}"
-                            class="btn btn-secondary rounded-pill">Delete</a>
+                            class="btn btn-outline-danger rounded-pill">Delete</a>
                     </div>
                 </div>
             </div>
         </div>
-        <a href="{{ route('careerIndex') }}" class="btn btn-warning rounded-pill">Go Back</a>
+        <a href="{{ route('careerIndex') }}" class="btn btn-outline-warning rounded-pill">Go Back</a>
     @endif
 @endsection
