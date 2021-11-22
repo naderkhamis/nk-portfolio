@@ -22,13 +22,13 @@
                 <input type="date" class="form-control" name="to" id="to">
             </div>
             <div class="form-group col-md-4 align-self-end">
-                <label>Still working there?</label>
+                <label>Still working there? &nbsp;</label>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input " type="radio" name="status" id="inlineRadio1" value="1">
                     <label class="form-check-label" for="inlineRadio1">Yes</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="0">
+                    <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="0" checked>
                     <label class="form-check-label" for="inlineRadio2">No</label>
                 </div>
             </div>

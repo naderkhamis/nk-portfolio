@@ -59,7 +59,7 @@
             @endforeach
         </div>
     @else
-        <div class="alert alert-warning rounded-pill alert-dismissible fade show" role="alert">
+        <div class="alert alert-warning rounded-pill alert-dismissible fade show col-md-6" role="alert">
             <strong>Sorry! </strong>There is no available career path.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
