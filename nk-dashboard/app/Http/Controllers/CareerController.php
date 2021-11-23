@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Http\Requests\CareerRequest;
 
 class CareerController extends Controller
 {
@@ -36,7 +37,7 @@ class CareerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CareerRequest $request)
     {
         $career = new Career();
         $career->title = $request->title;
@@ -81,7 +82,7 @@ class CareerController extends Controller
      * @param  \App\Models\Career  $career
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Career $career)
+    public function update(CareerRequest $request, Career $career)
     {
         $career = Career::find($request->id);
         $career->title = $request->title;

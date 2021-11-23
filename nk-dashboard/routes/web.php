@@ -33,6 +33,5 @@ Route::prefix('career')->middleware('auth')->group(function () {
 ###################################### /CAREER CONTROLLER ROUTES ######################################
 
 Auth::routes();
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

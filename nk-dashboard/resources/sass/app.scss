@@ -2,30 +2,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 // Variables
 @import "variables";
-// // Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+// Bootstrap
+// @import "~bootstrap/scss/bootstrap";
 .btn {
-    border: 3px solid;
+    min-width: 100px;
     font-weight: 600;
+}
+
+// @media screen and (min-width: 600px) and (max-width: 820px) {
+//     .btn {
+//         min-width: 150px;
+//     }
+// }
+// @media screen and (min-width: 821px) and (max-width: 1100px) {
+//     .btn {
+//         min-width: 90px;
+//     }
+// }
+// @media screen and (min-width: 1101px) and (max-width: 1200px) {
+//     .btn {
+//         min-width: 130px;
+//     }
+// }
+@media screen and (min-width: 601px) {
+    .btn {
+        max-width: 160px;
+    }
 }
 
 .card,
 .modal-content {
     border: 3px solid;
-    border-radius: 40px;
-    -webkit-border-radius: 40px;
-    -moz-border-radius: 40px;
-    -ms-border-radius: 40px;
-    -o-border-radius: 40px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .card-header:first-child,
 .modal-header {
-    border-radius: 35px 35px 0px 0px;
-    -webkit-border-radius: 35px 35px 0px 0px;
-    -moz-border-radius: 35px 35px 0px 0px;
-    -ms-border-radius: 35px 35px 0px 0px;
-    -o-border-radius: 35px 35px 0px 0px;
+    border-radius: 15px 15px 0px 0px;
+    -webkit-border-radius: 15px 15px 0px 0px;
+    -moz-border-radius: 15px 15px 0px 0px;
+    -ms-border-radius: 15px 15px 0px 0px;
+    -o-border-radius: 15px 15px 0px 0px;
+}
+
+.card-body .card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 }
 
 .card-footer,
