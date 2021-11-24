@@ -1,3 +1,6 @@
+<?php
+use Carbon\Carbon;
+?>
 @extends('layouts.app')
 @section('content')
     @if ($career)
@@ -19,12 +22,14 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="from">From Date</label>
-                    <input type="date" class="form-control" name="from" id="from" value="{{ $career->from_date }}">
+                    <input type="date" class="form-control" name="from" id="from"
+                        value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('Y-m-d') }}">
                 </div>
                 @if ($career->status === 0)
                     <div class="form-group col-md-4">
                         <label for="to">To Date</label>
-                        <input type="date" class="form-control" name="to" id="to" value="{{ $career->to_date }}">
+                        <input type="date" class="form-control" name="to" id="to"
+                            value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('Y-m-d') }}">
                     </div>
                     <div class="form-group col-md-4 align-self-end">
                         <label>Still working there?</label>
@@ -67,22 +72,28 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content bg-dark border-warning">
                         <div class="modal-header bg-warning border-warning">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Update</h5>
                         </div>
                         <div class="modal-body text-white">
                             Are you sure?
                         </div>
                         <div class="modal-footer border-warning d-flex justify-content-center">
-                            <button type="submit" class="btn btn-outline-success rounded-pill">Update</button>
-                            <button type="button" class="btn btn-outline-danger rounded-pill"
-                                data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Update <i class="ri-refresh-line"></i></button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close <i
+                                    class="ri-close-circle-line"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
             {{-- /Confirmation-Modal --}}
-            <button type="button" class="btn btn-outline-warning rounded-pill" data-toggle="modal"
-                data-target="#exampleModal">Update</button>
+            <div class="col-md-2 p-0">
+                <button type="button" class="btn btn-warning btn-block" data-toggle="modal"
+                    data-target="#exampleModal">Update <i class="ri-refresh-line"></i></button>
+            </div>
         </form>
+        <div class="col-md-2 p-0">
+            <a href="{{ route('careerIndex') }}" class="btn btn-warning btn-block mt-3">Go Back <i
+                    class="ri-arrow-go-back-fill"></i></a>
+        </div>
     @endif
 @endsection

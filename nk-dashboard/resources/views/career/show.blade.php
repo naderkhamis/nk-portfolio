@@ -1,3 +1,6 @@
+<?php
+use Carbon\Carbon;
+?>
 @extends('layouts.app')
 @section('content')
     @if ($career)
@@ -12,20 +15,24 @@
                         <p class="card-text">{{ $career->description }}</p>
                     </div>
                     <div class="d-block px-3 pb-3">
-                        <strong class="badge badge-pill badge-warning font-italic">
-                            From: {{ $career->from_date }} -
+                        <strong class="badge badge-warning p-2 font-italic">
+                            From:
+                            {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('d M Y') }}
+                            -
                             @if ($career->status === 0)
-                                To: {{ $career->to_date }}
+                                To:
+                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('d M Y') }}
                             @else
                                 Till now
                             @endif
                         </strong>
                     </div>
-                    <div class="card-footer bg-transparent border-warning">
-                        <a href="{{ route('editCareer', $career->id) }}" class="btn btn-success rounded-pill">Edit</a>
-                        <button type="button" class="btn btn-danger rounded-pill" data-toggle="modal"
-                            data-target="#exampleModal">
-                            Delete
+                    <div
+                        class="card-footer bg-transparent border-warning d-flex justify-content-center justify-content-md-start">
+                        <a href="{{ route('editCareer', $career->id) }}" class="btn btn-success mr-3">Edit <i
+                                class="ri-edit-box-line"></i></a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                            Delete <i class="ri-delete-bin-4-line"></i>
                         </button>
                     </div>
                 </div>
@@ -45,15 +52,19 @@
                             Are you sure?
                         </div>
                         <div class="modal-footer border-warning d-flex justify-content-center">
-                            <a href="{{ route('deleteCareer', $career->id) }}"
-                                class="btn btn-danger rounded-pill">Delete</a>
-                            <button type="button" class="btn btn-success rounded-pill" data-dismiss="modal">Close</button>
+                            <a href="{{ route('deleteCareer', $career->id) }}" class="btn btn-danger">Delete <i
+                                    class="ri-delete-bin-4-line"></i></a>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Close <i
+                                    class="ri-close-circle-line"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
             {{-- /Confirmation-Modal --}}
         </div>
-        <a href="{{ route('careerIndex') }}" class="btn btn-warning rounded-pill btn-block">Go Back</a>
+        <div class="col-md-2 p-0">
+            <a href="{{ route('careerIndex') }}" class="btn btn-warning btn-block">Go Back <i
+                    class="ri-arrow-go-back-fill"></i></a>
+        </div>
     @endif
 @endsection
