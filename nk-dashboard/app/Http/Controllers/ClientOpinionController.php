@@ -14,7 +14,9 @@ class ClientOpinionController extends Controller
      */
     public function index()
     {
-        //
+        $clientOpinion = new ClientOpinion();
+        $clientOpinion = ClientOpinion::get();
+        return view('clientOpinion.index', $clientOpinion);
     }
 
     /**
@@ -24,7 +26,7 @@ class ClientOpinionController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientOpinion.create');
     }
 
     /**
@@ -35,7 +37,19 @@ class ClientOpinionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $clientOpinion = new ClientOpinion();
+        $clientOpinion->name = $request->name;
+        $clientOpinion->company = $request->company;
+        $destination = 'uploads/';
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file->move($destination, date('mdy-his') . $file->getClientOriginalName());
+        } else {
+            return redirect()->back();
+        }
+        $clientOpinion->image = $destination . date('mdy-his') . $file->getClientOriginalName();
+        $clientOpinion->opinion = $request->opinion;
+        $clientOpinion->save();
     }
 
     /**
@@ -44,9 +58,10 @@ class ClientOpinionController extends Controller
      * @param  \App\Models\ClientOpinion  $clientOpinion
      * @return \Illuminate\Http\Response
      */
-    public function show(ClientOpinion $clientOpinion)
+    public function show($id)
     {
-        //
+        $clientOpinion = ClientOpinion::find($id);
+        return view('clientOpinion.show', $clientOpinion);
     }
 
     /**
@@ -55,9 +70,10 @@ class ClientOpinionController extends Controller
      * @param  \App\Models\ClientOpinion  $clientOpinion
      * @return \Illuminate\Http\Response
      */
-    public function edit(ClientOpinion $clientOpinion)
+    public function edit($id)
     {
-        //
+        $clientOpinion = ClientOpinion::find($id);
+        return view('clientOpinion.edit', $clientOpinion);
     }
 
     /**
@@ -69,7 +85,20 @@ class ClientOpinionController extends Controller
      */
     public function update(Request $request, ClientOpinion $clientOpinion)
     {
-        //
+        $clientOpinion = ClientOpinion::find($request->id);
+        $clientOpinion->name = $request->name;
+        $clientOpinion->company = $request->company;
+        $destination = 'uploads/';
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file->move($destination, date('mdy-his') . $file->getClientOriginalName());
+        } else {
+            return redirect()->back();
+        }
+        $clientOpinion->image = $destination . date('mdy-his') . $file->getClientOriginalName();
+        $clientOpinion->opinion = $request->opinion;
+        $clientOpinion->save();
+        return redirect('/clientOpinion/index');
     }
 
     /**
@@ -78,8 +107,10 @@ class ClientOpinionController extends Controller
      * @param  \App\Models\ClientOpinion  $clientOpinion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClientOpinion $clientOpinion)
+    public function destroy($id)
     {
-        //
+        $clientOpinion = ClientOpinion::find($id);
+        $clientOpinion->delete();
+        return redirect('/clientOpinion/index');
     }
 }

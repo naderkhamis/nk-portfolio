@@ -18,6 +18,7 @@ Route::group(['name', 'home'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/', 'HomeController@index');
 });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 ###################################### /INDEX-HOME ROUTES ######################################
 
 ###################################### CAREER CONTROLLER ROUTES ######################################
@@ -32,6 +33,16 @@ Route::prefix('career')->middleware('auth')->group(function () {
 });
 ###################################### /CAREER CONTROLLER ROUTES ######################################
 
-Auth::routes();
+###################################### CLIENT OPINION CONTROLLER ROUTES ######################################
+Route::prefix('client-opinion')->middleware('auth')->group(function () {
+    Route::get('create', 'ClientOpinion@create')->name('createOpinion');
+    Route::post('store', 'ClientOpinion@store')->name('storeOpinion');
+    Route::get('index', 'ClientOpinion@index')->name('OpinionIndex');
+    Route::get('show/{id}', 'ClientOpinion@show')->name('showOpinion');
+    Route::get('edit/{id}', 'ClientOpinion@edit')->name('editOpinion');
+    Route::post('update', 'ClientOpinion@update')->name('updateOpinion');
+    Route::get('delete/{id}', 'ClientOpinion@destroy')->name('deleteOpinion');
+});
+###################################### /CLIENT OPINION CONTROLLER ROUTES ######################################
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
