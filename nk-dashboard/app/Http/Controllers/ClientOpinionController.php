@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClientOpinion;
-use Illuminate\Http\Request;
+use App\Http\Requests\ClientOpinionRequest;
 
 class ClientOpinionController extends Controller
 {
@@ -35,11 +35,10 @@ class ClientOpinionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientOpinionRequest $request)
     {
         $clientOpinion = new ClientOpinion();
         $clientOpinion->name = $request->name;
-        $clientOpinion->company = $request->company;
         $destination = 'uploads/';
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -48,6 +47,7 @@ class ClientOpinionController extends Controller
             return redirect()->back();
         }
         $clientOpinion->image = $destination . date('mdy-his') . $file->getClientOriginalName();
+        $clientOpinion->company = $request->company;
         $clientOpinion->opinion = $request->opinion;
         $clientOpinion->save();
     }
@@ -83,7 +83,7 @@ class ClientOpinionController extends Controller
      * @param  \App\Models\ClientOpinion  $clientOpinion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ClientOpinion $clientOpinion)
+    public function update(ClientOpinionRequest $request, ClientOpinion $clientOpinion)
     {
         $clientOpinion = ClientOpinion::find($request->id);
         $clientOpinion->name = $request->name;
