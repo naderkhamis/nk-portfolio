@@ -35,13 +35,13 @@ Route::prefix('career')->middleware('auth')->group(function () {
 
 ###################################### CLIENT OPINION CONTROLLER ROUTES ######################################
 Route::prefix('client-opinion')->middleware('auth')->group(function () {
-    Route::get('create', 'ClientOpinion@create')->name('createOpinion');
-    Route::post('store', 'ClientOpinion@store')->name('storeOpinion');
-    Route::get('index', 'ClientOpinion@index')->name('OpinionIndex');
-    Route::get('show/{id}', 'ClientOpinion@show')->name('showOpinion');
-    Route::get('edit/{id}', 'ClientOpinion@edit')->name('editOpinion');
-    Route::post('update', 'ClientOpinion@update')->name('updateOpinion');
-    Route::get('delete/{id}', 'ClientOpinion@destroy')->name('deleteOpinion');
+    Route::get('create', 'ClientOpinionController@create')->name('createOpinion');
+    Route::post('store', 'ClientOpinionController@store')->name('storeOpinion');
+    Route::get('index', 'ClientOpinionController@index')->name('opinionIndex');
+    // Route::get('show/{id}', 'ClientOpinionController@show')->name('showOpinion');
+    Route::get('edit/{id}', 'ClientOpinionController@edit')->name('editOpinion');
+    Route::post('update', 'ClientOpinionController@update')->name('updateOpinion');
+    Route::get('delete/{id}', 'ClientOpinionController@destroy')->name('deleteOpinion');
 });
 ###################################### /CLIENT OPINION CONTROLLER ROUTES ######################################
 

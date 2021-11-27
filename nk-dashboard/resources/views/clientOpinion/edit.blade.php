@@ -3,67 +3,65 @@ use Carbon\Carbon;
 ?>
 @extends('layouts.app')
 @section('content')
-    @if ($career)
-        <h3 class="text-white">Career Path</h3>
-        <form action="{{ route('updateCareer', $career->id) }}" method="post" class="text-white">
-            <input type="hidden" name="id" id="id" value="{{ $career->id }}">
+    @if ($clientOpinion)
+        <h3 class="text-white">Edit Client Opinion</h3>
+        <form action="{{ route('updateOpinion', $clientOpinion->id) }}" method="post" class="text-white"
+            enctype="multipart/form-data">
+            <input type="hidden" name="id" id="id" value="{{ $clientOpinion->id }}">
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="title">Job Title</label>
-                    <input type="text" class="form-control" name="title" id="title" value="{{ $career->title }}"
-                        placeholder="Write your position">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Client Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                            placeholder="Enter client's name" value="{{ $clientOpinion->name }}">
+                        @error('name')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" class="form-control @error('company') is-invalid @enderror" name="company"
+                            id="company" placeholder="Enter company's or project's name"
+                            value="{{ $clientOpinion->company }}">
+                        @error('company')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control @error('from') is-invalid @enderror" name="date" id="date"
+                            value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $clientOpinion->date)->format('Y-m-d') }}">
+                        @error('date')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Client Image</label>
+                        <div class="media">
+                            <div class="d-flex align-content-center mr-3 p-1">
+                                <img src="{{ asset($clientOpinion->image) }}" class="img-fluid" alt="Cleint Picture">
+                            </div>
+                            <input type="file"
+                                class="form-control-file align-self-center m-0 @error('image') is-invalid @enderror"
+                                name="image" id="image" placeholder="Please select customer's image"
+                                value="{{ $clientOpinion->image }}">
+                            @error('image')
+                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="company">Company</label>
-                    <input type="text" class="form-control" name="company" id="company" value="{{ $career->company }}"
-                        placeholder="Write your company name">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="opinion">Client's Opinion</label>
+                        <textarea class="form-control @error('opinion') is-invalid @enderror" name="opinion" id="opinion"
+                            cols="30" rows="8"
+                            placeholder="Enter customer's feedback">{{ $clientOpinion->opinion }}</textarea>
+                        @error('opinion')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="from">From Date</label>
-                    <input type="date" class="form-control" name="from" id="from"
-                        value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('Y-m-d') }}">
-                </div>
-                @if ($career->status === 0)
-                    <div class="form-group col-md-4">
-                        <label for="to">To Date</label>
-                        <input type="date" class="form-control" name="to" id="to"
-                            value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('Y-m-d') }}">
-                    </div>
-                    <div class="form-group col-md-4 align-self-end">
-                        <label>Still working there?</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input " type="radio" name="status" id="inlineRadio1" value="1">
-                            <label class="form-check-label" for="inlineRadio1">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="0" checked>
-                            <label class="form-check-label" for="inlineRadio2">No</label>
-                        </div>
-                    </div>
-                @else
-                    <div class="form-group col-md-4">
-                        <label for="to">To Date</label>
-                        <input type="date" class="form-control" name="to" id="to" value="{{ $currentDate }}">
-                    </div>
-                    <div class="form-group col-md-4 align-self-end">
-                        <label>Still working there?</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input " type="radio" name="status" id="inlineRadio1" value="1" checked>
-                            <label class="form-check-label" for="inlineRadio1">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="0">
-                            <label class="form-check-label" for="inlineRadio2">No</label>
-                        </div>
-                    </div>
-                @endif
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="form-control" name="description" id="description" cols="30" rows="10"
-                    placeholder="Try to describe your job">{{ $career->description }}</textarea>
             </div>
             <input name="_token" type="hidden" value="{{ csrf_token() }}" />
             {{-- Confirmation-Modal --}}
@@ -88,11 +86,12 @@ use Carbon\Carbon;
             {{-- /Confirmation-Modal --}}
             <div class="col-md-2 p-0">
                 <button type="button" class="btn btn-warning btn-block" data-toggle="modal"
-                    data-target="#exampleModal">Update <i class="ri-refresh-line"></i></button>
+                    data-target="#exampleModal">Update
+                    <i class="ri-refresh-line"></i></button>
             </div>
         </form>
         <div class="col-md-2 p-0">
-            <a href="{{ route('careerIndex') }}" class="btn btn-warning btn-block mt-3">Go Back <i
+            <a href="{{ route('opinionIndex') }}" class="btn btn-warning btn-block mt-3">Go Back <i
                     class="ri-arrow-go-back-fill"></i></a>
         </div>
     @endif

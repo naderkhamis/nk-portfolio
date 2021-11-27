@@ -16,7 +16,7 @@ class ClientOpinionController extends Controller
     {
         $clientOpinion = new ClientOpinion();
         $clientOpinion = ClientOpinion::get();
-        return view('clientOpinion.index', $clientOpinion);
+        return view('clientOpinion.index')->with('clientOpinion', $clientOpinion);
     }
 
     /**
@@ -39,6 +39,7 @@ class ClientOpinionController extends Controller
     {
         $clientOpinion = new ClientOpinion();
         $clientOpinion->name = $request->name;
+        $clientOpinion->company = $request->company;
         $destination = 'uploads/';
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -47,9 +48,10 @@ class ClientOpinionController extends Controller
             return redirect()->back();
         }
         $clientOpinion->image = $destination . date('mdy-his') . $file->getClientOriginalName();
-        $clientOpinion->company = $request->company;
         $clientOpinion->opinion = $request->opinion;
+        $clientOpinion->date = $request->date;
         $clientOpinion->save();
+        return redirect('/client-opinion/index');
     }
 
     /**
@@ -58,11 +60,11 @@ class ClientOpinionController extends Controller
      * @param  \App\Models\ClientOpinion  $clientOpinion
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $clientOpinion = ClientOpinion::find($id);
-        return view('clientOpinion.show', $clientOpinion);
-    }
+    // public function show($id)
+    // {
+    //     $clientOpinion = ClientOpinion::find($id);
+    //     return view('clientOpinion.show', $clientOpinion);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -73,7 +75,7 @@ class ClientOpinionController extends Controller
     public function edit($id)
     {
         $clientOpinion = ClientOpinion::find($id);
-        return view('clientOpinion.edit', $clientOpinion);
+        return view('clientOpinion.edit')->with('clientOpinion', $clientOpinion);
     }
 
     /**
@@ -97,8 +99,9 @@ class ClientOpinionController extends Controller
         }
         $clientOpinion->image = $destination . date('mdy-his') . $file->getClientOriginalName();
         $clientOpinion->opinion = $request->opinion;
+        $clientOpinion->date = $request->date;
         $clientOpinion->save();
-        return redirect('/clientOpinion/index');
+        return redirect('/client-opinion/index');
     }
 
     /**
@@ -111,6 +114,6 @@ class ClientOpinionController extends Controller
     {
         $clientOpinion = ClientOpinion::find($id);
         $clientOpinion->delete();
-        return redirect('/clientOpinion/index');
+        return redirect('/client-opinion/index');
     }
 }
