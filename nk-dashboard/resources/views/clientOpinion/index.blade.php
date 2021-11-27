@@ -13,7 +13,7 @@ use Carbon\Carbon;
                         </div>
                         <div class="card-body text-white">
                             <div class="media">
-                                <div class="d-flex align-content-center mr-3 p-1">
+                                <div class="d-flex align-self-center mr-3 p-1">
                                     <img src="{{ asset($client->image) }}" class="img-fluid" alt="Cleint Picture">
                                 </div>
                                 <h5 class="card-title align-self-center m-0">{{ $client->name }}</h5>

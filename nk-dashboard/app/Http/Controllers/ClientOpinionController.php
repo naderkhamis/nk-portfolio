@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\ClientOpinion;
 use App\Http\Requests\ClientOpinionRequest;
+use App\Http\Traits\UploadFileTrait;
 
 class ClientOpinionController extends Controller
 {
+    use UploadFileTrait;
     /**
      * Display a listing of the resource.
      *
@@ -40,14 +42,7 @@ class ClientOpinionController extends Controller
         $clientOpinion = new ClientOpinion();
         $clientOpinion->name = $request->name;
         $clientOpinion->company = $request->company;
-        $destination = 'uploads/';
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $file->move($destination, date('mdy-his') . $file->getClientOriginalName());
-        } else {
-            return redirect()->back();
-        }
-        $clientOpinion->image = $destination . date('mdy-his') . $file->getClientOriginalName();
+        $clientOpinion->image = $this->upload($request);
         $clientOpinion->opinion = $request->opinion;
         $clientOpinion->date = $request->date;
         $clientOpinion->save();
@@ -90,14 +85,7 @@ class ClientOpinionController extends Controller
         $clientOpinion = ClientOpinion::find($request->id);
         $clientOpinion->name = $request->name;
         $clientOpinion->company = $request->company;
-        $destination = 'uploads/';
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $file->move($destination, date('mdy-his') . $file->getClientOriginalName());
-        } else {
-            return redirect()->back();
-        }
-        $clientOpinion->image = $destination . date('mdy-his') . $file->getClientOriginalName();
+        $clientOpinion->image = $this->upload($request, $clientOpinion->image);
         $clientOpinion->opinion = $request->opinion;
         $clientOpinion->date = $request->date;
         $clientOpinion->save();

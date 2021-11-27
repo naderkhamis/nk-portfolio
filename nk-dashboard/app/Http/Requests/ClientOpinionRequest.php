@@ -25,7 +25,7 @@ class ClientOpinionRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:100',
-            'image' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
+            'image' => 'image|mimes:jpg,jpeg,png,svg|max:2048',
             'company' => 'required|string|min:3|max:100',
             'date' => 'required|date|before:tomorrow',
             'opinion' => 'required|string|min:100|max:255'
@@ -44,7 +44,7 @@ class ClientOpinionRequest extends FormRequest
             'name.string' => 'Numbers or special characters are not allowed.',
             'name.min' => 'Please enter at least 3 characters.',
             'name.max' => 'Please enter less than 100 characters.',
-            'image.required' => 'Please select an image or logo.',
+            // 'image.required' => 'Please select an image or logo.',
             'image.image' => 'Please upload an image file (jpg,jpeg,png,svg).',
             'image.mimes' => 'You\'re allowed to upload these Ext. (jpg,jpeg,png,svg).',
             'image.max' => 'Image is too large, select image less than 2MB.',
