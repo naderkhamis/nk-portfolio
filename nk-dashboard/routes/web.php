@@ -45,4 +45,16 @@ Route::prefix('client-opinion')->middleware('auth')->group(function () {
 });
 ###################################### /CLIENT OPINION CONTROLLER ROUTES ######################################
 
+###################################### CONTACT INFO CONTROLLER ROUTES ######################################
+Route::prefix('contact-info')->middleware('auth')->group(function () {
+    Route::get('create', 'ContactInfoController@create')->name('createContactInfo');
+    Route::post('store', 'ContactInfoController@store')->name('storeContactInfo');
+    Route::get('index', 'ContactInfoController@index')->name('ContactInfoIndex');
+    // Route::get('show/{id}', 'ContactInfoController@show')->name('showContactInfo');
+    Route::get('edit/{id}', 'ContactInfoController@edit')->name('editContactInfo');
+    Route::post('update', 'ContactInfoController@update')->name('updateContactInfo');
+    Route::get('delete/{id}', 'ContactInfoController@destroy')->name('deleteContactInfo');
+});
+###################################### /CONTACT INFO CONTROLLER ROUTES ######################################
+
 Auth::routes();

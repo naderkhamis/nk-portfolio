@@ -40,7 +40,7 @@ class ContactInfoController extends Controller
         $contactInfo = new ContactInfo();
         $contactInfo->address = $request->address;
         $contactInfo->email = $request->email;
-        $contactInfo->phone = $request->phone;
+        $contactInfo->phone = $request->phone . '-' . $request->code;
         $contactInfo->save();
         return redirect('/contact-info/index');
     }
@@ -51,11 +51,11 @@ class ContactInfoController extends Controller
      * @param  \App\Models\ContactInfo  $contactInfo
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $contactInfo = ContactInfo::find($id);
-        return view('contactInfo.show')->with('contactInfo', $contactInfo);
-    }
+    // public function show($id)
+    // {
+    //     $contactInfo = ContactInfo::find($id);
+    //     return view('contactInfo.show')->with('contactInfo', $contactInfo);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -81,7 +81,7 @@ class ContactInfoController extends Controller
         $contactInfo = ContactInfo::find($request->id);
         $contactInfo->address = $request->address;
         $contactInfo->email = $request->email;
-        $contactInfo->phone = $request->phone;
+        $contactInfo->phone = $request->phone . '-' . $request->code;
         $contactInfo->save();
         return redirect('/contact-info/index');
     }
