@@ -42,7 +42,7 @@ class ClientOpinionController extends Controller
         $clientOpinion = new ClientOpinion();
         $clientOpinion->name = $request->name;
         $clientOpinion->company = $request->company;
-        $clientOpinion->image = $this->upload($request);
+        $clientOpinion->image = $this->upload($request, $clientOpinion->image);
         $clientOpinion->opinion = $request->opinion;
         $clientOpinion->date = $request->date;
         $clientOpinion->save();

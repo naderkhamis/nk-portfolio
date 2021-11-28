@@ -14,7 +14,9 @@ class ContactInfoController extends Controller
      */
     public function index()
     {
-        //
+        $contactInfo = new ContactInfo();
+        $contactInfo = ContactInfo::get();
+        return view('contactInfo.index')->with('contactInfo', $contactInfo);
     }
 
     /**
@@ -24,7 +26,7 @@ class ContactInfoController extends Controller
      */
     public function create()
     {
-        //
+        return view('contactInfo.create');
     }
 
     /**
@@ -35,7 +37,12 @@ class ContactInfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contactInfo = new ContactInfo();
+        $contactInfo->address = $request->address;
+        $contactInfo->email = $request->email;
+        $contactInfo->phone = $request->phone;
+        $contactInfo->save();
+        return redirect('/contact-info/index');
     }
 
     /**
@@ -44,9 +51,10 @@ class ContactInfoController extends Controller
      * @param  \App\Models\ContactInfo  $contactInfo
      * @return \Illuminate\Http\Response
      */
-    public function show(ContactInfo $contactInfo)
+    public function show($id)
     {
-        //
+        $contactInfo = ContactInfo::find($id);
+        return view('contactInfo.show')->with('contactInfo', $contactInfo);
     }
 
     /**
@@ -55,9 +63,10 @@ class ContactInfoController extends Controller
      * @param  \App\Models\ContactInfo  $contactInfo
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContactInfo $contactInfo)
+    public function edit($id)
     {
-        //
+        $contactInfo = ContactInfo::find($id);
+        return view('contactInfo.edit')->with('contactInfo', $contactInfo);
     }
 
     /**
@@ -69,7 +78,12 @@ class ContactInfoController extends Controller
      */
     public function update(Request $request, ContactInfo $contactInfo)
     {
-        //
+        $contactInfo = ContactInfo::find($request->id);
+        $contactInfo->address = $request->address;
+        $contactInfo->email = $request->email;
+        $contactInfo->phone = $request->phone;
+        $contactInfo->save();
+        return redirect('/contact-info/index');
     }
 
     /**
@@ -78,8 +92,10 @@ class ContactInfoController extends Controller
      * @param  \App\Models\ContactInfo  $contactInfo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactInfo $contactInfo)
+    public function destroy($id)
     {
-        //
+        $contactInfo = ContactInfo::find($id);
+        $contactInfo->delete();
+        return redirect('/contact-info/index');
     }
 }
