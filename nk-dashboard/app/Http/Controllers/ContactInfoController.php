@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactInfo;
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactInfoRequest;
 
 class ContactInfoController extends Controller
 {
@@ -35,7 +36,7 @@ class ContactInfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactInfoRequest $request)
     {
         $contactInfo = new ContactInfo();
         $contactInfo->address = $request->address;
@@ -76,7 +77,7 @@ class ContactInfoController extends Controller
      * @param  \App\Models\ContactInfo  $contactInfo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContactInfo $contactInfo)
+    public function update(ContactInfoRequest $request, ContactInfo $contactInfo)
     {
         $contactInfo = ContactInfo::find($request->id);
         $contactInfo->address = $request->address;
