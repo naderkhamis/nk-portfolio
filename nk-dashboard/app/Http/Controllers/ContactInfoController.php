@@ -39,9 +39,18 @@ class ContactInfoController extends Controller
     public function store(ContactInfoRequest $request)
     {
         $contactInfo = new ContactInfo();
-        $contactInfo->address = $request->address;
-        $contactInfo->email = $request->email;
-        $contactInfo->phone = $request->phone . '-' . $request->code;
+        if ($request->address == Null && $request->email == Null && $request->phone == Null) {
+            $msg = 'There is nothing to submit';
+            return redirect('/contact-info/create')->with('msg', $msg);
+        } else {
+            $contactInfo->address = $request->address;
+            $contactInfo->email = $request->email;
+            if ($request->phone == Null) {
+                $contactInfo->phone = Null;
+            } else {
+                $contactInfo->phone = $request->code . '-' . $request->phone;
+            }
+        }
         $contactInfo->save();
         return redirect('/contact-info/index');
     }

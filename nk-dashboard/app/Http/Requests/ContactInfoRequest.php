@@ -24,9 +24,9 @@ class ContactInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'address' => 'string|min:3|max:100',
-            'email' => 'email|min:10|max:100',
-            'phone' => 'alpha_dash|min:10|max:15'
+            'address' => 'required|string|min:3|max:100',
+            'email' => 'email|min:10|max:100|nullable',
+            'phone' => 'numeric|min:10|max:100|nullable'
         ];
     }
 
@@ -38,15 +38,16 @@ class ContactInfoRequest extends FormRequest
     public function messages()
     {
         return [
+            'address.required' => 'Please enter an address.',
             'address.string' => 'Special characters are not allowed.',
             'address.min' => 'Please enter at least 3 characters.',
             'address.max' => 'Please enter less than 100 characters.',
             'email.email' => 'Please enter a valid E-mail.',
             'email.min' => 'Please enter at least 10 characters.',
             'email.max' => 'Please enter less than 100 characters',
-            'phone.alpha_dash' => 'Please enter a valid code and phone number.',
+            'phone.numeric' => 'Please enter a valid code and phone number.',
             'phone.min' => 'Please enter at least 10 numbers',
-            'phone.max' => 'Please enter less than 15 numbers including code.'
+            'phone.max' => 'Please enter less than 20 numbers including code.'
         ];
     }
 }

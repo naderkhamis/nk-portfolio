@@ -51,12 +51,23 @@ Route::prefix('client-opinion')->middleware('auth')->group(function () {
 Route::prefix('contact-info')->middleware('auth')->group(function () {
     Route::get('create', 'ContactInfoController@create')->name('createContactInfo');
     Route::post('store', 'ContactInfoController@store')->name('storeContactInfo');
-    Route::get('index', 'ContactInfoController@index')->name('ContactInfoIndex');
+    Route::get('index', 'ContactInfoController@index')->name('contactInfoIndex');
     // Route::get('show/{id}', 'ContactInfoController@show')->name('showContactInfo');
     Route::get('edit/{id}', 'ContactInfoController@edit')->name('editContactInfo');
     Route::post('update', 'ContactInfoController@update')->name('updateContactInfo');
     Route::get('delete/{id}', 'ContactInfoController@destroy')->name('deleteContactInfo');
 });
 ###################################### /CONTACT INFO CONTROLLER ROUTES ######################################
+
+###################################### ADDRESS CONTROLLER ROUTES ######################################
+Route::prefix('address')->middleware('auth')->group(function () {
+    Route::get('create', 'AddressController@create')->name('createAddress');
+    Route::post('store', 'AddressController@store')->name('storeAddress');
+    Route::get('index', 'AddressController@index')->name('addressIndex');
+    Route::get('edit/{id}', 'AddressController@edit')->name('editAddress');
+    Route::post('update', 'AddressController@update')->name('updateAddress');
+    Route::get('delete/{id}', 'AddressController@destroy')->name('deleteAddress');
+});
+###################################### /ADDRESS INFO CONTROLLER ROUTES ######################################
 
 Auth::routes();

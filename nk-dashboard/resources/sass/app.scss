@@ -13,17 +13,24 @@
 }
 
 .btn {
-    display: inline-block;
     font-weight: 600;
 }
 
+.btn:not(.btn-block) {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
 @media screen and(max-width:479px) {
-    .btn {
-        display: block;
-    }
-    .btn:not(:last-child) {
-        margin-bottom: 10px;
-    }
+    // .btn {
+    //     display: block;
+    // }
+    // .btn:not(:last-child) {
+    //     margin-bottom: 10px;
+    // }
 }
 
 @media screen and(min-width:480px) {
@@ -31,9 +38,9 @@
         display: flex;
         justify-content: space-around;
     }
-    .btn {
-        min-width: 90px;
-    }
+    // .btn {
+    //     min-width: 90px;
+    // }
 }
 
 @media screen and(min-width:768px) {}
@@ -41,9 +48,9 @@
 @media screen and(min-width:992px) {}
 
 @media screen and(min-width:1200px) {
-    .btn {
-        min-width: 100px;
-    }
+    // .btn {
+    //     min-width: 100px;
+    // }
 }
 
 .card {
@@ -82,13 +89,12 @@
     border-top: 3px solid;
 }
 
-.btn i {
-    font-size: 18px;
-    font-weight: normal;
-    position: relative;
-    top: 3px;
-}
-
+// .btn i {
+//     font-size: 18px;
+//     font-weight: normal;
+//     position: relative;
+//     top: 3px;
+// }
 .media div {
     width: 50px;
     height: 50px;
@@ -101,4 +107,10 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+}
+
+table.table.table-bordered,
+table.table th,
+table.table td {
+    border: 3px solid $main-color;
 }
