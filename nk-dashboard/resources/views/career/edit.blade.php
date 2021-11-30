@@ -69,7 +69,7 @@ use Carbon\Carbon;
             {{-- Confirmation-Modal --}}
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered p-3">
                     <div class="modal-content bg-dark border-warning">
                         <div class="modal-header bg-warning border-warning">
                             <h5 class="modal-title" id="exampleModalLabel">Update</h5>
@@ -78,22 +78,35 @@ use Carbon\Carbon;
                             Are you sure?
                         </div>
                         <div class="modal-footer border-warning d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success">Update <i class="ri-refresh-line"></i></button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close <i
-                                    class="ri-close-circle-line"></i></button>
+                            <div>
+                                <button type="submit" class="btn btn-block btn-success">
+                                    Update
+                                    <i class="ri-refresh-line"></i>
+                                </button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-block btn-danger" data-dismiss="modal">
+                                    Close
+                                    <i class="ri-close-circle-line"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             {{-- /Confirmation-Modal --}}
             <div class="col-md-2 p-0">
-                <button type="button" class="btn btn-warning btn-block" data-toggle="modal"
-                    data-target="#exampleModal">Update <i class="ri-refresh-line"></i></button>
+                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#exampleModal">
+                    Update
+                    <i class="ri-refresh-line"></i>
+                </button>
             </div>
         </form>
         <div class="col-md-2 p-0">
-            <a href="{{ route('careerIndex') }}" class="btn btn-warning btn-block mt-3">Go Back <i
-                    class="ri-arrow-go-back-fill"></i></a>
+            <a href="{{ route('careerIndex') }}" class="btn btn-warning btn-block mt-3">
+                Go Back
+                <i class="ri-arrow-go-back-fill"></i>
+            </a>
         </div>
     @endif
 @endsection

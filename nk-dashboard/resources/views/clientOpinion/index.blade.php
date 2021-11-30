@@ -25,11 +25,12 @@ use Carbon\Carbon;
                                 {{ Carbon::createFromFormat('Y-m-d H:i:s', $client->date)->format('d M Y') }}
                             </strong>
                         </div>
-                        <div class="card-footer border-warning">
-                            <a href="{{ route('editOpinion', $client->id) }}" class="btn btn-success">Edit <i
-                                    class="ri-edit-box-line"></i></a>
+                        <div class="card-footer border-warning d-flex justify-content-start">
+                            <a href="{{ route('editOpinion', $client->id) }}" class="btn btn-success">
+                                <i class="ri-edit-box-line"></i>
+                            </a>
                             <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                                Delete <i class="ri-delete-bin-4-line"></i>
+                                <i class="ri-delete-bin-4-line"></i>
                             </a>
                         </div>
                     </div>
@@ -50,10 +51,18 @@ use Carbon\Carbon;
                             Are you sure?
                         </div>
                         <div class="modal-footer border-warning d-flex justify-content-center">
-                            <a href="{{ route('deleteOpinion', $client->id) }}" class="btn btn-danger m-0">Delete <i
-                                    class="ri-delete-bin-4-line"></i></a>
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Close <i
-                                    class="ri-close-circle-line"></i></button>
+                            <div>
+                                <a href="{{ route('deleteOpinion', $client->id) }}" class="btn btn-block btn-danger m-0">
+                                    Delete
+                                    <i class="ri-delete-bin-4-line"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-block btn-success" data-dismiss="modal">
+                                    Close
+                                    <i class="ri-close-circle-line"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -68,7 +77,10 @@ use Carbon\Carbon;
             </button>
         </div>
     @endif
-    <div>
-        <a href="{{ route('createOpinion') }}" class="btn btn-warning">New Opinion <i class="ri-add-circle-line"></i></a>
+    <div class="col-md-2 p-0">
+        <a href="{{ route('createOpinion') }}" class="btn btn-block btn-warning">
+            New Opinion
+            <i class="ri-add-circle-line"></i>
+        </a>
     </div>
 @endsection

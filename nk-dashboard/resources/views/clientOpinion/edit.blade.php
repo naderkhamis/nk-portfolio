@@ -76,23 +76,34 @@ use Carbon\Carbon;
                             Are you sure?
                         </div>
                         <div class="modal-footer border-warning d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success">Update <i class="ri-refresh-line"></i></button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close <i
-                                    class="ri-close-circle-line"></i></button>
+                            <div>
+                                <button type="submit" class="btn btn-success">
+                                    Update
+                                    <i class="ri-refresh-line"></i>
+                                </button>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    Close
+                                    <i class="ri-close-circle-line"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             {{-- /Confirmation-Modal --}}
             <div class="col-md-2 p-0">
-                <button type="button" class="btn btn-warning btn-block" data-toggle="modal"
+                <button type="button" class="btn btn-block btn-warning" data-toggle="modal"
                     data-target="#exampleModal">Update
                     <i class="ri-refresh-line"></i></button>
             </div>
         </form>
         <div class="col-md-2 p-0">
-            <a href="{{ route('opinionIndex') }}" class="btn btn-warning btn-block mt-3">Go Back <i
-                    class="ri-arrow-go-back-fill"></i></a>
+            <a href="{{ route('opinionIndex') }}" class="btn btn-block btn-warning mt-3">
+                Go Back
+                <i class="ri-arrow-go-back-fill"></i>
+            </a>
         </div>
     @endif
 @endsection

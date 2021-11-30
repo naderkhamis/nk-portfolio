@@ -25,13 +25,17 @@ use Carbon\Carbon;
                                 @endif
                             </strong>
                         </div>
-                        <div class="card-footer border-warning">
-                            <a href="{{ route('showCareer', $career->id) }}" class="btn btn-primary">Show <i
-                                    class="ri-eye-2-line"></i></a>
-                            <a href="{{ route('editCareer', $career->id) }}" class="btn btn-success">Edit <i
-                                    class="ri-edit-box-line"></i></a>
+                        <div class="card-footer border-warning d-flex justify-content-start">
+                            <a href="{{ route('showCareer', $career->id) }}" class="btn btn-primary">
+                                <i class="ri-eye-line"></i>
+                            </a>
+
+                            <a href="{{ route('editCareer', $career->id) }}" class="btn btn-success">
+                                <i class="ri-edit-box-line"></i>
+                            </a>
+
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                                Delete <i class="ri-delete-bin-4-line"></i>
+                                <i class="ri-delete-bin-4-line"></i>
                             </button>
                         </div>
                     </div>
@@ -40,7 +44,7 @@ use Carbon\Carbon;
             {{-- Confirmation-Modal --}}
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered p-3">
                     <div class="modal-content bg-dark border-warning">
                         <div class="modal-header bg-warning border-warning">
                             <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
@@ -52,10 +56,18 @@ use Carbon\Carbon;
                             Are you sure?
                         </div>
                         <div class="modal-footer border-warning d-flex justify-content-center">
-                            <a href="{{ route('deleteCareer', $career->id) }}" class="btn btn-danger">Delete <i
-                                    class="ri-delete-bin-4-line"></i></a>
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Close <i
-                                    class="ri-close-circle-line"></i></button>
+                            <div>
+                                <a href="{{ route('deleteCareer', $career->id) }}" class="btn btn-block btn-danger">
+                                    Delete
+                                    <i class="ri-delete-bin-4-line"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-block btn-success" data-dismiss="modal">
+                                    Close
+                                    <i class="ri-close-circle-line"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

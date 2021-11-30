@@ -49,7 +49,10 @@
         </div>
         <input name="_token" type="hidden" value="{{ csrf_token() }}" />
         <div class="col-md-2 p-0">
-            <button type="submit" class="btn btn-warning btn-lg btn-block">Save <i class="ri-save-3-line"></i></button>
+            <button type="submit" class="btn btn-warning btn-lg btn-block">
+                Save
+                <i class="ri-save-3-line"></i>
+            </button>
         </div>
     </form>
 @endsection
