@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistic;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreStatisticRequest;
+use App\Http\Requests\UpdateStatisticRequest;
 
 class StatisticController extends Controller
 {
@@ -30,10 +31,10 @@ class StatisticController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreStatisticRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStatisticRequest $request)
     {
         //
     }
@@ -63,11 +64,11 @@ class StatisticController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateStatisticRequest  $request
      * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Statistic $statistic)
+    public function update(UpdateStatisticRequest $request, Statistic $statistic)
     {
         //
     }

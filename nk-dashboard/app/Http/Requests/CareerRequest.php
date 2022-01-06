@@ -24,12 +24,13 @@ class CareerRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|min:3|max:255',
+            'dev_id' => 'required',
+            'title' => 'required|regex:/^[a-zA-Z\s]+$/|min:3|max:255',
             'company' => 'required|string|min:3|max:100',
             'from' => 'required|date|before:tomorrow',
             'to' => 'required_if:status,0|nullable|before:tomorrow|after:from',
             'status' => 'required|boolean',
-            'description' => 'required|string|min:100|max:500'
+            'description' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:100|max:500'
         ];
     }
 
@@ -41,8 +42,9 @@ class CareerRequest extends FormRequest
     public function messages()
     {
         return [
+            'dev_id.required' => 'Please select a developer.',
             'title.required' => 'Please enter your job title.',
-            'title.string' => 'Numbers or special characters are not allowed.',
+            'title.regex' => 'Numbers or special characters are not allowed.',
             'title.min' => 'Please enter at least 3 characters.',
             'title.max' => 'Please enter less than 255 characters.',
             'company.required' => 'Please enter your company name.',
@@ -56,7 +58,11 @@ class CareerRequest extends FormRequest
             'to.before' => 'Please select a date before tomorrow.',
             'to.after' => 'Please select a date after From Date.',
             'status.required' => 'Please select a status.',
-            'status.boolean' => 'Only true or false are allowed.'
+            'status.boolean' => 'Only true or false are allowed.',
+            'description.required' => 'Please enter your job description.',
+            'description.regex' => 'Special characters are not allowed.',
+            'description.min' => 'Please enter at least 100 characters.',
+            'description.max' => 'Please enter less than 500 characters.'
         ];
     }
 }

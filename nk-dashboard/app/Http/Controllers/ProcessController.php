@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Process;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreProcessRequest;
+use App\Http\Requests\UpdateProcessRequest;
 
 class ProcessController extends Controller
 {
@@ -30,10 +31,10 @@ class ProcessController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreProcessRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProcessRequest $request)
     {
         //
     }
@@ -63,11 +64,11 @@ class ProcessController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateProcessRequest  $request
      * @param  \App\Models\Process  $process
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Process $process)
+    public function update(UpdateProcessRequest $request, Process $process)
     {
         //
     }

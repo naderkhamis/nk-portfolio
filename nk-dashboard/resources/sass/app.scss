@@ -1,80 +1,29 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 // Variables
-@import "variables";
+@import 'variables';
+// OverlayScroll
+@import 'overlayScroll';
 // Bootstrap
-// @import "~bootstrap/scss/bootstrap";
-.form-control:focus {
-    color: $secondary-color;
-    background-color: #fff;
-    border-color: $main-color;
-    outline: 0;
-    box-shadow: 0 0 0 0.05rem $main-color;
+// @import '~bootstrap/scss/bootstrap';
+// AdminLTE
+@import '~admin-lte/dist/css/adminlte.css';
+// Font-awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+.bg-secondary {
+    background-color: #454D55 !important;
 }
 
-.btn {
-    font-weight: 600;
+a.rounded-circle,
+button.rounded-circle {
+    width: 40px;
+    height: 40px;
+    line-height: 25px;
 }
 
-.btn:not(.btn-block) {
-    margin-right: 15px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-}
-
-@media screen and(max-width:479px) {
-    // .btn {
-    //     display: block;
-    // }
-    // .btn:not(:last-child) {
-    //     margin-bottom: 10px;
-    // }
-}
-
-@media screen and(min-width:480px) {
-    .card-footer {
-        display: flex;
-        justify-content: space-around;
-    }
-    // .btn {
-    //     min-width: 90px;
-    // }
-}
-
-@media screen and(min-width:768px) {}
-
-@media screen and(min-width:992px) {}
-
-@media screen and(min-width:1200px) {
-    // .btn {
-    //     min-width: 100px;
-    // }
-}
-
-.card {
-    height: 360px;
-}
-
-.card,
-.modal-content {
-    border: 3px solid;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.card-header:first-child,
-.modal-header {
-    border-radius: 5px 5px 0px 0px;
-    -webkit-border-radius: 5px 5px 0px 0px;
-    -moz-border-radius: 5px 5px 0px 0px;
-    -ms-border-radius: 5px 5px 0px 0px;
-    -o-border-radius: 5px 5px 0px 0px;
+.certificate-img {
+    max-height: 100px;
 }
 
 .card-body .card-text {
@@ -85,33 +34,21 @@
     -webkit-box-orient: vertical;
 }
 
-.card-footer,
-.modal-footer {
-    border-top: 3px solid;
-}
-
-// .btn i {
-//     font-size: 18px;
-//     font-weight: normal;
-//     position: relative;
-//     top: 3px;
-// }
-.media div {
-    width: 50px;
-    height: 50px;
-    // line-height: 45px;
-    overflow: hidden;
+.form-control:disabled,
+.form-control[readonly] {
+    border: 2px solid white;
     background-color: white;
-    outline: 3px solid $main-color;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
 }
 
-table.table.table-bordered,
-table.table th,
-table.table td {
-    border: 3px solid $main-color;
+.file-caption-name:focus {
+    border: 1px solid #FFC107;
+}
+
+.fileinput-remove-button {
+    border: 0px;
+    background-color: white;
+}
+
+.fileinput-remove-button:hover {
+    color: #dc3545;
 }

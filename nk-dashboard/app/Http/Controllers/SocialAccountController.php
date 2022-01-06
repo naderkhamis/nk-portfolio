@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\SocialAccount;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreSocialAccountRequest;
+use App\Http\Requests\UpdateSocialAccountRequest;
 
 class SocialAccountController extends Controller
 {
@@ -30,10 +31,10 @@ class SocialAccountController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreSocialAccountRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSocialAccountRequest $request)
     {
         //
     }
@@ -63,11 +64,11 @@ class SocialAccountController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateSocialAccountRequest  $request
      * @param  \App\Models\SocialAccount  $socialAccount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SocialAccount $socialAccount)
+    public function update(UpdateSocialAccountRequest $request, SocialAccount $socialAccount)
     {
         //
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Career;
-use Carbon\Carbon;
+use App\Models\Developer;
 use App\Http\Requests\CareerRequest;
 
 class CareerController extends Controller
@@ -27,18 +27,20 @@ class CareerController extends Controller
      */
     public function create()
     {
-        return view('career.create');
+        $developers = Developer::get(['id', 'name']);
+        return view('career.create')->with('developers', $developers);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreCareerRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CareerRequest $request)
     {
         $career = new Career();
+        $career->dev_id = $request->dev_id;
         $career->title = $request->title;
         $career->company = $request->company;
         $career->from_date = $request->from;
@@ -69,29 +71,26 @@ class CareerController extends Controller
      */
     public function edit($id)
     {
+        $developers = Developer::get(['id', 'name']);
         $career = Career::find($id);
-        $currentDate = Carbon::now()->toDateString();
-        return view('career.edit', compact(['career', 'currentDate']));
+        return view('career.edit')->with('career', $career)->with('developers', $developers);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateCareerRequest  $request
      * @param  \App\Models\Career  $career
      * @return \Illuminate\Http\Response
      */
     public function update(CareerRequest $request, Career $career)
     {
         $career = Career::find($request->id);
+        $career->dev_id = $request->dev_id;
         $career->title = $request->title;
         $career->company = $request->company;
         $career->from_date = $request->from;
-        if ($request->status === 1) {
-            $career->to_date = Null;
-        } else {
-            $career->to_date = $request->to;
-        }
+        $career->to_date = $request->to;
         $career->status = $request->status;
         $career->description = $request->description;
         $career->save();

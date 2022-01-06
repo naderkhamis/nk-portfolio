@@ -5,33 +5,42 @@ use Carbon\Carbon;
 @section('content')
     @if ($career)
         <h3 class="text-white">Career Path</h3>
-        <form action="{{ route('updateCareer', $career->id) }}" method="post" class="text-white">
+        <form action="{{ route('update-career', $career->id) }}" method="post" class="text-white row">
             <input type="hidden" name="id" id="id" value="{{ $career->id }}">
-            <div class="form-row">
+            <div class="form-row col-md-6">
+                <div class="form-group col-12">
+                    <label for="developer">Developer</label>
+                    <select name="dev_id" id="developer" class="form-control">
+                        @foreach ($developers as $developer)
+                            <option value="{{ $developer->id }}" selected>{{ $developer->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('developer')
+                        <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                    @enderror
+                </div>
                 <div class="form-group col-md-6">
                     <label for="title">Job Title</label>
                     <input type="text" class="form-control" name="title" id="title" value="{{ $career->title }}"
-                        placeholder="Write your position">
+                        placeholder="Enter a position">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="company">Company</label>
                     <input type="text" class="form-control" name="company" id="company" value="{{ $career->company }}"
-                        placeholder="Write your company name">
+                        placeholder="Enter company name">
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="from">From Date</label>
                     <input type="date" class="form-control" name="from" id="from"
                         value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('Y-m-d') }}">
                 </div>
                 @if ($career->status === 0)
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="to">To Date</label>
                         <input type="date" class="form-control" name="to" id="to"
                             value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('Y-m-d') }}">
                     </div>
-                    <div class="form-group col-md-4 align-self-end">
+                    <div class="form-group col-12">
                         <label>Still working there?</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input " type="radio" name="status" id="inlineRadio1" value="1">
@@ -43,11 +52,11 @@ use Carbon\Carbon;
                         </div>
                     </div>
                 @else
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="to">To Date</label>
                         <input type="date" class="form-control" name="to" id="to" value="{{ $currentDate }}">
                     </div>
-                    <div class="form-group col-md-4 align-self-end">
+                    <div class="form-group col-md-12">
                         <label>Still working there?</label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input " type="radio" name="status" id="inlineRadio1" value="1" checked>
@@ -60,53 +69,18 @@ use Carbon\Carbon;
                     </div>
                 @endif
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="description">Description</label>
                 <textarea class="form-control" name="description" id="description" cols="30" rows="10"
                     placeholder="Try to describe your job">{{ $career->description }}</textarea>
             </div>
             <input name="_token" type="hidden" value="{{ csrf_token() }}" />
-            {{-- Confirmation-Modal --}}
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered p-3">
-                    <div class="modal-content bg-dark border-warning">
-                        <div class="modal-header bg-warning border-warning">
-                            <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-                        </div>
-                        <div class="modal-body text-white">
-                            Are you sure?
-                        </div>
-                        <div class="modal-footer border-warning d-flex justify-content-center">
-                            <div>
-                                <button type="submit" class="btn btn-block btn-success">
-                                    Update
-                                    <i class="ri-refresh-line"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-block btn-danger" data-dismiss="modal">
-                                    Close
-                                    <i class="ri-close-circle-line"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- /Confirmation-Modal --}}
-            <div class="col-md-2 p-0">
-                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#exampleModal">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
                     Update
-                    <i class="ri-refresh-line"></i>
+                    <i class="fas fa-sync-alt"></i>
                 </button>
             </div>
         </form>
-        <div class="col-md-2 p-0">
-            <a href="{{ route('careerIndex') }}" class="btn btn-warning btn-block mt-3">
-                Go Back
-                <i class="ri-arrow-go-back-fill"></i>
-            </a>
-        </div>
     @endif
 @endsection

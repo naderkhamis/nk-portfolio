@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class SocialAccount extends Model
 {
     use HasFactory;
+
+    protected $table = 'social_accounts';
 }

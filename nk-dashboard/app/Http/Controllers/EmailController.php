@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Email;
-use Illuminate\Http\Request;
+use App\Http\Requests\EmailRequest;
 
 class EmailController extends Controller
 {
@@ -14,7 +14,9 @@ class EmailController extends Controller
      */
     public function index()
     {
-        //
+        $emails = new Email();
+        // $emails = Email::get()->paginate();
+        return view('emails.index')->with('emails', $emails);
     }
 
     /**
@@ -22,18 +24,18 @@ class EmailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\EmailRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmailRequest $request)
     {
         //
     }
@@ -44,9 +46,10 @@ class EmailController extends Controller
      * @param  \App\Models\Email  $email
      * @return \Illuminate\Http\Response
      */
-    public function show(Email $email)
+    public function show($id)
     {
-        //
+        $email = Email::find($id);
+        return view('emails.show')->with('email', $email);
     }
 
     /**
@@ -55,22 +58,23 @@ class EmailController extends Controller
      * @param  \App\Models\Email  $email
      * @return \Illuminate\Http\Response
      */
-    public function edit(Email $email)
+    public function edit($id)
     {
-        //
+        $email = Email::find($id);
+        return view('emails.edit')->with('email', $email);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\EmailRequest  $request
      * @param  \App\Models\Email  $email
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Email $email)
-    {
-        //
-    }
+    // public function update(EmailRequest $request, Email $email)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -78,8 +82,10 @@ class EmailController extends Controller
      * @param  \App\Models\Email  $email
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Email $email)
+    public function destroy($id)
     {
-        //
+        $email = Email::find($id);
+        $email->delete();
+        return redirect('/emails/index');
     }
 }

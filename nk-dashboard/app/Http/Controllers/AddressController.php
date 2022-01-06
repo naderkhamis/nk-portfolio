@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
-use Illuminate\Http\Request;
-use App\Http\Requests\ContactInfoRequest;
+use App\Http\Requests\StoreAddressRequest;
+use App\Http\Requests\UpdateAddressRequest;
 
 class AddressController extends Controller
 {
@@ -15,9 +15,7 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $addresses = new Address();
-        $addresses = Address::get();
-        return view('address.index')->with('addresses', $addresses);
+        //
     }
 
     /**
@@ -27,21 +25,18 @@ class AddressController extends Controller
      */
     public function create()
     {
-        return view('address.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreAddressRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactInfoRequest $request)
+    public function store(StoreAddressRequest $request)
     {
-        $address = new Address();
-        $address->address = $request->address;
-        $address->save();
-        return redirect('/address/index');
+        //
     }
 
     /**
@@ -61,25 +56,21 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Address $address)
     {
-        $address = Address::find($id);
-        return view('address.edit')->with('address', $address);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateAddressRequest  $request
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(ContactInfoRequest $request, Address $address)
+    public function update(UpdateAddressRequest $request, Address $address)
     {
-        $address = Address::find($request->id);
-        $address->address = $request->address;
-        $address->save();
-        return redirect('/address/index');
+        //
     }
 
     /**
@@ -88,10 +79,8 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Address $address)
     {
-        $address = Address::find($id);
-        $address->delete();
-        return redirect('/address/index');
+        //
     }
 }

@@ -65,14 +65,14 @@ The motive of this project is to give myself the opportunity to put all of the s
     Using [Laravel 8](https://laravel.com/docs/8.x), create the dashboard that will handle the data stored in the database:
 
     - Install [Laravel 8](https://laravel.com/docs/8.x) using [Composer](https://getcomposer.org/).
-    - Translate the dashboard design that we have made using [Adobe XD](https://www.adobe.com/products/xd.html), in order to make an actual web application.
+    - Install [Node Package Manager - npm](https://www.npmjs.com/), for installing packages.
+    - Translate the dashboard design that we have made using [Adobe XD](https://www.adobe.com/products/xd.html), in order to make an actual web application using [Admin-LTE](https://adminlte.io/).
     - Produce APIs for the client side application.
 
 7.  Create The User Interface - UI
 
-    Using [Angular 13](https://angular.io/start), develop the user interface that will show the data in:
+    Using [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/), design the user interface that will show the data in:
 
-    - Install [Angular 13](https://angular.io/start) using [npm](https://www.npmjs.com/).
     - Translate the website design that we have made using [Adobe XD](https://www.adobe.com/products/xd.html), in order to make an actual web application.
     - Use the APIs coming from the server to show the data in the application.
     - Produce an API holding the contact form data to be stored in the database, in order to show it in the dashboard.
@@ -87,13 +87,11 @@ The motive of this project is to give myself the opportunity to put all of the s
 
 ## Built with
 
-1. [Angular](https://angular.io/) - Web Development Platform
-2. [Bootstrap](https://getbootstrap.com/) - CSS Framework
-3. [Sass](https://sass-lang.com/) - CSS Preprocessor
-4. [Webpack](https://webpack.js.org/) - Javascript Bundler
-5. [Laravel](https://laravel.com/) - PHP Web Framework
-6. [MySQL](https://dev.mysql.com/) - RDBMS
-7. [Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers) - For Offline Capability
+1. [Laravel](https://laravel.com/) - PHP Web Framework
+2. [MySQL](https://dev.mysql.com/) - RDBMS
+3. [Admin-LTE](https://adminlte.io/) - Admin Dashboard Template
+4. [Bootstrap](https://getbootstrap.com/) - CSS Framework
+5. [Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers) - For Offline Capability
 
 ## Getting Started
 
@@ -123,4 +121,4 @@ However, you're allowed to use the code.
 
 ## Author
 
-Created by [Nader Khamis](https://www.naderkhamis.com/) - feel free to contact me!
+Created by [Nader Khamis](https://www.linkedin.com/in/naderkhamisabdelaziz/) - feel free to contact me!

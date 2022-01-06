@@ -10,4 +10,9 @@ class Career extends Model
     use HasFactory;
 
     protected $table = 'career';
+
+    public function developer()
+    {
+        return $this->belongsTo(related: 'App\Models\Developer', foreignKey: 'dev_id');
+    }
 }

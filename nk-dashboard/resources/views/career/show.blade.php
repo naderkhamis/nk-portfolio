@@ -6,73 +6,40 @@ use Carbon\Carbon;
     @if ($career)
         <div class="row">
             <div class="col-md-8 mb-3">
-                <div class="card bg-transparent border-warning">
-                    <div class="card-header bg-warning h5">
-                        {{ $career->id }}- {{ $career->title }}
+                <div class="card card-warning bg-dark">
+                    <div class="card-header h6">
+                        {{ $career->id }}. {{ $career->title }}
                     </div>
-                    <div class="card-body text-white">
-                        <h5 class="card-title">{{ $career->company }}</h5>
-                        <p class="card-text">{{ $career->description }}</p>
+                    <div class="card-body">
+                        <h5 class="card-title pb-2">{{ $career->company }}</h5>
+                        <p class="card-text mb-3">{{ $career->description }}</p>
+                        <div>
+                            <strong class="badge badge-warning p-2 mb-2 font-italic">
+                                From:
+                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('d M Y') }}
+                            </strong>
+                        </div>
+                        <div>
+                            <strong class="badge badge-warning p-2 font-italic">
+                                @if ($career->status === 0)
+                                    To:
+                                    {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('d M Y') }}
+                                @else
+                                    Till now
+                                @endif
+                            </strong>
+                        </div>
                     </div>
-                    <div class="d-block px-3 pb-3">
-                        <strong class="badge badge-warning p-2 font-italic">
-                            From:
-                            {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('d M Y') }}
-                            -
-                            @if ($career->status === 0)
-                                To:
-                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('d M Y') }}
-                            @else
-                                Till now
-                            @endif
-                        </strong>
-                    </div>
-                    <div class="card-footer bg-transparent border-warning d-flex justify-content-start">
-                        <a href="{{ route('editCareer', $career->id) }}" class="btn btn-success mr-3">
-                            <i class="ri-edit-box-line"></i>
+                    <div class="card-footer border-top border-warning d-flex justify-content-start">
+                        <a href="{{ route('edit-career', $career->id) }}" class="btn btn-success rounded-circle mr-2">
+                            <i class="fas fa-pen"></i>
                         </a>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                            <i class="ri-delete-bin-4-line"></i>
-                        </button>
+                        <a href="{{ route('delete-career', $career->id) }}" class="btn btn-danger rounded-circle">
+                            <i class="fas fa-trash"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            {{-- Confirmation-Modal --}}
-            <div class="modal fade p-3" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content bg-dark border-warning">
-                        <div class="modal-header bg-warning border-warning">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body text-white">
-                            Are you sure?
-                        </div>
-                        <div class="modal-footer border-warning d-flex justify-content-center">
-                            <div>
-                                <a href="{{ route('deleteCareer', $career->id) }}" class="btn btn-block btn-danger">
-                                    Delete
-                                    <i class="ri-delete-bin-4-line"></i>
-                                </a>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-block btn-success" data-dismiss="modal">
-                                    Close
-                                    <i class="ri-close-circle-line"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- /Confirmation-Modal --}}
-        </div>
-        <div class="col-md-2 p-0">
-            <a href="{{ route('careerIndex') }}" class="btn btn-warning btn-block">Go Back <i
-                    class="ri-arrow-go-back-fill"></i></a>
         </div>
     @endif
 @endsection

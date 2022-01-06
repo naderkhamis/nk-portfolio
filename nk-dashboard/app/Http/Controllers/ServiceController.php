@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-use Illuminate\Http\Request;
+use App\Models\Developer;
+use App\Http\Requests\ServiceRequest;
+use App\Http\Traits\UploadFileTrait;
 
 class ServiceController extends Controller
 {
+    use UploadFileTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = new Service();
+        $services = Service::get();
+        return view('services.index')->with('services', $services);
     }
 
     /**
@@ -24,18 +30,26 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $developers = Developer::get(['id', 'name']);
+        return view('services.create')->with('developers', $developers);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ServiceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
-        //
+        $service = new Service();
+        $service->name = $request->name;
+        $service->icon = $request->icon;
+        $service->image = $this->upload($request, $service->image);
+        $service->dev_id = $request->dev_id;
+        $service->description = $request->description;
+        $service->save();
+        return redirect('/services/index');
     }
 
     /**
@@ -44,9 +58,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show($id)
     {
-        //
+        $service = Service::find($id);
+        return view('services.show')->with('service', $service);
     }
 
     /**
@@ -55,21 +70,30 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        $developers = Developer::get(['id', 'name']);
+        return view('services.edit', compact(['service', 'developers']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ServiceRequest  $request
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(ServiceRequest $request, Service $service)
     {
-        //
+        $service = Service::find($request->id);
+        $service->name = $request->name;
+        $service->icon = $request->icon;
+        $service->image = $this->upload($request, $service->image);
+        $service->dev_id = $request->dev_id;
+        $service->description = $request->description;
+        $service->save();
+        return redirect('/services/index');
     }
 
     /**
@@ -78,8 +102,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
-        //
+        $service = Service::find($id);
+        $service->delete();
+        return redirect('/services/index');
     }
 }
