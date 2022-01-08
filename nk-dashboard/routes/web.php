@@ -133,3 +133,17 @@ Route::prefix('services')->middleware('auth')->group(function () {
 });
 
 ######################################## /SERVICE-CONTROLLER ROUTES ########################################
+
+######################################## PROCESS-CONTROLLER ROUTES ########################################
+
+Route::prefix('processes')->middleware('auth')->group(function () {
+    Route::get('index', 'ProcessController@index')->name('processes-index');
+    Route::get('create', 'ProcessController@create')->name('create-process');
+    Route::post('store', 'ProcessController@store')->name('store-process');
+    Route::get('show/{id}', 'ProcessController@show')->name('show-process');
+    Route::get('edit/{id}', 'ProcessController@edit')->name('edit-process');
+    Route::post('update', 'ProcessController@update')->name('update-process');
+    Route::get('delete/{id}', 'ProcessController@destroy')->name('delete-process');
+});
+
+######################################## /PROCESS-CONTROLLER ROUTES ########################################

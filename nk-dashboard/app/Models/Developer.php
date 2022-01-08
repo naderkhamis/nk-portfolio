@@ -16,8 +16,13 @@ class Developer extends Model
         return $this->hasMany(related: 'App\Models\Career');
     }
 
-    public function service()
+    public function services()
     {
         return $this->hasMany(related: 'App\Models\Service');
+    }
+
+    public function processes()
+    {
+        return $this->hasMany(related: 'App\Models\Process');
     }
 }

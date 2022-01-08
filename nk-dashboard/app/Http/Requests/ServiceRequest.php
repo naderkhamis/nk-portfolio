@@ -27,7 +27,7 @@ class ServiceRequest extends FormRequest
             'name' => 'required|regex:/^[a-zA-Z\s]+$/|min:3|max:50',
             'icon' => 'required|alpha-dash|min:3|max:20',
             'image' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
-            'dev_id' => 'required',
+            'dev_id' => 'required|numeric',
             'description' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:100|max:500'
         ];
     }

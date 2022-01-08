@@ -299,7 +299,7 @@
 
                         <!-- Processes -->
                         <li class="nav-item menu-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="{{ route('processes-index') }}" class=" nav-link">
                                 <span class="text-warning">
                                     <i class="nav-icon fas fa-tasks"></i>
                                 </span>

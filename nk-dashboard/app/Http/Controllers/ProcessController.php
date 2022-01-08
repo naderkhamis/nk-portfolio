@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Process;
-use App\Http\Requests\StoreProcessRequest;
-use App\Http\Requests\UpdateProcessRequest;
+use App\Models\Developer;
+use App\Http\Requests\ProcessRequest;
 
 class ProcessController extends Controller
 {
@@ -15,7 +15,9 @@ class ProcessController extends Controller
      */
     public function index()
     {
-        //
+        $processes = new Process();
+        $processes = Process::get();
+        return view('processes.index')->with('processes', $processes);
     }
 
     /**
@@ -25,18 +27,26 @@ class ProcessController extends Controller
      */
     public function create()
     {
-        //
+        $developers = new Developer();
+        $developers = Developer::get(['id', 'name']);
+        return view('processes.create')->with('developers', $developers);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProcessRequest  $request
+     * @param  \App\Http\Requests\ProcessRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProcessRequest $request)
+    public function store(ProcessRequest $request)
     {
-        //
+        $process = new Process();
+        $process->name = $request->name;
+        $process->icon = $request->icon;
+        $process->description = $request->description;
+        $process->dev_id = $request->dev_id;
+        $process->save();
+        return redirect('/processes/index');
     }
 
     /**
@@ -45,9 +55,10 @@ class ProcessController extends Controller
      * @param  \App\Models\Process  $process
      * @return \Illuminate\Http\Response
      */
-    public function show(Process $process)
+    public function show($id)
     {
-        //
+        $process = Process::find($id);
+        return view('processes.show')->with('process', $process);
     }
 
     /**
@@ -56,21 +67,33 @@ class ProcessController extends Controller
      * @param  \App\Models\Process  $process
      * @return \Illuminate\Http\Response
      */
-    public function edit(Process $process)
+    public function edit($id)
     {
-        //
+        $process = Process::find($id);
+        $developers = Developer::get(['id', 'name']);
+        return view('processes.edit', compact('process', 'developers'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProcessRequest  $request
+     * @param  \App\Http\Requests\ProcessRequest  $request
      * @param  \App\Models\Process  $process
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProcessRequest $request, Process $process)
+    public function update(ProcessRequest $request, Process $process)
     {
-        //
+        $process = Process::find($request->id);
+        $process->name = $request->name;
+        $process->icon = $request->icon;
+        $process->description = $request->description;
+        if ($request->has('dev_id')) {
+            $process->dev_id = $request->dev_id;
+        } else {
+            $process->dev_id = $process->dev_id;
+        }
+        $process->save();
+        return redirect('/processes/index');
     }
 
     /**
@@ -79,8 +102,10 @@ class ProcessController extends Controller
      * @param  \App\Models\Process  $process
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Process $process)
+    public function destroy($id)
     {
-        //
+        $process = Process::find($id);
+        $process->delete();
+        return redirect('/processes/index');
     }
 }
