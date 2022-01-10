@@ -312,7 +312,7 @@
 
                         <!-- Projects -->
                         <li class="nav-item menu-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="{{ route('projects-index') }}" class="nav-link">
                                 <span class="text-warning">
                                     <i class="nav-icon fas fa-briefcase"></i>
                                 </span>

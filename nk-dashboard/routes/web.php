@@ -147,3 +147,31 @@ Route::prefix('processes')->middleware('auth')->group(function () {
 });
 
 ######################################## /PROCESS-CONTROLLER ROUTES ########################################
+
+######################################## PROJECT-CATEGORY-CONTROLLER ROUTES ########################################
+
+Route::prefix('projects-categories')->middleware('auth')->group(function () {
+    Route::get('index', 'ProjectCategoryController@index')->name('projects-categories-index');
+    Route::get('create', 'ProjectCategoryController@create')->name('create-project-category');
+    Route::post('store', 'ProjectCategoryController@store')->name('store-project-category');
+    // Route::get('show/{id}', 'ProjectCategoryController@show')->name('show-project-category');
+    Route::get('edit/{id}', 'ProjectCategoryController@edit')->name('edit-project-category');
+    Route::post('update', 'ProjectCategoryController@update')->name('update-project-category');
+    Route::get('delete/{id}', 'ProjectCategoryController@destroy')->name('delete-project-category');
+});
+
+######################################## /PROJECT-CATEGORY-CONTROLLER ROUTES ########################################
+
+######################################## PROJECT-CONTROLLER ROUTES ########################################
+
+Route::prefix('projects')->middleware('auth')->group(function () {
+    Route::get('index', 'ProjectController@index')->name('projects-index');
+    Route::get('create', 'ProjectController@create')->name('create-project');
+    Route::post('store', 'ProjectController@store')->name('store-project');
+    // Route::get('show/{id}', 'ProjectController@show')->name('show-project');
+    Route::get('edit/{id}', 'ProjectController@edit')->name('edit-project');
+    Route::post('update', 'ProjectController@update')->name('update-project');
+    Route::get('delete/{id}', 'ProjectController@destroy')->name('delete-project');
+});
+
+######################################## /PROJECT-CONTROLLER ROUTES ########################################

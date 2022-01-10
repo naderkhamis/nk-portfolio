@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h3 class="text-white">Create Process</h3>
+    <!-- Create-Process-Form -->
     <form action="{{ route('store-process') }}" method="post" class="text-white row">
         <div class="form-row col-md-6">
             <!-- PROCESS-NAME -->
@@ -52,10 +53,13 @@
         </div>
         <input name="_token" type="hidden" value="{{ csrf_token() }}" />
         <div class="col-md-1 p-0">
+            <!-- Save-Button -->
             <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
                 Save
                 <i class="fas fa-save"></i>
             </button>
+            <!-- /Save-Button -->
         </div>
     </form>
+    <!-- /Create-Process-Form -->
 @endsection

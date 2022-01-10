@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdateProjectRequest;
+use App\Models\ProjectCategory;
+use App\Models\Developer;
+use App\Http\Requests\ProjectRequest;
+use App\Http\Traits\UploadFileTrait;
 
 class ProjectController extends Controller
 {
+    use UploadFileTrait;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = new Project();
+        $projects = Project::get();
+        $categories = ProjectCategory::get(['id', 'name']);
+        return view('projects.index', compact('projects', 'categories'));
     }
 
     /**
@@ -25,18 +31,28 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $categories = ProjectCategory::get(['id', 'name']);
+        $developers = Developer::get(['id', 'name']);
+        return view('projects.create', compact('categories', 'developers'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProjectRequest  $request
+     * @param  \App\Http\Requests\ProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProjectRequest $request)
+    public function store(ProjectRequest $request)
     {
-        //
+        $project = new Project();
+        $project->name = $request->name;
+        $project->cat_id = $request->cat_id;
+        $project->image = $this->upload($request, $project->image);
+        $project->url = $request->url;
+        $project->description = $request->description;
+        $project->dev_id = $request->dev_id;
+        $project->save();
+        return redirect('/projects/index');
     }
 
     /**
@@ -45,10 +61,11 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     $project = Project::find($id);
+    //     return view('projects.show')->with('project', $project);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -56,21 +73,32 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        $categories = ProjectCategory::get(['id', 'name']);
+        $developers = Developer::get(['id', 'name']);
+        return view('projects.edit', compact('project', 'categories', 'developers'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProjectRequest  $request
+     * @param  \App\Http\Requests\ProjectRequest  $request
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
-        //
+        $project = Project::find($request->id);
+        $project->name = $request->name;
+        $project->cat_id = $request->cat_id;
+        $project->image = $this->upload($request, $project->image);
+        $project->url = $request->url;
+        $project->description = $request->description;
+        $project->dev_id = $request->dev_id;
+        $project->save();
+        return redirect('projects-index');
     }
 
     /**
@@ -79,8 +107,10 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+        $project->delete();
+        return redirect('/projects/index');
     }
 }
