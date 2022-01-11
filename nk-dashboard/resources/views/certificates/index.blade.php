@@ -9,66 +9,38 @@ use Carbon\Carbon;
                 <h1>Certificates</h1>
             </div>
             @foreach ($certificates as $certificate)
-                <div class="col-md-6 col-xl-4 p-0 pr-md-2">
-                    <div class="card card-warning bg-dark">
-                        <!-- Card-Header -->
-                        <div class="card-header h6">
-                            <h3 class="card-title">{{ $certificate->title }}</h3>
+                <div class="col-md-5 col-lg-3 p-0 pr-4">
+                    <div class="card card-warning card-outline bg-dark p-0">
+                        <!-- Certificates-Image -->
+                        <img src="{{ asset($certificate->image) }}" class="card-img-top" alt="Project-Image">
+                        <!-- /Certificates-Image -->
+                        <div class="card-body box-profile">
+                            <!-- Certificates-Title -->
+                            <h5 class="card-title text-warning py-2">{{ $certificate->title }}</h5>
+                            <!-- /Certificates-Title -->
+                            <!-- Certificates-Description -->
+                            <p class="card-text">{{ $certificate->description }}</p>
+                            <!-- /Certificates-Description -->
+                            <!-- Certificates-School -->
+                            <strong class="badge badge-warning p-2 font-italic">
+                                {{ $certificate->school }}
+                            </strong>
+                            <strong class="badge badge-warning p-2 font-italic">
+                                {{ $certificate->grade }}
+                            </strong>
+                            <strong class="badge badge-warning p-2 font-italic">
+                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $certificate->date)->format('d M Y') }}
+                            </strong>
+                            <!-- /Certificates-School -->
                         </div>
-                        <!-- /Card-Header -->
-                        <!-- Card-Body -->
-                        <div class="card-body">
-                            <div class="row">
-                                <!-- Image -->
-                                <div class="col-md-4">
-                                    <img class="img-fluid" src="{{ asset($certificate->image) }}"
-                                        alt="Certificate Photo">
-                                </div>
-                                <!-- /Image -->
-                                <!-- Certificate-Info -->
-                                <div class="col-md-8">
-                                    <ul class="list-group list-group-unbordered">
-                                        <li class="list-group-item bg-dark">
-                                            <b>School</b>
-                                            <span class="float-right">
-                                                {{ $certificate->school }}
-                                            </span>
-                                        </li>
-                                        @if ($certificate->grade != null)
-                                            <li class="list-group-item bg-dark">
-                                                <b>Grade</b>
-                                                <span class="float-right">
-                                                    {{ $certificate->grade }}
-                                                </span>
-                                            </li>
-                                        @endif
-                                        <li class="list-group-item bg-dark">
-                                            <b>Developer</b>
-                                            <span class="float-right">
-                                                {{ $certificate->developer->name }}
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- /Certificate-Info -->
-                            </div>
-                            <!-- Certificate-Description -->
-                            <p class="card-text my-3">{{ $certificate->description }}</p>
-                            <!-- /Certificate-Description -->
-                            <div>
-                                <strong class="badge badge-warning p-2 font-italic">
-                                    {{ Carbon::createFromFormat('Y-m-d H:i:s', $certificate->date)->format('d M Y') }}
-                                </strong>
-                            </div>
-                        </div>
-                        <!-- Card-Footer -->
-                        <div class="card-footer border-top border-warning d-flex justify-content-start">
+                        <!-- Certificates-Actions -->
+                        <div class="card-footer">
                             <a href="{{ route('show-certificate', $certificate->id) }}"
-                                class="btn btn-primary rounded-circle">
+                                class="btn btn-primary rounded-circle mr-md-2">
                                 <i class="fas fa-eye"></i>
                             </a>
                             <a href="{{ route('edit-certificate', $certificate->id) }}"
-                                class="btn btn-success rounded-circle mx-2">
+                                class="btn btn-success rounded-circle mr-md-2">
                                 <i class="fas fa-pen"></i>
                             </a>
                             <a href="{{ route('delete-certificate', $certificate->id) }}"
@@ -76,19 +48,20 @@ use Carbon\Carbon;
                                 <i class="fas fa-trash"></i>
                             </a>
                         </div>
-                        <!-- /Card-Footer -->
+                        <!-- /Certificates-Actions -->
                     </div>
-                    <!-- /Card-Body -->
                 </div>
             @endforeach
         </div>
     @else
+        <!-- Alert -->
         <div class="alert alert-danger alert-dismissible fade show col-md-6" role="alert">
             <strong>Sorry! </strong> There is no available certificates.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+        <!-- /Alert -->
     @endif
     <div class="col-md-1 p-0">
         <a href="{{ route('create-certificate') }}" class="btn btn-block btn-warning font-weight-bold rounded-pill">

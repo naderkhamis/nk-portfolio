@@ -30,7 +30,7 @@ class CertificateRequest extends FormRequest
             'date' => 'required|date|before:tomorrow',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
             'dev_id' => 'required|numeric',
-            'description' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/|min:100|max:500'
+            'description' => 'nullable|string|min:100|max:500'
         ];
     }
 
@@ -62,7 +62,7 @@ class CertificateRequest extends FormRequest
             'image.max' => 'Image is too large, select image less than 2MB.',
             'dev_id.required' => 'Please select a developer.',
             'dev_id.numeric' => 'Developer id must be a number.',
-            'description.regex' => 'Special characters are not allowed.',
+            'description.string' => 'Special characters are not allowed.',
             'description.min' => 'Please enter at least 100 characters.',
             'description.max' => 'Please enter less than 500 characters.'
         ];

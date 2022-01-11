@@ -59554,15 +59554,11 @@ button.rounded-circle {
   line-height: 25px;
 }
 
-.certificate-img {
-  max-height: 100px;
-}
-
 .card-body .card-text {
   overflow: hidden;
   display: -webkit-box;
   word-wrap: break-word;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 

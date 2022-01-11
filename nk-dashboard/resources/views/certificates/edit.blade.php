@@ -8,7 +8,8 @@ use Carbon\Carbon;
         <form action="{{ route('update-certificate') }}" method="post" class="text-white row"
             enctype="multipart/form-data">
             <input type="hidden" name="id" id="id" value="{{ $certificate->id }}">
-            <div class="form-row col-md-6">
+            <div class="form-row col-lg-6">
+                <!-- Certificates-Title -->
                 <div class="form-group col-md-6">
                     <label for="title">Certificate Title</label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
@@ -17,6 +18,8 @@ use Carbon\Carbon;
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                 </div>
+                <!-- /Certificates-Title -->
+                <!-- Certificates-School -->
                 <div class="form-group col-md-6">
                     <label for="school">School</label>
                     <input type="text" class="form-control @error('school') is-invalid @enderror" name="school" id="school"
@@ -25,6 +28,8 @@ use Carbon\Carbon;
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                 </div>
+                <!-- /Certificates-School -->
+                <!-- Certificates-Grade -->
                 <div class="form-group col-md-6">
                     <label for="grade">Grade</label>
                     <input type="text" class="form-control @error('grade') is-invalid @enderror" name="grade" id="grade"
@@ -33,6 +38,8 @@ use Carbon\Carbon;
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                 </div>
+                <!-- /Certificates-Grade -->
+                <!-- Certificates-Date -->
                 <div class="form-group col-md-6">
                     <label for="date">Date</label>
                     <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date"
@@ -41,7 +48,9 @@ use Carbon\Carbon;
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group col-md-6 order-md-0">
+                <!-- /Certificates-Date -->
+                <!-- Certificates-Image -->
+                <div class="form-group col-md-6">
                     <label for="image" class="control-label">Certificate Photo</label>
                     <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
                         id="image">
@@ -49,14 +58,11 @@ use Carbon\Carbon;
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group col-md-6  order-md-2">
-                    <div class="p-0">
-                        <img src="{{ asset($certificate->image) }}" class="img-fluid border border-warning rounded"
-                            alt="Certificate Image">
-                    </div>
-                </div>
-                <div class="form-group col-md-6 order-md-1">
+                <!-- /Certificates-Image -->
+                <!-- Certificates-Developer -->
+                <div class="form-group col-md-6">
                     <label for="developer">Developer</label>
+                    <span class="text-warning float-right">{{ $certificate->developer->name }}</span>
                     <select name="dev_id" id="developer" class="custom-select @error('dev_id') is-invalid @enderror">
                         <option selected disabled>Select a developer</option>
                         @foreach ($developers as $developer)
@@ -67,13 +73,18 @@ use Carbon\Carbon;
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group col-md-6 order-md-3">
-                    <div class="p-0 text-warning">
-                        <label for="">{{ $certificate->developer->name }}</label>
+                <!-- /Certificates-Developer -->
+                <!-- Certificates-Existing-Image -->
+                <div class="form-group col-12 col-lg-6">
+                    <div class="p-0">
+                        <img src="{{ asset($certificate->image) }}" class="img-fluid border border-warning rounded"
+                            alt="Certificate Image">
                     </div>
                 </div>
+                <!-- /Certificates-Existing-Image -->
             </div>
-            <div class="form-row col-md-6">
+            <!-- Certificates-Description -->
+            <div class="form-row col-lg-6">
                 <div class="form-group col">
                     <label for="description">Description</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" name="description"
@@ -84,11 +95,12 @@ use Carbon\Carbon;
                     @enderror
                 </div>
             </div>
+            <!-- /Certificates-Description -->
             <input name="_token" type="hidden" value="{{ csrf_token() }}" />
-            <div class="col-md-1 pr-3 pr-md-0">
+            <div class="col-lg-2">
                 <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
-                    Save
-                    <i class="fas fa-save"></i>
+                    Update
+                    <i class="fas fa-sync-alt"></i>
                 </button>
             </div>
         </form>

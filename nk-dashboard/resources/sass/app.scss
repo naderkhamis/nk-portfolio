@@ -11,10 +11,13 @@
 // Font-awesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+// BG-SECONDARY-OVERRIDE
 .bg-secondary {
     background-color: #454D55 !important;
 }
 
+// /BG-SECONDARY-OVERRIDE
+// ROUNDED-BUTTON-STYLE
 a.rounded-circle,
 button.rounded-circle {
     width: 40px;
@@ -22,18 +25,18 @@ button.rounded-circle {
     line-height: 25px;
 }
 
-.certificate-img {
-    max-height: 100px;
-}
-
+// /ROUNDED-BUTTON-STYLE
+// CARD-TEXT
 .card-body .card-text {
     overflow: hidden;
     display: -webkit-box;
     word-wrap: break-word;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 
+// /CARD-TEXT
+// KRAJEE-INPUT-STYLE
 .form-control:disabled,
 .form-control[readonly] {
     border: 2px solid white;
@@ -52,3 +55,5 @@ button.rounded-circle {
 .fileinput-remove-button:hover {
     color: #dc3545;
 }
+
+// /KRAJEE-INPUT-STYLE

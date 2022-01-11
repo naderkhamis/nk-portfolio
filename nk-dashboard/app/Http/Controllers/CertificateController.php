@@ -110,7 +110,11 @@ class CertificateController extends Controller
     public function destroy($id)
     {
         $certificate = Certificate::find($id);
-        $certificate->delete();
+        if ($certificate == null) {
+            return view('certificates.delete');
+        } else {
+            $certificate->delete();
+        }
         return redirect('/certificates/index');
     }
 }
