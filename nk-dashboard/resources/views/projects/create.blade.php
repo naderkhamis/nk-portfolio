@@ -3,7 +3,7 @@
     <h3 class="text-white">Create Project</h3>
     <!-- Create-Project-Form -->
     <form action="{{ route('store-project') }}" method="post" class="text-white row" enctype="multipart/form-data">
-        <div class="form-row col-md-6">
+        <div class="form-row col-lg-6">
             <!-- Project-Name -->
             <div class="form-group col-md-6">
                 <label for="name">Name</label>
@@ -61,11 +61,11 @@
             <!-- /Project-Image -->
         </div>
         <!-- Project-Description -->
-        <div class="form-row col-md-6">
+        <div class="form-row col-lg-6">
             <div class="form-group col">
                 <label for="description">Description</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                    id="description" cols="30" rows="9" placeholder="Please enter certificate description"></textarea>
+                    id="description" cols="30" rows="9" placeholder="Please enter project description"></textarea>
                 @error('description')
                     <span class="badge badge-pill badge-danger">{{ $message }}</span>
                 @enderror
@@ -76,7 +76,7 @@
         <input name="_token" type="hidden" value="{{ csrf_token() }}" />
         <!-- /Token -->
         <!-- Save-Button -->
-        <div class="col-md-1 pr-3 pr-md-0">
+        <div class="col-lg-1 pr-3 pr-md-0">
             <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
                 Save
                 <i class="fas fa-save"></i>

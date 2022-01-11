@@ -7,7 +7,7 @@
             <!-- Project-ID -->
             <input type="hidden" name="id" id="id" value="{{ $project->id }}">
             <!-- /Project-ID -->
-            <div class="form-row col-md-6">
+            <div class="form-row col-lg-6">
                 <!-- Project-Name -->
                 <div class="form-group col-md-6">
                     <label for="name">Name</label>
@@ -67,7 +67,7 @@
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group col-md-6  order-md-2">
+                <div class="form-group col-lg-6  order-md-2">
                     <div class="p-0">
                         <img src="{{ asset($project->image) }}" class="img-fluid border border-warning rounded"
                             alt="Certificate Image">
@@ -76,7 +76,7 @@
                 <!-- /Project-Image -->
             </div>
             <!-- Project-Description -->
-            <div class="form-row col-md-6">
+            <div class="form-row col-lg-6">
                 <div class="form-group col">
                     <label for="description">Description</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" name="description"

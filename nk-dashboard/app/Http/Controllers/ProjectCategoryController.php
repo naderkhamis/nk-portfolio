@@ -63,7 +63,7 @@ class ProjectCategoryController extends Controller
     public function edit($id)
     {
         $category = ProjectCategory::find($id);
-        return view('edit-project-category')->with('category', $category);
+        return view('projectCategories.edit')->with('category', $category);
     }
 
     /**
@@ -76,10 +76,10 @@ class ProjectCategoryController extends Controller
     public function update(ProjectCategoryRequest $request, ProjectCategory $projectCategory)
     {
         $category = ProjectCategory::find($request->id);
-        $category->id = $request->name;
-        $category->name = $request->id;
+        $category->id = $request->id;
+        $category->name = $request->name;
         $category->save();
-        return redirect('projects-index');
+        return redirect('/projects/index');
     }
 
     /**
@@ -91,7 +91,11 @@ class ProjectCategoryController extends Controller
     public function destroy($id)
     {
         $category = ProjectCategory::find($id);
-        $category->delete();
-        return redirect('projects-index');
+        if ($category == null) {
+            return view('projectCategories.delete');
+        } else {
+            $category->delete();
+        }
+        return redirect('/projects/index');
     }
 }

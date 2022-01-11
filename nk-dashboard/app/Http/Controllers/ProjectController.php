@@ -92,13 +92,21 @@ class ProjectController extends Controller
     {
         $project = Project::find($request->id);
         $project->name = $request->name;
-        $project->cat_id = $request->cat_id;
+        if ($request->has('cat_id')) {
+            $project->cat_id = $request->cat_id;
+        } else {
+            $project->cat_id = $project->cat_id;
+        }
         $project->image = $this->upload($request, $project->image);
         $project->url = $request->url;
         $project->description = $request->description;
-        $project->dev_id = $request->dev_id;
+        if ($request->has('dev_id')) {
+            $project->dev_id = $request->dev_id;
+        } else {
+            $project->dev_id = $project->dev_id;
+        }
         $project->save();
-        return redirect('projects-index');
+        return redirect('/projects/index');
     }
 
     /**
@@ -110,7 +118,11 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $project = Project::find($id);
-        $project->delete();
+        if ($project == null) {
+            return view('projects.delete');
+        } else {
+            $project->delete();
+        }
         return redirect('/projects/index');
     }
 }
