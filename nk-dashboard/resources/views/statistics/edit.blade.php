@@ -1,19 +1,19 @@
 @extends('layouts.app')
 @section('content')
     <!-- Header -->
-    <h3 class="text-white">Edit Skill</h3>
+    <h3 class="text-white">Edit Statistic</h3>
     <!-- /Header -->
-    @if ($skill)
+    @if ($statistic)
         <div class="card card-warning card-outline card-body bg-dark col-md-4 mt-3">
-            <form action="{{ route('update-skill') }}" method="post">
+            <form action="{{ route('update-statistic') }}" method="post">
                 <!-- Skill-Id-Hidden-Input -->
-                <input type="hidden" name="id" id="name" value="{{ $skill->id }}">
+                <input type="hidden" name="id" id="name" value="{{ $statistic->id }}">
                 <!-- /Skill-Id-Hidden-Input -->
                 <!-- Skill-Name-Input -->
                 <div class="form-group">
-                    <label for="name">Skill Name</label>
+                    <label for="name">Name</label>
                     <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror"
-                        placeholder="Please enter skill name" value="{{ $skill->name }}">
+                        placeholder="Please enter statistic name" value="{{ $statistic->name }}">
                     <!-- Error-Message -->
                     @error('name')
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
@@ -21,49 +21,39 @@
                     <!-- /Error-Message -->
                 </div>
                 <!-- /Skill-Name-Input -->
-                <!-- Skill-Category-Select -->
+                <!-- Statistic-Count-Input -->
                 <div class="form-group">
-                    <label for="name">
-                        Category
-                    </label>
-                    <span class="float-right text-warning">
-                        {{ $skill->category->name }}
-                    </span>
-                    <select name="category" id="category" class="custom-select  @error('category') is-invalid @enderror">
-                        <option disabled selected>Please select a category</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
+                    <label for="count">Count</label>
+                    <input type="number" name="count" id="count" class="form-control  @error('count') is-invalid @enderror"
+                        placeholder="Please enter statistic count" value="{{ $statistic->count }}">
                     <!-- Error-Message -->
-                    @error('cat_id')
+                    @error('count')
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                     <!-- /Error-Message -->
                 </div>
-                <!-- /Skill-Category-Select -->
-                <!-- Skill-Performace-Input -->
+                <!-- /Statistic-Count-Input -->
+                <!-- Statistic-Icon-Input -->
                 <div class="form-group">
-                    <label for="performance">Skill Performance</label>
-                    <input type="text" name="performance" id="performance"
-                        class="form-control  @error('performance') is-invalid @enderror"
-                        placeholder="Please enter skill performance" value="{{ $skill->performance }}">
+                    <label for="icon">Icon</label>
+                    <input type="text" name="icon" id="icon" class="form-control  @error('icon') is-invalid @enderror"
+                        placeholder="Please enter statistic icon" value="{{ $statistic->icon }}">
                     <!-- Error-Message -->
-                    @error('performance')
+                    @error('icon')
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
                     @enderror
                     <!-- /Error-Message -->
                 </div>
-                <!-- /Skill-Performace-Input -->
-                <!-- Skill-Developer-Select -->
+                <!-- /Statistic-Icon-Input -->
+                <!-- Statistic-Developer-Select -->
                 <div class="form-group">
                     <label for="name">
                         Developer
                     </label>
                     <span class="float-right text-warning">
-                        {{ $skill->developer->name }}
+                        {{ $statistic->developer->name }}
                     </span>
-                    <select name="developer" id="developer" class="custom-select  @error('developer') is-invalid @enderror">
+                    <select name="dev_id" id="developer" class="custom-select  @error('dev_id') is-invalid @enderror">
                         <option disabled selected>Please select a developer</option>
                         @foreach ($developers as $developer)
                             <option value="{{ $developer->id }}">{{ $developer->name }}</option>
@@ -75,7 +65,7 @@
                     @enderror
                     <!-- /Error-Message -->
                 </div>
-                <!-- /Skill-Developer-Select -->
+                <!-- /Statistic-Developer-Select -->
                 <!-- TOKEN -->
                 <input name="_token" type="hidden" value="{{ csrf_token() }}" />
                 <!-- /TOKEN -->
@@ -92,9 +82,8 @@
     @else
         <!-- Alert -->
         <div class="col-md-6 p-0">
-            <!-- Alert -->
             <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
-                <strong>Sorry! </strong>There is no such as skill.
+                <strong>Sorry! </strong>There is no such as statistic.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

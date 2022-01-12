@@ -175,3 +175,17 @@ Route::prefix('projects')->middleware('auth')->group(function () {
 });
 
 ######################################## /PROJECT-CONTROLLER ROUTES ########################################
+
+######################################## STATISTICS-CONTROLLER ROUTES ########################################
+
+Route::prefix('statistics')->middleware('auth')->group(function () {
+    Route::get('index', 'StatisticController@index')->name('statistics-index');
+    Route::get('create', 'StatisticController@create')->name('create-statistic');
+    Route::post('store', 'StatisticController@store')->name('store-statistic');
+    // Route::get('show/{id}', 'StatisticController@show')->name('show-statistic');
+    Route::get('edit/{id}', 'StatisticController@edit')->name('edit-statistic');
+    Route::post('update', 'StatisticController@update')->name('update-statistic');
+    Route::get('delete/{id}', 'StatisticController@destroy')->name('delete-statistic');
+});
+
+######################################## /STATISTICS-CONTROLLER ROUTES ########################################

@@ -325,9 +325,8 @@
                         <!-- /Projects -->
 
                         <!-- Statistics -->
-                        <li class="nav-item menu-item" data-toggle="tooltip" data-placement="top"
-                            title="Under Development">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item menu-item">
+                            <a href="{{ route('statistics-index') }}" class="nav-link">
                                 <span class="text-warning">
                                     <i class="nav-icon fas fa-chart-bar"></i>
                                 </span>

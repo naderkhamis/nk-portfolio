@@ -10,4 +10,9 @@ class Statistic extends Model
     use HasFactory;
 
     protected $table = 'statistics';
+
+    public function developer()
+    {
+        return $this->belongsTo(related: 'App\Models\Developer', foreignKey: 'dev_id');
+    }
 }
