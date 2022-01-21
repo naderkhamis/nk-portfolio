@@ -28,7 +28,10 @@ class StatisticController extends Controller
      */
     public function create()
     {
-        return view('statistics.index');
+        $statistics = new Statistic();
+        $statistics = Statistic::get();
+        $developers = Developer::get(['id', 'name']);
+        return view('statistics.index', compact('statistics', 'developers'));
     }
 
     /**

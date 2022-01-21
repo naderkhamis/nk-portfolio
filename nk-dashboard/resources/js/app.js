@@ -41,3 +41,30 @@ $("#image").fileinput({
     // browseIcon: '<i class=" fas fa-file-upload"></i>',
     msgPlaceholder: 'Select photo'
 });
+
+// add new input
+
+// Select add new input buttons
+let newEmailBtn = document.getElementById('new-email');
+let newPhoneBtn = document.getElementById('new-phone');
+
+// Assign addNewInput function to the buttons based on click action
+newEmailBtn.onclick = addNewInput;
+newPhoneBtn.onclick = addNewInput;
+
+// Function to add new input
+function addNewInput(e) {
+    e.preventDefault();
+    // Clone the existing input
+    let newInput = this.parentElement.previousElementSibling.firstElementChild.cloneNode();
+    // Select new input button div container
+    let btnParent = this.parentElement;
+    // Append the cloned (new) input after the existing one
+    btnParent.previousElementSibling.appendChild(newInput);
+    // Remove new input button
+    this.classList.add('d-none');
+    // Add bootstrap class to add margin top for the new input
+    newInput.classList.add('mt-3');
+    // Add bootstrap class to expand the new input div container
+    newInput.parentElement.className = 'col-12';
+}

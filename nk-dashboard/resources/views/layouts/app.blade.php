@@ -233,9 +233,8 @@
                         <!-- /Personal Information -->
 
                         <!-- Contact Information -->
-                        <li class="nav-item menu-item" data-toggle="tooltip" data-placement="top"
-                            title="Under Development">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item menu-item">
+                            <a href="{{ route('contacts-index') }}" class="nav-link">
                                 <span class="text-warning">
                                     <i class="nav-icon fas fa-phone-alt"></i>
                                 </span>
