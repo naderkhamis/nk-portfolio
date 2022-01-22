@@ -17,24 +17,24 @@
 
                     <!-- Image -->
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle" src="{{ asset('images/headerdarklogo.png') }}"
+                        <img class="profile-user-img img-fluid img-circle" src="{{ asset($developer->image) }}"
                             alt="User profile picture">
                     </div>
                     <!-- /Image -->
 
-                    <h3 class="profile-username text-center">Nader Khamis</h3>
+                    <h3 class="profile-username text-center">{{ $developer->name }}</h3>
 
-                    <p class="text-muted text-center">Web Developer</p>
+                    <p class="text-muted text-center">{{ $currentPosition->title }}</p>
 
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item bg-dark">
                             <b>Age</b> <a class="float-right">27</a>
                         </li>
                         <li class="list-group-item bg-dark">
-                            <b>Nationality</b> <a class="float-right">Egypt</a>
+                            <b>Nationality</b> <a class="float-right">{{ $developer->nationality }}</a>
                         </li>
                         <li class="list-group-item bg-dark">
-                            <b>Location</b> <a class="float-right">Riyadh, Saudi Arabia</a>
+                            <b>Location</b> <a class="float-right">{{ $location->address }}</a>
                         </li>
                     </ul>
 
@@ -65,7 +65,7 @@
                     </strong>
 
                     <p class="text-muted">
-                        B.S. in Computer Science from the University of Tennessee at Knoxville
+                        {{ $certificate->title }}
                     </p>
                     <!-- /Education -->
 
@@ -78,7 +78,9 @@
                     </strong>
 
                     <p class="text-muted">
-                        Malibu, California
+                        @foreach ($positions as $position)
+                            <span class="tag tag-danger">{{ $position->title }}, </span>
+                        @endforeach
                     </p>
                     <!-- /Experience -->
 
@@ -91,11 +93,9 @@
                     </strong>
 
                     <p class="text-muted">
-                        <span class="tag tag-danger">UI Design</span>
-                        <span class="tag tag-success">Coding</span>
-                        <span class="tag tag-info">Javascript</span>
-                        <span class="tag tag-warning">PHP</span>
-                        <span class="tag tag-primary">Node.js</span>
+                        @foreach ($skills as $skill)
+                            <span class="tag tag-danger">{{ $skill->name }}</span>
+                        @endforeach
                     </p>
                     <!-- /Skills -->
 
@@ -104,12 +104,11 @@
                     <!-- Notes -->
                     <strong>
                         <i class="fas fa-file-alt mr-1"></i>
-                        Notes
+                        Intro
                     </strong>
 
                     <p class="text-muted">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                        fermentum enim neque.
+                        {{ $developer->introduction }}
                     </p>
                     <!-- /Notes -->
                 </div>
