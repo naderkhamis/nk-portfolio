@@ -1,5 +1,7 @@
+<?php
+use Carbon\Carbon;
+?>
 @extends('layouts.app')
-
 @section('content')
 
     <div class="container">
@@ -28,7 +30,8 @@
 
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item bg-dark">
-                            <b>Age</b> <a class="float-right">27</a>
+                            <b>Age</b> <a
+                                class="float-right">{{ Carbon::parse($developer->date_of_birth)->diffInYears(Carbon::now()) }}</a>
                         </li>
                         <li class="list-group-item bg-dark">
                             <b>Nationality</b> <a class="float-right">{{ $developer->nationality }}</a>
