@@ -55,29 +55,25 @@
                         <!-- /Error -->
                     </div>
                     <!-- /Login-Password -->
-                    <!-- Remember-Me/Login -->
-                    <div class="row">
-                        <!-- Remember-Me-Check -->
-                        <div class="col-8">
-                            <div class="icheck-warning">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                    {{ old('remember') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
+                    <!-- Remember-Me-Check -->
+                    <div class="p-0 mb-3">
+                        <div class="icheck-warning">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                {{ old('remember') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="remember">
+                                {{ __('Remember Me') }}
+                            </label>
                         </div>
-                        <!-- Remember-Me-Check -->
-                        <!-- Login-Btn -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-warning btn-block">{{ __('Login') }}</button>
-                        </div>
-                        <!-- Login-Btn -->
                     </div>
-                    <!-- /Remember-Me/Login -->
+                    <!-- Remember-Me-Check -->
+                    <!-- Login-Btn -->
+                    <div class="p-0 mb-3">
+                        <button type="submit" class="btn btn-warning btn-block">{{ __('Login') }}</button>
+                    </div>
+                    <!-- /Login-Btn -->
                 </form>
                 <!-- /Login-Form -->
-                <!-- Social-Auth -->
+                {{-- <!-- Social-Auth -->
                 <div class="social-auth-links text-center mt-2 mb-3">
                     <!-- Facebook -->
                     <a href="#" class="btn btn-block btn-primary">
@@ -90,20 +86,20 @@
                     </a>
                     <!-- /Google -->
                 </div>
-                <!-- /Social-Auth -->
+                <!-- /Social-Auth --> --}}
                 <!-- Forget-Password -->
                 @if (Route::has('password.request'))
-                    <p class="mb-1">
+                    <div>
                         <a class="text-warning" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
-                    </p>
+                    </div>
                 @endif
                 <!-- /Forget-Password -->
                 <!-- Register -->
-                <p class="mb-0">
+                {{-- <p class="mb-0">
                     <a href="{{ route('register') }}" class="text-warning">Register a new membership</a>
-                </p>
+                </p> --}}
                 <!-- /Register -->
             </div>
             <!-- /Card-Body -->
