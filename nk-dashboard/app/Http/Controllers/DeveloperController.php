@@ -102,7 +102,11 @@ class DeveloperController extends Controller
     public function destroy($id)
     {
         $developer = Developer::find($id);
-        $developer->delete();
+        if ($developer == null) {
+            return view('developer.delete');
+        } else {
+            $developer->delete();
+        }
         return redirect('/personal-information/index');
     }
 }

@@ -48,7 +48,6 @@
             </div>
         </li>
         <!-- /Navbar Search -->
-
         <!-- Messages Dropdown Menu -->
         <li class="nav-item">
             <a class="nav-link" href="{{ route('emails-index') }}">
@@ -311,8 +310,8 @@
 
 <!-- Main content -->
 <section class="content-wrapper content pt-5 mt-0 bg-secondary">
-    <div class="container-fluid">
-        <main id="main" class="p-3 p-md-5">
+    <div class="container-fluid p-0">
+        <main id="main" class="p-3 p-md-2 p-lg-4 p-xl-5">
             @yield('content')
         </main>
     </div>
