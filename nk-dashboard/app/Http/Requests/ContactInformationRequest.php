@@ -24,14 +24,14 @@ class ContactInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'dev_id' => 'required|numeric',
-            'address' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:10|max:100',
-            'email' => 'required|email:rfc,dns|min:10|max:100',
-            'phone' => 'required|numeric|min:10|max:15'
+            'dev_id' => 'numeric|unique:contact_information',
+            'address' => 'required|string|min:10|max:100',
+            'email' => 'required|unique:contact_information',
+            'phone' => 'required|unique:contact_information|max:15'
         ];
     }
 
-
+    // TODO: REVIEW THE VALIDATION RULES
     /**
      * Get the error messages for the defined validation rules.
      *
@@ -40,19 +40,21 @@ class ContactInformationRequest extends FormRequest
     public function messages()
     {
         return [
-            'dev_id.required' => 'Please select a developer.',
             'dev_id.numeric' => 'Developer id must be a number.',
+            'dev_id.unique' => 'This name already exist.',
             'address.required' => 'Please enter an address.',
-            'address.regex' => 'Special characters are not allowed.',
+            'address.string' => 'Special characters are not allowed.',
             'address.min' => 'Please enter at least 10 characters.',
             'address.max' => 'Please enter less than 100 character.',
             'email.required' => 'Please enter an email.',
-            'email.email' => 'Please enter a valid email.',
-            'email.min' => 'Please enter at least 10 characters.',
-            'email.max' => 'Please enter less than 100 character.',
+            // 'email.email' => 'Please enter a valid email.',
+            'email.unique' => 'This email already exist.',
+            // 'email.min' => 'Please enter at least 10 characters.',
+            // 'email.max' => 'Please enter less than 100 character.',
             'phone.required' => 'Please enter phone number.',
-            'phone.numeric' => 'Please enter a valid phone number.',
-            'phone.min' => 'Please enter at least 10 numbers.',
+            // 'phone.digits' => 'Please enter a valid phone number.',
+            'phone.unique' => 'This phone already exist.',
+            // 'phone.min' => 'Please enter at least 10 numbers.',
             'phone.max' => 'Please enter less than 15 number.'
         ];
     }

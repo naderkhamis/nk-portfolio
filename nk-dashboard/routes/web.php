@@ -195,7 +195,7 @@ Route::prefix('statistics')->middleware('auth')->group(function () {
 Route::prefix('contact-information')->middleware('auth')->group(function () {
     Route::get('index', 'ContactInformationController@index')->name('contacts-index');
     Route::get('create', 'ContactInformationController@create')->name('create-contact');
-    Route::post('store', 'ContactInformationController@store')->name('store-contact');
+    Route::post('store', 'ContactInformationController@store')->name('store-contact-info');
     // Route::get('show/{id}', 'ContactInformationController@show')->name('show-contacts');
     Route::get('edit/{id}', 'ContactInformationController@edit')->name('edit-contact');
     Route::post('update', 'ContactInformationController@update')->name('update-contact');

@@ -14,7 +14,8 @@ use Carbon\Carbon;
                     <div class="row card-body p-0 pr-md-3">
                         <!-- Developer-Image -->
                         <div class="col-md-3">
-                            <img class="rounded img-fluid" src="{{ asset($developer->image) }}" alt="Developer Photo">
+                            <img class="rounded img-fluid h-100" src="{{ asset($developer->image) }}"
+                                alt="Developer Photo">
                         </div>
                         <!-- /Developer-Image -->
                         <!-- About-Me-Box -->

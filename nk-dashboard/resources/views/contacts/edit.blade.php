@@ -2,17 +2,20 @@
 
 @section('content')
     <div class="row">
+        <!-- Header -->
+        <div class="col-12 mb-2">
+            <h1>Edit Contact Information</h1>
+        </div>
+        <!-- /Header -->
         @if ($contact)
             <!-- Contact-Information-Form -->
-            <div class="col-xl-3 p-0 mb-4 mr-xl-5">
-                <!-- Header -->
-                <div class="col-12 p-0 mb-3">
-                    <h1>Edit Contact Information</h1>
-                </div>
-                <!-- /Header -->
+            <div class="col-md-6 col-lg-3">
                 <!-- New-Contacts-Form -->
                 <div class="card card-warning card-outline card-body bg-dark">
                     <form action="{{ route('update-contact') }}" method="post">
+                        <!-- TOKEN -->
+                        @csrf
+                        <!-- /TOKEN -->
                         <!-- Contact-ID -->
                         <input type="hidden" name="id" id="id" value="{{ $contact->id }}">
                         <!-- /Contact-ID -->
@@ -41,7 +44,8 @@
                             <label for="address">Address</label>
                             <input type="text" name="address" id="address"
                                 class="form-control  @error('address') is-invalid @enderror"
-                                placeholder="Please enter an address" value="{{ $contact->address }}">
+                                placeholder="Please enter an address" value="{{ $contact->address }}"
+                                autocomplete="new-password">
                             <!-- Error-Message -->
                             @error('address')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
@@ -64,7 +68,8 @@
                                 @foreach ($emails as $email)
                                     <input type="email" name="email[]" id="email"
                                         class="form-control  @error('email') is-invalid @enderror mb-2"
-                                        placeholder="Please enter email address" value="{{ $email }}">
+                                        placeholder="Please enter email address" value="{{ $email }}"
+                                        autocomplete="new-password">
                                 @endforeach
                             </div>
                             @if (count($emails) != 2)
@@ -97,7 +102,8 @@
                         @foreach ($phones as $phone)
                             <input type="phone" name="phone[]" id="phone"
                                 class="form-control  @error('phone') is-invalid @enderror mb-2"
-                                placeholder="Please enter phone number" value="{{ $phone }}">
+                                placeholder="Please enter phone number" value="{{ $phone }}"
+                                autocomplete="new-password">
                         @endforeach
                     </div>
                     @if (count($phones) != 2)
@@ -115,9 +121,6 @@
                 <!-- /Error-Message -->
             </div>
             <!-- /Phone-Input -->
-            <!-- TOKEN -->
-            <input name="_token" type="hidden" value="{{ csrf_token() }}" />
-            <!-- /TOKEN -->
             <!-- Form-Submit-Button -->
             <div class="col-md-4 p-0">
                 <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
@@ -133,15 +136,13 @@
     <!-- /Contact-Information-Form -->
 @else
     <!-- Contacts-Alert -->
-    <div class="col-md-4 p-0">
-        <!-- Alert -->
-        <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+    <div class="col-12 order-0">
+        <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
             <strong>Sorry! </strong>There is no such as contact to edit!.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <!-- /Alert -->
     </div>
     <!-- /Contacts-Alert -->
     @endif
