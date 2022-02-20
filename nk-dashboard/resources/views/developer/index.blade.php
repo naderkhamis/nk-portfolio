@@ -5,9 +5,11 @@ use Carbon\Carbon;
 @section('content')
     @if (count($developers))
         <div class="row px-2">
+            <!-- Header -->
             <div class="col-12 p-0 mb-1">
                 <h1>Personal Information</h1>
             </div>
+            <!-- /Header -->
             @foreach ($developers as $developer)
                 <div class="card card-warning card-outline bg-dark col-lg-8 p-0">
                     <!-- Card-Body -->
@@ -74,7 +76,7 @@ use Carbon\Carbon;
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <!-- Alert -->
+        <!-- /Alert -->
     @endif
     <!-- New-Button -->
     <div class="col-md-2 p-0">
@@ -83,5 +85,5 @@ use Carbon\Carbon;
             <i class="fas fa-plus"></i>
         </a>
     </div>
-    <!-- New-Button -->
+    <!-- /New-Button -->
 @endsection

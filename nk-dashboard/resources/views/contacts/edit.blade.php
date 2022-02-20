@@ -9,9 +9,14 @@
         <!-- /Header -->
         @if ($contact)
             <!-- Contact-Information-Form -->
-            <div class="col-md-6 col-lg-3">
-                <!-- New-Contacts-Form -->
+            <div id="form-create" class="col-md-8 col-xl-5">
+                <!-- Edit-Contact-Form -->
                 <div class="card card-warning card-outline card-body bg-dark">
+                    <!-- Form-Header -->
+                    <div class="card-header text-warning px-0 border-0">
+                        <h3 class="card-title">Edit Contact</h3>
+                    </div>
+                    <!-- /Form-Header -->
                     <form action="{{ route('update-contact') }}" method="post">
                         <!-- TOKEN -->
                         @csrf
@@ -60,8 +65,8 @@
                                 <?php
                                 $emails = explode(',', $contact->email);
                                 ?>
-                                @if (count($emails) != 2)
-                                    <div class="col-10">
+                                @if (count($emails) < 2)
+                                    <div class="col-11">
                                     @else
                                         <div class="col-12">
                                 @endif
@@ -72,30 +77,30 @@
                                         autocomplete="new-password">
                                 @endforeach
                             </div>
-                            @if (count($emails) != 2)
-                                <div class="col-2">
+                            @if (count($emails) < 2)
+                                <div class="col-1">
                                     <button id="new-email" class="new-input btn btn-warning rounded-circle mr-md-2">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </div>
                             @endif
+                            <!-- Error-Message -->
+                            @error('email')
+                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                            @enderror
+                            <!-- /Error-Message -->
                         </div>
-                        <!-- Error-Message -->
-                        @error('email')
-                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                        @enderror
-                        <!-- /Error-Message -->
                 </div>
                 <!-- /Emial-Input -->
                 <!-- Phone-Input -->
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <div class="row">
+                    <div class="form-row">
                         <?php
                         $phones = explode(',', $contact->phone);
                         ?>
-                        @if (count($phones) != 2)
-                            <div class="col-10">
+                        @if (count($phones) < 2)
+                            <div class="col-11">
                             @else
                                 <div class="col-12">
                         @endif
@@ -106,19 +111,19 @@
                                 autocomplete="new-password">
                         @endforeach
                     </div>
-                    @if (count($phones) != 2)
-                        <div class="col-2">
+                    @if (count($phones) < 2)
+                        <div class="col-1">
                             <button id="new-phone" class="new-input btn btn-warning rounded-circle mr-md-2">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     @endif
+                    <!-- Error-Message -->
+                    @error('phone')
+                        <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                    @enderror
+                    <!-- /Error-Message -->
                 </div>
-                <!-- Error-Message -->
-                @error('phone')
-                    <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                @enderror
-                <!-- /Error-Message -->
             </div>
             <!-- /Phone-Input -->
             <!-- Form-Submit-Button -->

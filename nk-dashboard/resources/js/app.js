@@ -59,6 +59,8 @@ function addNewInput(e) {
     let newInput = this.parentElement.previousElementSibling.firstElementChild.cloneNode();
     // Select new input button div container
     let btnParent = this.parentElement;
+    // Remove new input value
+    newInput.value = "";
     // Append the cloned (new) input after the existing one
     btnParent.previousElementSibling.appendChild(newInput);
     // Remove new input button

@@ -3,14 +3,27 @@
 @section('content')
     <div class="row">
         <!-- Header -->
-        <div class="col-12 mb-2">
+        <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
             <h1>Contact Information</h1>
+            <!-- Create-New-Certificate -->
+            <div class="d-md-none">
+                <a href="#form-create" class="btn btn-warning font-weight-bold rounded-pill">
+                    New
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+            <!-- /Create-New-Certificate -->
         </div>
         <!-- /Header -->
         <!-- Contact-Information-Form -->
-        <div class="col-md-6 col-xl-3 order-2 order-md-1">
+        <div id="form-create" class="col-md-6 col-xl-3 order-2 order-md-1">
             <!-- New-Contacts-Form -->
             <div class="card card-warning card-outline card-body bg-dark">
+                <!-- Form-Header -->
+                <div class="card-header text-warning px-0 border-0">
+                    <h3 class="card-title">Create Contact</h3>
+                </div>
+                <!-- /Form-Header -->
                 <form action="{{ route('store-contact-info') }}" method="post">
                     <!-- TOKEN -->
                     @csrf
@@ -155,7 +168,7 @@
                                     </ul>
                                 </div>
                                 <!-- /Contact-Information -->
-                                <!-- Contacts-Actions -->
+                                <!-- Contact-Actions -->
                                 <div class="card-footer">
                                     <a href="{{ route('edit-contact', $contact->id) }}"
                                         class="btn btn-success rounded-circle mr-md-2">
@@ -166,7 +179,7 @@
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
-                                <!-- /Contacts-Actions -->
+                                <!-- /Contact-Actions -->
                             </div>
                         </div>
                         <!-- /Contacts-Card -->

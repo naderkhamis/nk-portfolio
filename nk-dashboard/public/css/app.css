@@ -57993,14 +57993,6 @@ button.rounded-circle {
   line-height: 25px;
 }
 
-.card-body .card-text {
-  overflow: hidden;
-  display: -webkit-box;
-  word-wrap: break-word;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
 .form-control:disabled,
 .form-control[readonly] {
   border: 2px solid white;

@@ -28,14 +28,13 @@ button.rounded-circle {
 
 // /ROUNDED-BUTTON-STYLE
 // CARD-TEXT
-.card-body .card-text {
-    overflow: hidden;
-    display: -webkit-box;
-    word-wrap: break-word;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
+// .card-body .card-text {
+//     overflow: hidden;
+//     display: -webkit-box;
+//     word-wrap: break-word;
+//     -webkit-line-clamp: 3;
+//     -webkit-box-orient: vertical;
+// }
 // /CARD-TEXT
 // KRAJEE-INPUT-STYLE
 .form-control:disabled,

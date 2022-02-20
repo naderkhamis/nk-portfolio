@@ -21,7 +21,8 @@ class CertificateController extends Controller
     {
         $certificates = new Certificate();
         $certificates = Certificate::get();
-        return view('certificates.index')->with('certificates', $certificates);
+        $developers = Developer::get(['id', 'name']);
+        return view('certificates.index', compact('certificates', 'developers'));
     }
 
     /**
@@ -31,8 +32,7 @@ class CertificateController extends Controller
      */
     public function create()
     {
-        $developers = Developer::get(['id', 'name']);
-        return view('certificates.create')->with('developers', $developers);
+        return view('certificates.index');
     }
 
     /**
