@@ -24,7 +24,7 @@ class CareerRequest extends FormRequest
     public function rules()
     {
         return [
-            'dev_id' => 'required',
+            // 'dev_id' => 'required',
             'title' => 'required|regex:/^[a-zA-Z\s]+$/|min:3|max:255',
             'company' => 'required|string|min:3|max:100',
             'from' => 'required|date|before:tomorrow',
@@ -42,7 +42,7 @@ class CareerRequest extends FormRequest
     public function messages()
     {
         return [
-            'dev_id.required' => 'Please select a developer.',
+            // 'dev_id.required' => 'Please select a developer.',
             'title.required' => 'Please enter your job title.',
             'title.regex' => 'Numbers or special characters are not allowed.',
             'title.min' => 'Please enter at least 3 characters.',

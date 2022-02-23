@@ -59,7 +59,7 @@ use Carbon\Carbon;
                     <!-- /Certificate-Information -->
                 </div>
                 <!-- /Card-Body -->
-                <!-- Card-Footer -->
+                <!-- Certificate-Actions -->
                 <div class="card-footer">
                     <a href="{{ route('edit-certificate', $certificate->id) }}"
                         class="btn btn-success rounded-circle mr-2">
@@ -69,7 +69,7 @@ use Carbon\Carbon;
                         <i class="fas fa-trash"></i>
                     </a>
                 </div>
-                <!-- /Card-Footer -->
+                <!-- /Certificate-Actions -->
             </div>
         </div>
     @else
@@ -80,6 +80,6 @@ use Carbon\Carbon;
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <!-- Alert -->
+        <!-- /Alert -->
     @endif
 @endsection

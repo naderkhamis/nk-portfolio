@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Career;
-use App\Models\Developer;
+// use App\Models\Developer;
 use App\Http\Requests\CareerRequest;
 
 class CareerController extends Controller
@@ -17,6 +17,7 @@ class CareerController extends Controller
     {
         $career = new Career();
         $career = Career::get();
+        // $developers = Developer::get(['id', 'name']);
         return view('career.index')->with('career', $career);
     }
 
@@ -27,8 +28,7 @@ class CareerController extends Controller
      */
     public function create()
     {
-        $developers = Developer::get(['id', 'name']);
-        return view('career.create')->with('developers', $developers);
+        return view('career.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class CareerController extends Controller
     public function store(CareerRequest $request)
     {
         $career = new Career();
-        $career->dev_id = $request->dev_id;
+        // $career->dev_id = $request->dev_id;
         $career->title = $request->title;
         $career->company = $request->company;
         $career->from_date = $request->from;
@@ -71,9 +71,9 @@ class CareerController extends Controller
      */
     public function edit($id)
     {
-        $developers = Developer::get(['id', 'name']);
+        // $developers = Developer::get(['id', 'name']);
         $career = Career::find($id);
-        return view('career.edit')->with('career', $career)->with('developers', $developers);
+        return view('career.edit')->with('career', $career);
     }
 
     /**
@@ -86,7 +86,7 @@ class CareerController extends Controller
     public function update(CareerRequest $request, Career $career)
     {
         $career = Career::find($request->id);
-        $career->dev_id = $request->dev_id;
+        // $career->dev_id = $request->dev_id;
         $career->title = $request->title;
         $career->company = $request->company;
         $career->from_date = $request->from;
@@ -106,7 +106,12 @@ class CareerController extends Controller
     public function destroy($id)
     {
         $career = Career::find($id);
-        $career->delete();
+        if ($career == null) {
+            return view('career.delete');
+        } else {
+            $career->delete();
+        }
+
         return redirect('/career/index');
     }
 }

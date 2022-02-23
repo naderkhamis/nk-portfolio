@@ -20,7 +20,7 @@ use Carbon\Carbon;
         <!-- Certificate-Form -->
         <div id="form-create" class="col-md-6 col-xl-4 order-2 order-md-1">
             <!-- New-Certificate-Form -->
-            <div class="card card-warning card-outline card-body bg-dark">
+            <div class="card card-warning card-outline card-body bg-dark pt-1">
                 <!-- Form-Header -->
                 <div class="card-header text-warning px-0 border-0">
                     <h3 class="card-title">Create Certificate</h3>
@@ -173,6 +173,7 @@ use Carbon\Carbon;
                                 <!-- /Certificate-Actions -->
                             </div>
                         </div>
+                        <!-- /Certificate-Card -->
                     @endforeach
                 </div>
                 <!-- /Certificates-Container -->
