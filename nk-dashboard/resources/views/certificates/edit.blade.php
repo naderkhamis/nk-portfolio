@@ -13,7 +13,7 @@ use Carbon\Carbon;
             <!-- Certificate-Form -->
             <div id="form-create" class="col-md-8 col-xl-5 order-1 order-xl-0">
                 <!-- Edit-Certificate-Form -->
-                <div class="card card-warning card-outline card-body bg-dark">
+                <div class="card card-warning card-outline card-body bg-dark pt-1">
                     <!-- Form-Header -->
                     <div class="card-header text-warning px-0 border-0">
                         <h3 class="card-title">Edit Certificate</h3>
@@ -126,9 +126,9 @@ use Carbon\Carbon;
             <!-- /Certificate-Existing-Image -->
         @else
             <!-- Certificate-Alert -->
-            <div class="col-12">
-                <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
-                    <strong>Sorry! </strong>There is no such as certificates to edit!.
+            <div class="col-md-6 p-0">
+                <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+                    <strong>Sorry! </strong>There is no such as certificate to edit!.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

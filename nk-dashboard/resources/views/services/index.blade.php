@@ -1,75 +1,163 @@
 @extends('layouts.app')
 @section('content')
-    @if (count($services))
-        <div class="row px-2 d-flex justify-content-around">
-            <div class="col-12 p-0 mb-1">
-                <h1>Services</h1>
+    <div class="row">
+        <!-- Header -->
+        <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
+            <h1>Services</h1>
+            <!-- Create-New-Certificate -->
+            <div class="d-md-none">
+                <a href="#form-create" class="btn btn-warning font-weight-bold rounded-pill">
+                    New
+                    <i class="fas fa-plus"></i>
+                </a>
             </div>
-            @foreach ($services as $service)
-                <div class="col-lg-6 p-0 pr-3">
-                    <div class="card card-warning bg-dark p-0">
-                        <!-- Card-Header -->
-                        <div class="card-header d-flex">
-                            <div>
-                                <i class="fas fa-{{ $service->icon }} mr-2"></i>
-                            </div>
-                            <h3 class="card-title">{{ $service->name }}</h3>
-                        </div>
-                        <!-- /Card-Header -->
-                        <!-- Card-Body -->
-                        <div class="card-body row pb-0">
-                            <!-- Image -->
-                            <div class="col-md-4 p-0 pr-2">
-                                <div class="text-center">
-                                    <img class="dev-img rounded img-fluid" src="{{ asset($service->image) }}"
-                                        alt="Developer Photo">
-                                </div>
-                            </div>
-                            <!-- /Image -->
-                            <!-- About Me Box -->
-                            <div class="col-md-8 px-2">
-                                <p class="card-text">{{ $service->description }}</p>
-                                <ul class="list-group list-group-unbordered">
-                                    <li class="list-group-item bg-dark">
-                                        <b>Developer</b>
-                                        <span class="float-right">
-                                            {{ $service->developer->name }}
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- /About Me Box -->
-                        </div>
-                        <!-- /Card-Body -->
-                        <!-- Card-Footer -->
-                        <div class="card-footer p-2 px-3">
-                            <a href="{{ route('show-service', $service->id) }}" class="btn btn-primary rounded-circle">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <a href="{{ route('edit-service', $service->id) }}" class="btn btn-success rounded-circle">
-                                <i class="fas fa-pen"></i>
-                            </a>
-                            <a href="{{ route('delete-service', $service->id) }}" class="btn btn-danger rounded-circle">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </div>
-                        <!-- /Card-Footer -->
-                    </div>
+            <!-- /Create-New-Certificate -->
+        </div>
+        <!-- /Header -->
+        <!-- Service-Form -->
+        <div id="form-create" class="col-md-6 col-xl-4 order-2 order-md-1">
+            <!-- New-Service-Form -->
+            <div class="card card-warning card-outline card-body bg-dark pt-1">
+                <!-- Form-Header -->
+                <div class="card-header text-warning px-0 border-0">
+                    <h3 class="card-title">Create Service</h3>
                 </div>
-            @endforeach
+                <!-- /Form-Header -->
+                <form action="{{ route('store-service') }}" method="post" class="text-white row"
+                    enctype="multipart/form-data">
+                    <!-- TOKEN -->
+                    @csrf
+                    <!-- /TOKEN -->
+                    <!-- Service-Name -->
+                    <div class="form-group col-12">
+                        <label for="name">Service Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                            placeholder="Please enter service name">
+                        @error('name')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Service-Name -->
+                    <!-- Service-Icon -->
+                    <div class="form-group col-12">
+                        <label for="icon">service Icon</label>
+                        <input type="text" class="form-control @error('icon') is-invalid @enderror" name="icon" id="icon"
+                            placeholder="Please enter service icon name">
+                        @error('icon')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Service-Icon -->
+                    <!-- Service-Image -->
+                    <div class="form-group col-lg-6">
+                        <label for="image" class="control-label">Service Image</label>
+                        <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
+                            id="image">
+                        @error('image')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Service-Image -->
+                    <!-- Service-Developer -->
+                    <div class="form-group col-lg-6">
+                        <label for="developer">Developer</label>
+                        <select name="dev_id" id="developer" class="custom-select @error('dev_id') is-invalid @enderror">
+                            <option selected disabled>Select a developer</option>
+                            @foreach ($developers as $developer)
+                                <option value="{{ $developer->id }}">{{ $developer->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('dev_id')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Service-Developer -->
+                    <!-- Service-Description -->
+                    <div class="form-group col-12">
+                        <label for="description">Description</label>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                            id="description" cols="30" rows="9" placeholder="Enter certificate description"></textarea>
+                        @error('description')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Service-Description -->
+                    <!-- Form-Submit-Button -->
+                    <div class="col-lg-3">
+                        <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
+                            Save
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                    <!-- /Form-Submit-Button -->
+                </form>
+            </div>
+            <!-- /New-Certificate-Form -->
         </div>
-    @else
-        <div class="alert alert-danger alert-dismissible fade show col-md-6 rounded-pill" role="alert">
-            <strong>Sorry! </strong> There is no available services.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    <div class="col-md-1 p-0">
-        <a href="{{ route('create-service') }}" class="btn btn-block btn-warning font-weight-bold rounded-pill">
-            New
-            <i class="fas fa-plus"></i>
-        </a>
+        <!-- /Service-Form -->
+        <!-- Service-Section -->
+        @if (count($services))
+            <div class="col-md-6 col-xl-8 order-1 order-md-2">
+                <!-- Certificates-Container -->
+                <div class="row row-cols-1 row-cols-xl-3">
+                    @foreach ($services as $service)
+                        <!-- Service-Card -->
+                        <div class="card-deck px-2">
+                            <div class="card card-warning card-outline bg-dark">
+                                <!-- Service-Image -->
+                                <img src="{{ asset($service->image) }}" class="card-img-top rounded" alt="Project-Image">
+                                <!-- /Service-Image -->
+                                <!-- Service-Information -->
+                                <div class="card-body box-profile">
+                                    <div class="text-warning d-flex py-2">
+                                        <!-- Service-Icon -->
+                                        <div>
+                                            <i class="fas fa-{{ $service->icon }} mr-2"></i>
+                                        </div>
+                                        <!-- /Service-Icon -->
+                                        <!-- Service-Name -->
+                                        <h5 class="card-title">{{ $service->name }}</h5>
+                                        <!-- /Service-Name -->
+                                    </div>
+                                    <!-- Service-Description -->
+                                    <p class="card-text">{{ $service->description }}</p>
+                                    <!-- /Service-Description -->
+                                </div>
+                                <!-- /Service-Information -->
+                                <!-- Service-Actions -->
+                                <div class="card-footer">
+                                    <a href="{{ route('show-service', $service->id) }}"
+                                        class="btn btn-primary rounded-circle mr-md-2">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('edit-service', $service->id) }}"
+                                        class="btn btn-success rounded-circle mr-md-2">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="{{ route('delete-service', $service->id) }}"
+                                        class="btn btn-danger rounded-circle">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                                <!-- /Service-Actions -->
+                            </div>
+                        </div>
+                        <!-- /Service-Card -->
+                    @endforeach
+                </div>
+            </div>
+        @else
+            <!-- Service-Alert -->
+            <div class="col-12 order-0">
+                <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+                    <strong>Sorry! </strong>There is no services to show!.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <!-- /Service-Alert -->
+        @endif
+        <!-- /Service-Section -->
     </div>
 @endsection

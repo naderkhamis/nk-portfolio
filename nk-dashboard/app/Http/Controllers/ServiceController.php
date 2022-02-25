@@ -20,7 +20,8 @@ class ServiceController extends Controller
     {
         $services = new Service();
         $services = Service::get();
-        return view('services.index')->with('services', $services);
+        $developers = Developer::get(['id', 'name']);
+        return view('services.index', compact('services', 'developers'));
     }
 
     /**
@@ -30,8 +31,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $developers = Developer::get(['id', 'name']);
-        return view('services.create')->with('developers', $developers);
+
+        return view('services.index');
     }
 
     /**
@@ -105,7 +106,11 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::find($id);
-        $service->delete();
+        if ($service == null) {
+            return view('services.delete');
+        } else {
+            $service->delete();
+        }
         return redirect('/services/index');
     }
 }

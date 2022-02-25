@@ -45,9 +45,9 @@
     <!-- Wrapper -->
     <div class="wrapper">
 
-        <!-- Preloader -->
+        {{-- <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center bg-secondary">
             <img class="animation__wobble" src="{{ asset('images/headerdarklogo.png') }}" alt="NK-Logo" height="60"
                 width="60">
         </div>
-        <!-- /Preloader -->
+        <!-- /Preloader --> --}}

@@ -3,13 +3,14 @@ use Carbon\Carbon;
 ?>
 @extends('layouts.app')
 @section('content')
-    @if ($certificate)
-        <div class="row px-2">
-            <!-- Header -->
-            <div class="col-12 p-0 mb-1">
-                <h1>Certificate</h1>
-            </div>
-            <!-- /Header -->
+    <div class="row">
+        <!-- Header -->
+        <div class="col-12 p-0 mb-1">
+            <h1>Certificate</h1>
+        </div>
+        <!-- /Header -->
+        @if ($certificate)
+            <!-- Certificate-Card -->
             <div class="card card-warning card-outline bg-dark col-lg-8 p-0">
                 <!-- Card-Body -->
                 <div class="row card-body p-0 pr-md-3">
@@ -71,15 +72,18 @@ use Carbon\Carbon;
                 </div>
                 <!-- /Certificate-Actions -->
             </div>
-        </div>
-    @else
-        <!-- Alert -->
-        <div class="alert alert-danger alert-dismissible fade show col-md-6" role="alert">
-            <strong>Sorry! </strong> There is no such as certificate.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <!-- /Alert -->
-    @endif
+            <!-- Certificate-Card -->
+        @else
+            <!-- Certificate-Alert -->
+            <div class="col-md-6 p-0">
+                <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+                    <strong>Sorry! </strong>There is no such as certificate to show!.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <!-- /Certificate-Alert -->
+        @endif
+    </div>
 @endsection
