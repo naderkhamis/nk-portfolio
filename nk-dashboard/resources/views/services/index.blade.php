@@ -4,14 +4,14 @@
         <!-- Header -->
         <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
             <h1>Services</h1>
-            <!-- Create-New-Certificate -->
+            <!-- Create-New-Service -->
             <div class="d-md-none">
                 <a href="#form-create" class="btn btn-warning font-weight-bold rounded-pill">
                     New
                     <i class="fas fa-plus"></i>
                 </a>
             </div>
-            <!-- /Create-New-Certificate -->
+            <!-- /Create-New-Service -->
         </div>
         <!-- /Header -->
         <!-- Service-Form -->
@@ -98,7 +98,7 @@
         <!-- Service-Section -->
         @if (count($services))
             <div class="col-md-6 col-xl-8 order-1 order-md-2">
-                <!-- Certificates-Container -->
+                <!-- Services-Container -->
                 <div class="row row-cols-1 row-cols-xl-3">
                     @foreach ($services as $service)
                         <!-- Service-Card -->

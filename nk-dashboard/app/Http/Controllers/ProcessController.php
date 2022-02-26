@@ -17,7 +17,8 @@ class ProcessController extends Controller
     {
         $processes = new Process();
         $processes = Process::get();
-        return view('processes.index')->with('processes', $processes);
+        $developers = Developer::get(['id', 'name']);
+        return view('processes.index', compact('processes', 'developers'));
     }
 
     /**
@@ -27,9 +28,7 @@ class ProcessController extends Controller
      */
     public function create()
     {
-        $developers = new Developer();
-        $developers = Developer::get(['id', 'name']);
-        return view('processes.create')->with('developers', $developers);
+        return view('processes.index');
     }
 
     /**
@@ -105,7 +104,11 @@ class ProcessController extends Controller
     public function destroy($id)
     {
         $process = Process::find($id);
-        $process->delete();
+        if ($process == null) {
+            return view('processes.delete');
+        } else {
+            $process->delete();
+        }
         return redirect('/processes/index');
     }
 }

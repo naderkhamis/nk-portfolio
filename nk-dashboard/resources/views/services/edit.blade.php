@@ -2,13 +2,13 @@
 @section('content')
     <div class="row">
         <!-- Header -->
-        <div class="col-12 p-0 mb-1">
+        <div class="col-12 mb-1">
             <h1>Edit Service</h1>
         </div>
         <!-- /Header -->
         @if ($service)
             <!-- Service-Form -->
-            <div id="form-create" class="col-md-8 col-xl-5 order-1 order-xl-0">
+            <div class="col-md-8 col-xl-5 order-1 order-xl-0">
                 <!-- Edit-Service-Form -->
                 <div class="card card-warning card-outline card-body bg-dark pt-1">
                     <!-- Form-Header -->
@@ -16,7 +16,7 @@
                         <h3 class="card-title">Edit Service</h3>
                     </div>
                     <!-- /Form-Header -->
-                    <form action="{{ route('update-service') }}" method="post" class="text-white row"
+                    <form action="{{ route('update-service', $process->id) }}" method="post" class="text-white row"
                         enctype="multipart/form-data">
                         <!-- TOKEN -->
                         @csrf
@@ -93,6 +93,7 @@
                 </div>
                 <!-- /Edit-Service-Form -->
             </div>
+            <!-- /Service-Form -->
             <!-- Service-Existing-Image -->
             <div class="col-md-6 col-xl-4 order-0 order-xl-1 pb-3">
                 <img src="{{ asset($service->image) }}" class="img-fluid border border-warning rounded"
