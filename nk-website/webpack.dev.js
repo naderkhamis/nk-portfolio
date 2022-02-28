@@ -4,13 +4,20 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
     entry: './src/client/index.js',
     mode: 'development',
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     stats: 'verbose',
     module: {
         rules: [{
                 test: '/\.js$/',
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.ejs$/,
+                loader: 'ejs-loader',
+                options: {
+                    esModule: false
+                }
             },
             {
                 test: /\.scss$/,
@@ -24,8 +31,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./src/client/views/index.html",
-            filename: "./index.html",
+            template: "./src/client/views/index.ejs",
+            filename: "./index.html"
         }),
         new CleanWebpackPlugin({
             // Simulate the removal of files

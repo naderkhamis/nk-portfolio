@@ -28,22 +28,22 @@ app.set('view engine', 'ejs')
 
 // Rendering index pages
 app.get('/', function(req, res) {
-    res.render('index.html', {
+    res.render('index.ejs', {
         layouts: {
-            header: 'layouts/header.html',
-            main: 'layouts/main.html',
-            footer: 'layouts/footer.html'
+            header: 'layouts/header',
+            main: 'layouts/main',
+            footer: 'layouts/footer'
         },
         partials: {
-            about: 'partials/about.html',
-            skills: 'partials/skills.html',
-            hire: 'partials/hire.html',
-            service: 'partials/service.html',
-            portfolio: 'partials/portfolio.html',
-            client_says: 'partials/client-says.html',
-            process: 'partials/process.html',
-            statistics: 'partials/statistics.html',
-            contact: 'partials/contact.html'
+            about: 'partials/about',
+            skills: 'partials/skills',
+            hire: 'partials/hire',
+            service: 'partials/service',
+            portfolio: 'partials/portfolio',
+            client_says: 'partials/client-says',
+            process: 'partials/process',
+            statistics: 'partials/statistics',
+            contact: 'partials/contact'
         }
     })
 })
