@@ -11,7 +11,7 @@ use Carbon\Carbon;
         <!-- /Header -->
         @if ($certificate)
             <!-- Certificate-Form -->
-            <div id="form-create" class="col-md-8 col-xl-5 order-1 order-xl-0">
+            <div class="col-md-8 col-xl-5 order-1 order-xl-0">
                 <!-- Edit-Certificate-Form -->
                 <div class="card card-warning card-outline card-body bg-dark pt-1">
                     <!-- Form-Header -->

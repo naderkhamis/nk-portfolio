@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="text-white">Edit Category</h3>
-    <!-- Alert -->
+    <!-- Project-Category-Alert -->
     <div class="col-md-6 p-0">
         <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
             <strong>Sorry! </strong>There is no such as category to delete!.
@@ -11,5 +11,5 @@
             </button>
         </div>
     </div>
-    <!-- /Alert -->
+    <!-- /Project-Category-Alert -->
 @endsection

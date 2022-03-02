@@ -4,9 +4,9 @@
     <div class="row">
         @if (count($categories))
             <!-- Categories-Section -->
-            <div class="col-lg-3 p-0 mb-4 mr-md-5">
+            <div class="col-lg-4 mb-4">
                 <!-- Header -->
-                <div class="col-12 p-0 mb-3">
+                <div class="col-12 mb-3">
                     <h1>Categories</h1>
                 </div>
                 <!-- /Header -->
@@ -48,7 +48,7 @@
                 </div>
                 <!-- /Categories-Container -->
                 <!-- New-Category-Button -->
-                <div class="col-md-5 p-0">
+                <div class="col-md-4 p-0 my-2">
                     <button class="btn btn-block btn-warning font-weight-bold rounded-pill" data-toggle="collapse"
                         data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
                         New
@@ -93,17 +93,26 @@
             <!-- Projects-Section -->
             <div class="col-lg-8">
                 <!-- Header -->
-                <div class="col-12 p-0 mb-3">
+                <div class="col-12 d-flex justify-content-between p-0 mb-2">
                     <h1>Projects</h1>
+                    <!-- New-Project-Button -->
+                    <div class="col-4 col-md-2 my-2">
+                        <a href="{{ route('create-project') }}"
+                            class="btn btn-block btn-warning font-weight-bold rounded-pill">
+                            New
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                    <!-- /New-Project-Button -->
                 </div>
                 <!-- /Header -->
                 @if (count($projects))
                     <!-- Projects-Container -->
-                    <div class="row">
+                    <div class="row row-cols-1 row-cols-xl-3">
                         @foreach ($projects as $project)
                             <!-- Project-Card -->
-                            <div class="col-md-5 col-lg-4">
-                                <div class="card card-warning card-outline bg-dark p-0">
+                            <div class="card-deck px-2">
+                                <div class="card card-warning card-outline bg-dark">
                                     <!-- Project-Image -->
                                     <img src="{{ asset($project->image) }}" class="card-img-top" alt="Project-Image">
                                     <!-- /Project-Image -->
@@ -126,10 +135,6 @@
                                             class="btn btn-warning rounded-circle mr-md-2">
                                             <i class="fas fa-link"></i>
                                         </a>
-                                        {{-- <a href="{{ route('show-project', $project->id) }}"
-                                        class="btn btn-primary rounded-circle mr-md-2">
-                                        <i class="fas fa-eye"></i>
-                                    </a> --}}
                                         <a href="{{ route('edit-project', $project->id) }}"
                                             class="btn btn-success rounded-circle mr-md-2">
                                             <i class="fas fa-pen"></i>
@@ -146,15 +151,6 @@
                         @endforeach
                     </div>
                     <!-- /Projects-Container -->
-                    <!-- New-Project-Button -->
-                    <div class="col-md-2 p-0">
-                        <a href="{{ route('create-project') }}"
-                            class="btn btn-block btn-warning font-weight-bold rounded-pill">
-                            New
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
-                    <!-- /New-Project-Button -->
                 @else
                     <!-- Projects-Alert -->
                     <div class="col-md-6 p-0">
@@ -187,7 +183,7 @@
             </div>
             <!-- /Header -->
             <!-- Categories-Alert -->
-            <div class="col-md-6 p-0">
+            <div class="col-md-6 col-lg-4 p-0">
                 <!-- Alert -->
                 <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
                     <strong>Sorry! </strong>There is no projects categories to show!.
@@ -197,7 +193,7 @@
                 </div>
                 <!-- /Alert -->
                 <!-- New-Category-Button -->
-                <div class="col-md-2 p-0">
+                <div class="col-md-3 p-0">
                     <button href="{{ route('create-project-category') }}"
                         class="btn btn-block btn-warning font-weight-bold rounded-pill" data-toggle="collapse"
                         data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory">
