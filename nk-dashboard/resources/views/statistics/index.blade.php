@@ -2,54 +2,64 @@
 
 @section('content')
     <div class="row">
-        <!-- New-Statistics-Form -->
-        <div class="col-xl-3 p-0 mb-4 mr-xl-5">
-            <!-- Header -->
-            <div class="col-12 p-0 mb-3">
-                <h1>Statistcs</h1>
+        <!-- Header -->
+        <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
+            <h1>Statistics</h1>
+            <!-- Create-New-Certificate -->
+            <div class="d-md-none">
+                <a href="#form-create" class="btn btn-warning font-weight-bold rounded-pill">
+                    New
+                    <i class="fas fa-plus"></i>
+                </a>
             </div>
-            <!-- /Header -->
-            <!-- Statistics-Form -->
-            <div class="card card-warning card-outline card-body bg-dark">
+            <!-- /Create-New-Certificate -->
+        </div>
+        <!-- /Header -->
+        <!-- Statistic-Form -->
+        <div id="form-create" class="col-md-6 col-xl-4 order-2 order-md-1">
+            <!-- New-Statistic-Form -->
+            <div class="card card-warning card-outline card-body bg-dark pt-1">
+                <!-- Form-Header -->
+                <div class="card-header text-warning px-0 border-0">
+                    <h3 class="card-title">Create Statistic</h3>
+                </div>
+                <!-- /Form-Header -->
                 <form action="{{ route('store-statistic') }}" method="post">
-                    <!-- Statistics-Name-Input -->
+                    <!-- TOKEN -->
+                    @csrf
+                    <!-- /TOKEN -->
+                    <!-- Statistic-Name -->
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror"
                             placeholder="Please enter statistic name">
-                        <!-- Error-Message -->
                         @error('name')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
-                        <!-- /Error-Message -->
                     </div>
-                    <!-- /Statistics-Name-Input -->
-                    <!-- Statistics-Number-Input -->
+                    <!-- /Statistic-Name -->
+                    <!-- Statistic-Count -->
                     <div class="form-group">
                         <label for="count">Count</label>
                         <input type="number" name="count" id="count"
                             class="form-control  @error('count') is-invalid @enderror"
                             placeholder="Please enter statistic number">
-                        <!-- Error-Message -->
                         @error('count')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
-                        <!-- /Error-Message -->
                     </div>
-                    <!-- /Statistics-Number-Input -->
-                    <!-- Statistics-Icon-Input -->
+                    <!-- /Statistic-Count -->
+                    <!-- Statistic-Icon -->
                     <div class="form-group">
                         <label for="icon">Icon</label>
                         <input type="text" name="icon" id="icon" class="form-control  @error('icon') is-invalid @enderror"
                             placeholder="Please enter statistic icon">
-                        <!-- Error-Message -->
                         @error('icon')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
-                        <!-- /Error-Message -->
                     </div>
-                    <!-- /Statistics-Icon-Input -->
-                    <!-- Statistics-Developer-Select -->
+                    <!-- /Statistic-Icon -->
+                    <!-- Statistic-Developer -->
                     <div class="form-group">
                         <label for="icon">Developer</label>
                         @if ($developers)
@@ -59,19 +69,14 @@
                                     <option value="{{ $developer->id }}">{{ $developer->name }}</option>
                                 @endforeach
                             </select>
-                            <!-- Error-Message -->
                             @error('dev_id')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
-                            <!-- /Error-Message -->
                         @endif
                     </div>
-                    <!-- /Statistics-Developer-Select -->
-                    <!-- TOKEN -->
-                    <input name="_token" type="hidden" value="{{ csrf_token() }}" />
-                    <!-- /TOKEN -->
+                    <!-- /Statistic-Developer -->
                     <!-- Form-Submit-Button -->
-                    <div class="col-md-4 p-0">
+                    <div class="col-lg-3">
                         <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
                             Save
                             <i class="fas fa-save"></i>
@@ -80,50 +85,52 @@
                     <!-- /Form-Submit-Button -->
                 </form>
             </div>
-            <!-- /Statistics-Form -->
+            <!-- /New-Statistic-Form -->
         </div>
-        <!-- /New-Statistics-Form -->
+        <!-- /Statistic-Form -->
         <!-- Statistics-Section -->
         @if (count($statistics))
-            <div class="col-xl-8 p-0 pt-lg-5">
+            <div class="col-md-6 col-xl-8 order-1 order-md-2">
                 <!-- Statistics-Container -->
-                <div class="row">
+                <div class="row row-cols-1 row-cols-xl-3">
                     @foreach ($statistics as $statistic)
-                        <div class="col-md-6 col-lg-4 pt-3 pr-lg-3 text-center">
-                            <div class="card card-warning card-outline bg-dark p-0">
-                                <!-- Card-Body -->
-                                <div class="card-body">
+                        <!-- Statistic-Card -->
+                        <div class="card-deck px-2">
+                            <div class="card card-warning card-outline bg-dark">
+                                <!-- Statistic-Information -->
+                                <div class="card-body text-center">
                                     <!-- Statistics-Icon -->
-                                    <div class="text-center">
+                                    <div>
                                         <i class="fas fa-{{ $statistic->icon }} fa-10x"></i>
                                     </div>
                                     <!-- /Statistics-Icon -->
                                     <!-- Statistics-Name -->
-                                    <h5 class="text-center text-warning py-2">{{ $statistic->name }}</h5>
+                                    <h5 class="text-warning py-2">{{ $statistic->name }}</h5>
                                     <!-- /Statistics-Name -->
                                     <!-- Statistics-Count -->
-                                    <div class="text-center text-warning">
+                                    <div class="text-warning">
                                         <h1>
                                             {{ $statistic->count }}
                                         </h1>
                                     </div>
                                     <!-- /Statistics-Count -->
                                 </div>
-                                <!-- /Card-Body -->
+                                <!-- /Statistic-Information -->
                                 <!-- Statistics-Actions -->
-                                <div class="card-footer p-2 px-3">
+                                <div class="card-footer">
                                     <a href="{{ route('edit-statistic', $statistic->id) }}"
-                                        class="btn btn-success rounded-circle mx-2">
+                                        class="btn btn-success rounded-circle mr-md-2">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <a href="{{ route('delete-statistic', $statistic->id) }}"
-                                        class="btn btn-danger rounded-circle mx-2">
+                                        class="btn btn-danger rounded-circle">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
                                 <!-- /Statistics-Actions -->
                             </div>
                         </div>
+                        <!-- /Statistic-Card -->
                     @endforeach
                 </div>
                 <!-- /Statistics-Container -->
@@ -131,15 +138,13 @@
             <!-- /Statistics-Section -->
         @else
             <!-- Statistics-Alert -->
-            <div class="col-md-4 p-0">
-                <!-- Alert -->
-                <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+            <div class="col-12 order-0">
+                <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
                     <strong>Sorry! </strong>There is no statistics to show!.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <!-- /Alert -->
             </div>
             <!-- /Statistics-Alert -->
         @endif

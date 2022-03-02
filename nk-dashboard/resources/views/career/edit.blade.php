@@ -11,8 +11,8 @@ use Carbon\Carbon;
         <!-- /Header -->
         @if ($career)
             <!-- Career-Form -->
-            <div id="form-create" class="col-md-6 col-xl-4 order-2 order-md-1">
-                <!-- New-Career-Form -->
+            <div class="col-md-6 col-xl-4 order-2 order-md-1">
+                <!-- Edit-Career-Form -->
                 <div class="card card-warning card-outline card-body bg-dark pt-1">
                     <!-- Form-Header -->
                     <div class="card-header text-warning px-0 border-0">
@@ -158,14 +158,14 @@ use Carbon\Carbon;
                         <!-- Form-Submit-Button -->
                         <div class="col-lg-3">
                             <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
-                                Save
-                                <i class="fas fa-save"></i>
+                                Update
+                                <i class="fas fa-sync-alt"></i>
                             </button>
                         </div>
                         <!-- /Form-Submit-Button -->
                     </form>
                 </div>
-                <!-- /New-Certificate-Form -->
+                <!-- /Edit-Career-Form -->
             </div>
             <!-- /Career-Form -->
         @else
