@@ -1,89 +1,164 @@
-<?php
-use Carbon\Carbon;
-?>
 @extends('layouts.app')
 @section('content')
-    @if (count($developers))
-        <div class="row px-2">
-            <!-- Header -->
-            <div class="col-12 p-0 mb-1">
-                <h1>Personal Information</h1>
+    <div class="row">
+        <!-- Header -->
+        <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
+            <h1>Personal Information</h1>
+            <!-- Create-New-Information -->
+            <div class="d-md-none">
+                <a href="#form-create" class="btn btn-warning font-weight-bold rounded-pill">
+                    New
+                    <i class="fas fa-plus"></i>
+                </a>
             </div>
-            <!-- /Header -->
-            @foreach ($developers as $developer)
-                <div class="card card-warning card-outline bg-dark col-lg-8 p-0">
-                    <!-- Card-Body -->
-                    <div class="row card-body p-0 pr-md-3">
-                        <!-- Developer-Image -->
-                        <div class="col-md-3">
-                            <img class="rounded img-fluid h-100" src="{{ asset($developer->image) }}"
-                                alt="Developer Photo">
-                        </div>
-                        <!-- /Developer-Image -->
-                        <!-- About-Me-Box -->
-                        <div class="col-md-9 p-3">
-                            <!-- Developer-Name -->
-                            <div class="card-header text-warning px-0 border-0">
-                                <h3 class="card-title">{{ $developer->name }}</h3>
-                            </div>
-                            <!-- /Developer-Name -->
-                            <!-- Developer-Introduction -->
-                            <p class="card-text">{{ $developer->introduction }}</p>
-                            <!-- /Developer-Introduction -->
-                            <!-- Birth-Nationality-Experience -->
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item bg-dark">
-                                    <b>Birth Date</b>
-                                    <span class="float-right">
-                                        {{ Carbon::createFromFormat('Y-m-d H:i:s', $developer->date_of_birth)->format('d M Y') }}
-                                    </span>
-                                </li>
-                                <li class="list-group-item bg-dark">
-                                    <b>Nationality</b>
-                                    <span class="float-right">{{ $developer->nationality }}</span>
-                                </li>
-                                <li class="list-group-item bg-dark">
-                                    <b>Experience</b>
-                                    <span class="float-right">
-                                        {{ $developer->experience }} years
-                                    </span>
-                                </li>
-                            </ul>
-                            <!-- /Birth-Nationality-Experience -->
-                        </div>
-                        <!-- /About-Me-Box -->
-                    </div>
-                    <!-- /Card-Body -->
-                    <!-- Card-Footer -->
-                    <div class="card-footer">
-                        <a href="{{ route('edit-developer', $developer->id) }}"
-                            class="btn btn-success rounded-circle mr-2">
-                            <i class="fas fa-pen"></i>
-                        </a>
-                        <a href="{{ route('delete-developer', $developer->id) }}" class="btn btn-danger rounded-circle">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
-                    <!-- /Card-Footer -->
+            <!-- /Create-New-Information -->
+        </div>
+        <!-- /Header -->
+        <!-- Information-Form -->
+        <div id="form-create" class="col-md-6 col-xl-4 order-2 order-md-1">
+            <!-- New-Information-Form -->
+            <div class="card card-warning card-outline card-body bg-dark pt-1">
+                <!-- Form-Header -->
+                <div class="card-header text-warning px-0 border-0">
+                    <h3 class="card-title">Create Developer</h3>
                 </div>
-            @endforeach
+                <!-- /Form-Header -->
+                <form action="{{ route('store-developer') }}" method="post" class="row"
+                    enctype="multipart/form-data">
+                    <!-- TOKEN -->
+                    @csrf
+                    <!-- /TOKEN -->
+                    <!-- Developer-Name -->
+                    <div class="form-group col-12">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                            placeholder="Enter a name">
+                        @error('name')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Developer-Name -->
+                    <!-- Developer-Nationality -->
+                    <div class="form-group col-md-6">
+                        <label for="nationality">Nationality</label>
+                        <input type="text" class="form-control @error('nationality') is-invalid @enderror"
+                            name="nationality" id="nationality" placeholder="Enter a nationality">
+                        @error('nationality')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Developer-Nationality -->
+                    <!-- Developer-Birth-Date -->
+                    <div class="form-group col-md-6">
+                        <label for="birth-date">Birth Date</label>
+                        <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror"
+                            name="date_of_birth" id="birth-date">
+                        @error('date_of_birth')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Developer-Birth-Date -->
+                    <!-- Developer-Experience-Years -->
+                    <div class="form-group col-md-6">
+                        <label for="experience">Experience Years</label>
+                        <input type="number" class="form-control @error('experience') is-invalid @enderror"
+                            name="experience" id="experience" placeholder="Enter experience years">
+                        @error('experience')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Developer-Experience-Years -->
+                    <!-- Developer-Image -->
+                    <div class="form-group col-md-6">
+                        <label for="image" class="control-label">Photo</label>
+                        <input type="file"
+                            class="form-control-file align-self-center m-0 @error('image') is-invalid @enderror"
+                            name="image" id="image">
+                        @error('image')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Developer-Image -->
+                    <!-- Developer-Introduction -->
+                    <div class="form-group col-12">
+                        <label for="introduction">About Me</label>
+                        <textarea class="form-control @error('introduction') is-invalid @enderror" name="introduction"
+                            id="introduction" cols="30" rows="9" placeholder="Type about yourself"></textarea>
+                        @error('introduction')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Developer-Introduction -->
+                    <!-- Form-Submit-Button -->
+                    <div class="col-lg-3">
+                        <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
+                            Save
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                    <!-- /Form-Submit-Button -->
+                </form>
+            </div>
+            <!-- /New-Information-Form -->
         </div>
-    @else
-        <!-- Alert -->
-        <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
-            <strong>Sorry! </strong> There is no available information.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <!-- /Alert -->
-    @endif
-    <!-- New-Button -->
-    <div class="col-md-2 p-0">
-        <a href="{{ route('create-developer') }}" class="btn btn-block btn-warning font-weight-bold rounded-pill">
-            New
-            <i class="fas fa-plus"></i>
-        </a>
+        <!-- /Information-Form -->
+        <!-- Information-Section -->
+        @if (count($developers))
+            <div class="col-md-6 col-xl-8 order-1 order-md-2">
+                <!-- Information-Container -->
+                <div class="row row-cols-1 row-cols-xl-3">
+                    @foreach ($developers as $developer)
+                        <!-- Information-Card -->
+                        <div class="card-deck px-2">
+                            <div class="card card-warning card-outline bg-dark">
+                                <!-- Developer-Image -->
+                                <img src="{{ asset($developer->image) }}" class="card-img-top rounded"
+                                    alt="Developer Image">
+                                <!-- /Developer-Image -->
+                                <!-- Developer-Information -->
+                                <div class="card-body box-profile">
+                                    <!-- Developer-Name -->
+                                    <h5 class="card-title text-warning py-2">{{ $developer->name }}</h5>
+                                    <!-- /Developer-Name -->
+                                    <!-- Developer-Introduction -->
+                                    <p class="card-text">{{ $developer->introduction }}</p>
+                                    <!-- /Developer-Introduction -->
+                                </div>
+                                <!-- /Developer-Information -->
+                                <!-- Information-Actions -->
+                                <div class="card-footer">
+                                    <a href="{{ route('show-developer', $developer->id) }}"
+                                        class="btn btn-primary rounded-circle mr-md-2">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('edit-developer', $developer->id) }}"
+                                        class="btn btn-success rounded-circle mr-md-2">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="{{ route('delete-developer', $developer->id) }}"
+                                        class="btn btn-danger rounded-circle">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                                <!-- /Information-Actions -->
+                            </div>
+                        </div>
+                        <!-- /Information-Card -->
+                    @endforeach
+                </div>
+                <!-- /Information-Container -->
+            </div>
+        @else
+            <!-- Information-Alert -->
+            <div class="col-12 order-0">
+                <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+                    <strong>Sorry! </strong>There is no information to show!.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <!-- /Information-Alert -->
+        @endif
     </div>
-    <!-- /New-Button -->
 @endsection

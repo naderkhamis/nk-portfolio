@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="text-white">Delete Information</h3>
-    <!-- Alert -->
+    <!-- Information-Alert -->
     <div class="col-md-6 p-0">
         <div class="alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
             <strong>Sorry! </strong>There is no such as information to delete!.
@@ -11,5 +11,5 @@
             </button>
         </div>
     </div>
-    <!-- /Alert -->
+    <!-- /Information-Alert -->
 @endsection

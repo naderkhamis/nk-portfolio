@@ -19,7 +19,7 @@ use Carbon\Carbon;
                         <h3 class="card-title">Edit Certificate</h3>
                     </div>
                     <!-- /Form-Header -->
-                    <form action="{{ route('update-certificate') }}" method="post" class="text-white row"
+                    <form action="{{ route('update-certificate') }}" method="post" class="form-row"
                         enctype="multipart/form-data">
                         <!-- TOKEN -->
                         @csrf

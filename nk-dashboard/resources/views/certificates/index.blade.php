@@ -177,17 +177,18 @@ use Carbon\Carbon;
                     @endforeach
                 </div>
                 <!-- /Certificates-Container -->
-            @else
-                <!-- Certificate-Alert -->
-                <div class="col-12 order-0">
-                    <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
-                        <strong>Sorry! </strong>There is no certificates to show!.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+            </div>
+        @else
+            <!-- Certificate-Alert -->
+            <div class="col-12 order-0">
+                <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+                    <strong>Sorry! </strong>There is no certificates to show!.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <!-- /Certificate-Alert -->
+            </div>
+            <!-- /Certificate-Alert -->
         @endif
         <!-- /Certificate-Section -->
     </div>

@@ -56,10 +56,11 @@ class DeveloperController extends Controller
      * @param  \App\Models\Developer  $developer
      * @return \Illuminate\Http\Response
      */
-    // public function show(Developer $developer)
-    // {
-    //     //
-    // }
+    public function show($id)
+    {
+        $developer = Developer::find($id);
+        return view('developer.show')->with('developer', $developer);
+    }
 
     /**
      * Show the form for editing the specified resource.

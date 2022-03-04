@@ -42,7 +42,7 @@ Route::prefix('personal-information')->middleware('auth')->group(function () {
     Route::get('index', 'DeveloperController@index')->name('developer-index');
     Route::get('create', 'DeveloperController@create')->name('create-developer');
     Route::post('store', 'DeveloperController@store')->name('store-developer');
-    // Route::get('show/{id}', 'DeveloperController@show')->name('show-developer');
+    Route::get('show/{id}', 'DeveloperController@show')->name('show-developer');
     Route::get('edit/{id}', 'DeveloperController@edit')->name('edit-developer');
     Route::post('update', 'DeveloperController@update')->name('update-developer');
     Route::get('delete/{id}', 'DeveloperController@destroy')->name('delete-developer');
