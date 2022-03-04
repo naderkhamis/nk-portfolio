@@ -105,11 +105,11 @@
                                     </div>
                                     <!-- /Statistics-Icon -->
                                     <!-- Statistics-Name -->
-                                    <h5 class="text-warning py-2">{{ $statistic->name }}</h5>
+                                    <h5 class="text-warning py-2 m-0">{{ $statistic->name }}</h5>
                                     <!-- /Statistics-Name -->
                                     <!-- Statistics-Count -->
                                     <div class="text-warning">
-                                        <h1>
+                                        <h1 class="m-0">
                                             {{ $statistic->count }}
                                         </h1>
                                     </div>

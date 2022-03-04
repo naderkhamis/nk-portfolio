@@ -7,28 +7,28 @@
         </div>
         <!-- /Header -->
         @if ($process)
-            <div class="card card-warning bg-dark col-lg-8 p-0">
-                <!-- Card-Header -->
-                <div class="card-header d-flex">
-                    <!-- PROCESS-NAME -->
-                    <h3 class="card-title">{{ $process->name }}</h3>
-                    <!-- /PROCESS-NAME -->
-                </div>
-                <!-- /Card-Header -->
+            <div class="card card-warning card-outline bg-dark col-lg-6 p-0">
                 <!-- Card-Body -->
-                <div class="card-body row">
-                    <!-- PROCESS-ICON -->
-                    <div class="col-md-3 pb-3 pb-md-0">
+                <div class="row card-body p-0 pr-md-3">
+                    <!-- Process-Icon -->
+                    <div class="col-md-3 p-3 pb-md-0">
                         <div class="text-center">
                             <div>
                                 <i class="fas fa-{{ $process->icon }} fa-10x mr-2"></i>
                             </div>
                         </div>
                     </div>
-                    <!-- /PROCESS-ICON -->
-                    <!-- PROCESS-DESCRPTION -->
+                    <!-- /Process-Icon -->
+                    <!-- Process-Information -->
                     <div class="col-md-9">
+                        <!-- Developer-Name -->
+                        <div class="card-header text-warning px-0 border-0">
+                            <h3 class="card-title">{{ $process->name }}</h3>
+                        </div>
+                        <!-- /Developer-Name -->
+                        <!-- Process-Description -->
                         <p class="card-text">{{ $process->description }}</p>
+                        <!-- /Process-Description -->
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item bg-dark">
                                 <b>Developer</b>
@@ -38,7 +38,7 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- /PROCESS-DESCRPTION -->
+                    <!-- /Process-Information -->
                 </div>
                 <!-- /Card-Body -->
                 <!-- Process-Actions -->

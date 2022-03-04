@@ -92,19 +92,17 @@
                     @foreach ($processes as $process)
                         <!-- Process-Card -->
                         <div class="card-deck px-2">
-                            <div class="card card-warning bg-dark p-0">
-                                <!-- Process-Name -->
-                                <div class="card-header d-flex">
-                                    <h3 class="card-title">{{ $process->name }}</h3>
-                                </div>
-                                <!-- /Process-Name -->
+                            <div class="card card-warning card-outline bg-dark">
                                 <!-- Process-Information -->
-                                <div class="card-body">
+                                <div class="card-body text-center">
                                     <!-- Process-Icon -->
-                                    <div class="text-center">
+                                    <div>
                                         <i class="fas fa-{{ $process->icon }} fa-10x"></i>
                                     </div>
                                     <!-- /Process-Icon -->
+                                    <!-- Process-Name -->
+                                    <h5 class="text-warning pt-2 m-0">{{ $process->name }}</h5>
+                                    <!-- /Process-Name -->
                                 </div>
                                 <!-- /Process-Information -->
                                 <!-- Process-Actions -->
