@@ -104,6 +104,7 @@ use Carbon\Carbon;
                 </div>
                 <!-- /Edit-Information-Form -->
             </div>
+            <!-- /Certificate-Form -->
             <!-- Developer-Existing-Image -->
             <div class="col-md-4 col-xl-2 order-0 order-xl-1 pb-3">
                 <img src="{{ asset($developer->image) }}" class="img-fluid border border-warning rounded"

@@ -19,7 +19,8 @@ class ClientReviewController extends Controller
     {
         $clientReviews = new ClientReview();
         $clientReviews = ClientReview::get();
-        return view('clientReview.index')->with('clientReviews', $clientReviews);
+        $developers = Developer::get(['id', 'name']);
+        return view('clientReview.index', compact('clientReviews', 'developers'));
     }
 
     /**
@@ -29,8 +30,8 @@ class ClientReviewController extends Controller
      */
     public function create()
     {
-        $developers = Developer::get(['id', 'name']);
-        return view('clientReview.create')->with('developers', $developers);
+
+        return view('clientReview.index');
     }
 
     /**
@@ -58,10 +59,11 @@ class ClientReviewController extends Controller
      * @param  \App\Models\ClientReview  $clientReview
      * @return \Illuminate\Http\Response
      */
-    // public function show(ClientReview $clientReview)
-    // {
-    //     //
-    // }
+    public function show($id)
+    {
+        $clientReview = ClientReview::find($id);
+        return view('clientReview.show')->with('clientReview', $clientReview);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -104,7 +106,11 @@ class ClientReviewController extends Controller
     public function destroy($id)
     {
         $clientReview = ClientReview::find($id);
-        $clientReview->delete();
+        if ($clientReview == null) {
+            return view('clientReview.delete');
+        } else {
+            $clientReview->delete();
+        }
         return redirect('/client-review/index');
     }
 }

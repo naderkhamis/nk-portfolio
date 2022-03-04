@@ -111,7 +111,6 @@ class CareerController extends Controller
         } else {
             $career->delete();
         }
-
         return redirect('/career/index');
     }
 }

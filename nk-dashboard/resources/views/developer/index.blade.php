@@ -160,5 +160,6 @@
             </div>
             <!-- /Information-Alert -->
         @endif
+        <!-- /Information-Section -->
     </div>
 @endsection

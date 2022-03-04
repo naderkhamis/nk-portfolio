@@ -3,82 +3,168 @@ use Carbon\Carbon;
 ?>
 @extends('layouts.app')
 @section('content')
-    @if (count($clientReviews))
-        <div class="row px-2">
-            <div class="col-12 p-0 mb-1">
-                <h1>Personal Information</h1>
+    <div class="row">
+        <!-- Header -->
+        <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
+            <h1>Client Reviews</h1>
+            <!-- Create-New-Review -->
+            <div class="d-md-none">
+                <a href="#form-create" class="btn btn-warning font-weight-bold rounded-pill">
+                    New
+                    <i class="fas fa-plus"></i>
+                </a>
             </div>
-            @foreach ($clientReviews as $clientReview)
-                <div class="card card-warning bg-dark col-lg-10 p-0">
-                    <!-- Card-Header -->
-                    <div class="card-header">
-                        <h3 class="card-title">{{ $clientReview->name }}</h3>
+            <!-- /Create-New-Review -->
+        </div>
+        <!-- /Header -->
+        <!-- Client-Review-Form -->
+        <div id="form-create" class="col-md-6 col-xl-4 order-2 order-md-1">
+            <!-- New-Review-Form -->
+            <div class="card card-warning card-outline card-body bg-dark pt-1">
+                <!-- Form-Header -->
+                <div class="card-header text-warning px-0 border-0">
+                    <h3 class="card-title">Create Review</h3>
+                </div>
+                <!-- /Form-Header -->
+                <form action="{{ route('store-review') }}" method="post" class="form-row"
+                    enctype="multipart/form-data">
+                    <!-- TOKEN -->
+                    @csrf
+                    <!-- /TOKEN -->
+                    <!-- Client-Name -->
+                    <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                            placeholder="Please enter client's name">
+                        @error('name')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <!-- /Card-Header -->
-                    <!-- Card-Body -->
-                    <div class="row justify-content-around card-body">
-                        <!-- Image -->
-                        <div class="col-md-3 p-2">
-                            <div class="text-center">
-                                <img class="dev-img rounded img-fluid" src="{{ asset($clientReview->image) }}"
-                                    alt="Developer Photo">
+                    <!-- /Client-Name -->
+                    <!-- Client-Image -->
+                    <div class="form-group col-md-6">
+                        <label for="image" class="control-label">Photo</label>
+                        <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
+                            id="image">
+                        @error('image')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Client-Image -->
+                    <!-- Company-Name -->
+                    <div class="form-group col-md-6">
+                        <label for="company">Company</label>
+                        <input type="text" class="form-control @error('company') is-invalid @enderror" name="company"
+                            id="company" placeholder="Please enter company's name">
+                        @error('company')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Company-Name -->
+                    <!-- Review-Date -->
+                    <div class="form-group col-md-6">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date">
+                        @error('date')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Review-Date -->
+                    <!-- Developer-Name -->
+                    <div class="form-group col-12">
+                        <label for="developer">Developer</label>
+                        <select name="dev_id" id="developer" class="custom-select @error('dev_id') is-invalid @enderror">
+                            <option selected disabled>Select a developer</option>
+                            @foreach ($developers as $developer)
+                                <option value="{{ $developer->id }}">{{ $developer->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('dev_id')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Developer-Name -->
+                    <!-- Review -->
+                    <div class="form-group col-12">
+                        <label for="review">Reveiw</label>
+                        <textarea class="form-control @error('review') is-invalid @enderror" name="review" id="reveiw"
+                            cols="30" rows="9" placeholder="Please enter client's review"></textarea>
+                        @error('review')
+                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- /Review -->
+                    <!-- Form-Submit-Button -->
+                    <div class="col-lg-3">
+                        <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
+                            Save
+                            <i class="fas fa-save"></i>
+                        </button>
+                    </div>
+                    <!-- /Form-Submit-Button -->
+                </form>
+            </div>
+            <!-- /New-Review-Form -->
+        </div>
+        <!-- /Client-Review-Form -->
+        <!-- Reviews-Section -->
+        @if (count($clientReviews))
+            <div class="col-md-6 col-xl-8 order-1 order-md-2">
+                <!-- Reviews-Container -->
+                <div class="row row-cols-1 row-cols-xl-3">
+                    @foreach ($clientReviews as $clientReview)
+                        <!-- Review-Card -->
+                        <div class="card-deck px-2">
+                            <div class="card card-warning card-outline bg-dark">
+                                <!-- Client-Company-Image -->
+                                <img src="{{ asset($clientReview->image) }}" class="card-img-top rounded"
+                                    alt="Client-Company Image">
+                                <!-- /Client-Company-Image -->
+                                <!-- Review-Information -->
+                                <div class="card-body box-profile">
+                                    <!-- Client-Name -->
+                                    <h5 class="card-title text-warning py-2">{{ $clientReview->name }}</h5>
+                                    <!-- /Client-Name -->
+                                    <!-- Client-Review -->
+                                    <p class="card-text">{{ $clientReview->review }}</p>
+                                    <!-- /Client-Review -->
+                                </div>
+                                <!-- /Review-Information -->
+                                <!-- Review-Actions -->
+                                <div class="card-footer">
+                                    <a href="{{ route('show-review', $clientReview->id) }}"
+                                        class="btn btn-primary rounded-circle mr-md-2">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('edit-review', $clientReview->id) }}"
+                                        class="btn btn-success rounded-circle mr-md-2">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="{{ route('delete-review', $clientReview->id) }}"
+                                        class="btn btn-danger rounded-circle">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                                <!-- /Review-Actions -->
                             </div>
                         </div>
-                        <!-- /Image -->
-                        <!-- About Me Box -->
-                        <div class="col-md-8 p-2">
-                            <p class="card-text">{{ $clientReview->review }}</p>
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item bg-dark">
-                                    <b>Company</b>
-                                    <span class="float-right">
-                                        {{ $clientReview->company }}
-                                    </span>
-                                </li>
-                                <li class="list-group-item bg-dark">
-                                    <b>Developer</b>
-                                    <span class="float-right">
-                                        {{ $clientReview->developer->name }}
-                                    </span>
-                                </li>
-                                <li class="list-group-item bg-dark">
-                                    <strong class="badge badge-warning p-2 font-italic">
-                                        {{ Carbon::createFromFormat('Y-m-d H:i:s', $clientReview->date)->format('d M Y') }}
-                                    </strong>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /About Me Box -->
-                        <!-- Card-Footer -->
-                        <div class="col-md-1 d-flex flex-md-column justify-content-around align-items-md-center p-2">
-                            <a href="{{ route('edit-review', $clientReview->id) }}"
-                                class="btn btn-success rounded-circle">
-                                <i class="fas fa-pen"></i>
-                            </a>
-                            <a href="{{ route('delete-review', $clientReview->id) }}"
-                                class="btn btn-danger rounded-circle">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </div>
-                        <!-- /Card-Footer -->
-                    </div>
-                    <!-- /Card-Body -->
-
+                        <!-- /Review-Card -->
+                    @endforeach
                 </div>
-            @endforeach
-        </div>
-    @else
-        <div class="alert alert-danger alert-dismissible fade show col-md-6" role="alert">
-            <strong>Sorry! </strong> There is no available reviews.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    <div class="col-md-1 p-0">
-        <a href="{{ route('create-review') }}" class="btn btn-block btn-warning font-weight-bold rounded-pill">
-            New
-            <i class="fas fa-plus"></i>
-        </a>
+                <!-- /Reviews-Container -->
+            </div>
+        @else
+            <!-- Review-Alert -->
+            <div class="col-12 order-0">
+                <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+                    <strong>Sorry! </strong> There is no available reviews.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <!-- /Review-Alert -->
+        @endif
+        <!-- /Reviews-Section -->
     </div>
 @endsection
