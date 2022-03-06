@@ -32,7 +32,7 @@ use Carbon\Carbon;
                     @csrf
                     <!-- /TOKEN -->
                     <!-- Job-Title -->
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-12">
                         <label for="title">Job Title</label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
                             placeholder="Enter job title">
@@ -52,14 +52,14 @@ use Carbon\Carbon;
                     </div>
                     <!-- /Career-Company -->
                     <!-- Company-Logo -->
-                    {{-- <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6">
                         <label for="image" class="control-label">Company Logo</label>
                         <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
                             id="image">
                         @error('image')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
-                    </div> --}}
+                    </div>
                     <!-- /Company-Logo -->
                     <!-- Career-From-Date -->
                     <div class="form-group col-lg-6">
@@ -144,48 +144,47 @@ use Carbon\Carbon;
                     @foreach ($career as $career)
                         <!-- Career-Card -->
                         <div class="card-deck px-2">
-                            <div class="card card-warning bg-dark">
-                                <!-- Job-Title -->
-                                <div class="card-header h6">
-                                    {{ $career->title }}
-                                </div>
-                                <!-- /Job-Title -->
-                                <div class="card-body">
-                                    <!-- Career-Company -->
-                                    <h5 class="card-title text-warning pb-2">{{ $career->company }}</h5>
-                                    <!-- /Career-Company -->
+                            <div class="card card-warning card-outline bg-dark pb-2">
+                                <!-- Company-Image -->
+                                <img src="{{ asset($career->image) }}" class="card-img-top rounded" alt="Company-Image">
+                                <!-- /Company-Image -->
+                                <div class="card-body box-profile">
+                                    <!-- Job-Title -->
+                                    <h5 class="card-title text-warning py-2">{{ $career->title }}</h5>
+                                    <!-- /Job-Title -->
                                     <!-- Career-Description -->
-                                    <p class="card-text mb-3">{{ $career->description }}</p>
+                                    <p class="card-text">{{ $career->description }}</p>
                                     <!-- /Career-Description -->
+                                    <!-- Career-Company -->
+                                    <strong class="badge badge-warning p-2 mb-2 font-italic">
+                                        {{ $career->company }}
+                                    </strong>
+                                    <!-- /Career-Company -->
                                     <!-- Career-From-Date -->
-                                    <div>
-                                        <strong class="badge badge-warning p-2 mb-2 font-italic">
-                                            From:
-                                            {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('d M Y') }}
-                                        </strong>
-                                    </div>
+                                    <strong class="badge badge-warning p-2 mb-2 font-italic">
+                                        From:
+                                        {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('d M Y') }}
+                                    </strong>
                                     <!-- /Career-From-Date -->
                                     <!-- Career-To-Date -->
-                                    <div>
-                                        <strong class="badge badge-warning p-2 font-italic">
-                                            @if ($career->status === 0)
-                                                To:
-                                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('d M Y') }}
-                                            @else
-                                                Till now
-                                            @endif
-                                        </strong>
-                                    </div>
+                                    <strong class="badge badge-warning p-2 font-italic">
+                                        @if ($career->status === 0)
+                                            To:
+                                            {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('d M Y') }}
+                                        @else
+                                            Till now
+                                        @endif
+                                    </strong>
                                     <!-- Career-To-Date -->
                                 </div>
                                 <!-- Career-Actions -->
                                 <div class="card-footer border-top border-warning d-flex justify-content-start">
                                     <a href="{{ route('show-career', $career->id) }}"
-                                        class="btn btn-primary rounded-circle mr-2">
+                                        class="btn btn-primary rounded-circle mr-md-2">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('edit-career', $career->id) }}"
-                                        class="btn btn-success rounded-circle mr-2">
+                                        class="btn btn-success rounded-circle mr-md-2">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <a href="{{ route('delete-career', $career->id) }}"

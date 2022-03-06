@@ -125,7 +125,7 @@ use Carbon\Carbon;
                     @foreach ($certificates as $certificate)
                         <!-- Certificate-Card -->
                         <div class="card-deck px-2">
-                            <div class="card card-warning card-outline bg-dark">
+                            <div class="card card-warning card-outline bg-dark pb-2">
                                 <!-- Certificate-Image -->
                                 <img src="{{ asset($certificate->image) }}" class="card-img-top rounded"
                                     alt="Project-Image">

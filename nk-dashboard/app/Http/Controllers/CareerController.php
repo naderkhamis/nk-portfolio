@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 // use App\Models\Developer;
 use App\Http\Requests\CareerRequest;
+use App\Http\Traits\UploadFileTrait;
 
 class CareerController extends Controller
 {
+    use UploadFileTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -43,6 +46,7 @@ class CareerController extends Controller
         // $career->dev_id = $request->dev_id;
         $career->title = $request->title;
         $career->company = $request->company;
+        $career->image = $this->upload($request, $career->image);
         $career->from_date = $request->from;
         $career->to_date = $request->to;
         $career->status = $request->status;
@@ -89,6 +93,7 @@ class CareerController extends Controller
         // $career->dev_id = $request->dev_id;
         $career->title = $request->title;
         $career->company = $request->company;
+        $career->image = $this->upload($request, $career->image);
         $career->from_date = $request->from;
         $career->to_date = $request->to;
         $career->status = $request->status;

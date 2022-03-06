@@ -11,7 +11,7 @@ use Carbon\Carbon;
         <!-- /Header -->
         @if ($certificate)
             <!-- Certificate-Card -->
-            <div class="card card-warning card-outline bg-dark col-lg-8 p-0">
+            <div class="card card-warning card-outline bg-dark col-lg-6 p-0">
                 <!-- Card-Body -->
                 <div class="row card-body p-0 pr-md-3">
                     <!-- Certificate-Image -->
