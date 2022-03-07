@@ -1,16 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row p-0 px-md-2">
+    <div class="row">
         <!-- Header -->
-        <div class="col-12 p-0 mb-1">
+        <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
             <h1>Skills</h1>
         </div>
         <!-- /Header -->
         @if (count($categories))
-
             <!-- Categories-Section -->
-            <div class="col-lg-4 p-0 mb-4">
+            <div class="col-lg-3 p-0 mb-4">
                 <!-- Categories-Container -->
                 <div class="card card-warning card-outline bg-dark p-0">
                     <!-- Card-Header -->
@@ -96,9 +95,8 @@
             <!-- /Categories-Section -->
 
             @if (count($skills))
-
                 <!-- Skills-Section -->
-                <div class="col-lg-5 p-0 mx-lg-4">
+                <div class="col-lg-3 p-0 mx-lg-4">
                     <!-- Skills-Container -->
                     <div class="card card-warning card-outline bg-dark p-0">
                         <!-- Card-Header -->
@@ -113,7 +111,7 @@
                                     <tr class="bg-warning">
                                         <th style="width: 10px">#</th>
                                         <th>Skill</th>
-                                        <th>Cat.Id</th>
+                                        <th>Category</th>
                                         <th>Rate</th>
                                         <th>Actions</th>
                                     </tr>
@@ -121,7 +119,7 @@
                                 <tbody>
                                     @foreach ($skills as $skill)
                                         <tr>
-                                            <td>{{ $skill->id }}</td>
+                                            <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $skill->name }}</td>
                                             <td>{{ $skill->category->name }}</td>
                                             <td>{{ $skill->performance }} %</td>
@@ -233,9 +231,7 @@
                     <!-- /New-Skill-Form -->
                 </div>
                 <!-- /Skills-Section -->
-
             @else
-
                 <!-- Skills-Alert -->
                 <div class="col-md-6 p-0 mx-md-4">
                     <!-- Alert -->
@@ -337,11 +333,8 @@
                     <!-- /New-Skill-Form -->
                 </div>
                 <!-- /Skills-Alert -->
-
             @endif
-
         @else
-
             <!-- Categories-Alert -->
             <div class="col-md-6 p-0">
                 <!-- Alert -->
