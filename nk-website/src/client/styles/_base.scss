@@ -2,7 +2,7 @@
 body {
     box-sizing: border-box;
     font-family: $font-family;
-    background-color: $primary-color;
+    background-color: $secondary-color;
     // Btn
     .btn {
         box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
@@ -13,13 +13,35 @@ body {
         -o-border-radius: 50rem;
     }
     .primary-btn {
-        color: $primary-color;
-        background-color: $secondary-color;
-    }
-    .secondary-btn {
         color: $secondary-color;
         background-color: $primary-color;
-        border: 5px solid $secondary-color;
+    }
+    .secondary-btn {
+        color: $primary-color;
+        background-color: $secondary-color;
+        border: 5px solid $primary-color;
     }
     // /Btn
+    // Icon
+    .primary-icon {
+        color: $primary-color;
+    }
+    .secondary-icon {
+        color: $secondary-color;
+    }
+    .third-icon {
+        color: $third-color;
+    }
+    .custom-icon {
+        width: 3em;
+        height: 3em;
+        line-height: 3em;
+        background-color: $primary-color;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    }
+    // /Icon
 }
