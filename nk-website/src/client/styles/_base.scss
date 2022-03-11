@@ -30,6 +30,16 @@ body {
         }
     }
     // /Navbar
+    // Section
+    .primary-section {
+        background-color: $primary-color;
+        border-radius: 50px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        -ms-border-radius: 50px;
+        -o-border-radius: 50px;
+    }
+    // /Section-Background
     // Headings
     h1:not(first-of-type) {
         opacity: 0.25;
