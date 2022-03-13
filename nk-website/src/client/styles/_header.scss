@@ -1,0 +1,55 @@
+header {
+    .navbar {
+        .navbar-brand {
+            #header-logo {
+                width: 2.7em;
+                height: auto;
+            }
+            strong {
+                line-height: 2.5em;
+                span {
+                    color: $primary-color;
+                }
+            }
+        }
+        .navbar-toggler {
+            padding: 0;
+            line-height: 1.5em;
+            border: none;
+            .navbar-toggler-icon {
+                background-image: none;
+                color: $primary-color;
+                &::before {
+                    font-family: "Font Awesome 5 Free";
+                    font-size: 1.5em;
+                    font-weight: 900;
+                    content: "\f0c9";
+                }
+            }
+        }
+        .navbar-collapse {
+            .navbar-nav {
+                background-color: $primary-color;
+                border-radius: 10px 0 10px 10px;
+                align-items: center;
+                -webkit-border-radius: 10px 0 10px 10px;
+                -moz-border-radius: 10px 0 10px 10px;
+                -ms-border-radius: 10px 0 10px 10px;
+                -o-border-radius: 10px 0 10px 10px;
+                .nav-link {
+                    color: $secondary-color;
+                    margin-left: 0em;
+                    transition: all 0.3s ease-in-out;
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -ms-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
+                    &:hover {
+                        color: $secondary-color;
+                        margin-left: 1.5em;
+                    }
+                }
+            }
+        }
+    }
+}

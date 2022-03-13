@@ -17,22 +17,25 @@ module.exports = {
                 loader: "babel-loader"
             },
             {
+                test: /\.ejs$/,
+                loader: 'ejs-loader',
+                options: {
+                    esModule: false
+                }
+            },
+            {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            {
                 test: /\.(png|jpe?g|gif)$/i,
-                use: [{ loader: 'file-loader' }]
+                type: 'asset/resource',
             }
         ]
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./src/client/views/index.html",
+            template: "./src/client/views/index.ejs",
             filename: "./index.html",
         }),
         new MiniCssExtractPlugin({ filename: "main.css" }),
