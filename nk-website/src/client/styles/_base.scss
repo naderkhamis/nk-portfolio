@@ -4,33 +4,6 @@ body {
     font-family: $font-family;
     color: $third-color;
     background-color: $secondary-color;
-    // Navbar
-    .navbar {
-        .navbar-collapse {
-            .navbar-nav {
-                .nav-link {
-                    color: $third-color;
-                    &:hover {
-                        color: $primary-color;
-                    }
-                    &:active {
-                        color: $primary-color;
-                        &:after {
-                            content: '';
-                            position: absolute;
-                            left: 0;
-                            bottom: 0;
-                            width: 60%;
-                            height: 3px;
-                            background-color: $primary-color;
-                            margin-top: 0.5em;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    // /Navbar
     // Section
     .primary-section {
         background-color: $primary-color;
@@ -42,7 +15,7 @@ body {
     }
     // /Section-Background
     // Headings
-    h1:not(first-of-type) {
+    h1:not(:first-of-type) {
         opacity: 0.25;
     }
     .primary-header {
@@ -54,24 +27,42 @@ body {
     // /Headings
     // Btn
     .btn {
+        text-transform: uppercase;
         box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
         border-radius: 50rem;
         -webkit-border-radius: 50rem;
         -moz-border-radius: 50rem;
         -ms-border-radius: 50rem;
         -o-border-radius: 50rem;
+        transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
     }
     .primary-btn {
         color: $secondary-color;
         background-color: $primary-color;
+        &:hover {
+            opacity: 0.8;
+        }
     }
     .secondary-btn {
         color: $primary-color;
         background-color: $secondary-color;
-        border: 5px solid $primary-color;
+        border: 2px solid $primary-color;
+        &:hover {
+            color: $third-color;
+        }
     }
     // /Btn
     // Icon
+    i {
+        font-size: 1.5em;
+    }
+    i:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
     .primary-icon {
         color: $primary-color;
     }
@@ -82,9 +73,9 @@ body {
         color: $third-color;
     }
     .custom-icon {
-        width: 3em;
-        height: 3em;
-        line-height: 3em;
+        width: 1em;
+        height: 1em;
+        line-height: 1em;
         background-color: $primary-color;
         border-radius: 50%;
         -webkit-border-radius: 50%;
@@ -122,3 +113,34 @@ body {
     }
     // /Carousel
 }
+
+// Media-Query
+@mixin breakpoint($size) {
+    @if $size==mobile {
+        @media (max-width: 599px) {
+            @content;
+        }
+    }
+    @else if $size==tablet-portrait-up {
+        @media (min-width: 600px) {
+            @content;
+        }
+    }
+    @else if $size==tablet-landscape-up {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+    @else if $size==laptop-desktop {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+    @else if $size==extra-large-devices {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+}
+
+// /Media-Query

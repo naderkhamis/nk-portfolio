@@ -1,12 +1,14 @@
 header {
     .navbar {
+        background-color: $secondary-color;
         .navbar-brand {
             #header-logo {
-                width: 2.7em;
+                width: 4em;
                 height: auto;
             }
             strong {
-                line-height: 2.5em;
+                font-size: 1em;
+                line-height: 4em;
                 span {
                     color: $primary-color;
                 }
@@ -14,39 +16,75 @@ header {
         }
         .navbar-toggler {
             padding: 0;
-            line-height: 1.5em;
             border: none;
-            .navbar-toggler-icon {
-                background-image: none;
-                color: $primary-color;
-                &::before {
-                    font-family: "Font Awesome 5 Free";
-                    font-size: 1.5em;
-                    font-weight: 900;
-                    content: "\f0c9";
-                }
-            }
+            color: $primary-color;
         }
         .navbar-collapse {
             .navbar-nav {
+                .nav-item {
+                    position: relative;
+                    overflow: hidden;
+                    .nav-link {
+                        color: $third-color;
+                        transition: all 0.3s ease-in-out;
+                        -webkit-transition: all 0.3s ease-in-out;
+                        -moz-transition: all 0.3s ease-in-out;
+                        -ms-transition: all 0.3s ease-in-out;
+                        -o-transition: all 0.3s ease-in-out;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 50%;
+                            height: 3px;
+                            background-color: $primary-color;
+                            border-radius: 3px;
+                            -webkit-border-radius: 3px;
+                            -moz-border-radius: 3px;
+                            -ms-border-radius: 3px;
+                            -o-border-radius: 3px;
+                            bottom: 0;
+                            left: -100%;
+                            transition: all 0.3s ease-in-out;
+                            -webkit-transition: all 0.3s ease-in-out;
+                            -moz-transition: all 0.3s ease-in-out;
+                            -ms-transition: all 0.3s ease-in-out;
+                            -o-transition: all 0.3s ease-in-out;
+                        }
+                        &:hover,
+                        &:active {
+                            color: $primary-color;
+                            &::before {
+                                left: 15%;
+                            }
+                        }
+                    }
+                }
+            }
+            @include breakpoint(mobile) {
                 background-color: $primary-color;
                 border-radius: 10px 0 10px 10px;
-                align-items: center;
                 -webkit-border-radius: 10px 0 10px 10px;
                 -moz-border-radius: 10px 0 10px 10px;
                 -ms-border-radius: 10px 0 10px 10px;
                 -o-border-radius: 10px 0 10px 10px;
-                .nav-link {
-                    color: $secondary-color;
-                    margin-left: 0em;
-                    transition: all 0.3s ease-in-out;
-                    -webkit-transition: all 0.3s ease-in-out;
-                    -moz-transition: all 0.3s ease-in-out;
-                    -ms-transition: all 0.3s ease-in-out;
-                    -o-transition: all 0.3s ease-in-out;
-                    &:hover {
-                        color: $secondary-color;
-                        margin-left: 1.5em;
+                text-align: center;
+                .navbar-nav {
+                    .nav-item {
+                        .nav-link {
+                            color: $secondary-color;
+                            font-weight: 600;
+                            &::before {
+                                width: 100%;
+                                background-color: $secondary-color;
+                            }
+                            &:hover,
+                            &:active {
+                                color: $secondary-color;
+                                &::before {
+                                    left: 0;
+                                }
+                            }
+                        }
                     }
                 }
             }
