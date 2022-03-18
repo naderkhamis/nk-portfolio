@@ -1,14 +1,13 @@
 header {
     .navbar {
-        background-color: $secondary-color;
         .navbar-brand {
             #header-logo {
-                width: 4em;
+                width: 2.5em;
                 height: auto;
             }
             strong {
                 font-size: 1em;
-                line-height: 4em;
+                line-height: 2.5em;
                 span {
                     color: $primary-color;
                 }
@@ -18,6 +17,15 @@ header {
             padding: 0;
             border: none;
             color: $primary-color;
+            .navbar-toggler-icon {
+                background: none;
+                &::before {
+                    content: '\f0c9';
+                    font-family: 'Font Awesome 5 Free';
+                    font-size: 1.3em;
+                    font-weight: 900;
+                }
+            }
         }
         .navbar-collapse {
             .navbar-nav {
