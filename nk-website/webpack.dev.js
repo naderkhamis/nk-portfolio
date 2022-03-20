@@ -24,6 +24,10 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
+                test: /\.min.css$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
                 test: /\.(png|jpe?g|gif|svg)$/i,
                 type: 'asset/resource',
             }

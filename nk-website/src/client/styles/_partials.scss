@@ -1,3 +1,4 @@
+// Landing-Section
 #landing {
     height: calc(100vh - 76px);
     position: relative;
@@ -25,6 +26,9 @@
         position: absolute;
         bottom: 0;
         z-index: 0;
+        .landing-image {
+            padding-bottom: 1px;
+        }
     }
     .landing-border {
         position: absolute;
@@ -32,3 +36,103 @@
         z-index: 1;
     }
 }
+
+// /Landing-Section
+// About-Section
+#about {
+    padding: $section-padding;
+    .about-img-contianer {
+        position: relative;
+        .about-image-bg {
+            width: 12em;
+            height: 17em;
+            position: relative;
+            background-color: $primary-color;
+            border: 5px solid $third-color;
+            border-radius: 50px 50px 200px 200px;
+            -webkit-border-radius: 50px 50px 200px 200px;
+            -moz-border-radius: 50px 50px 200px 200px;
+            -ms-border-radius: 50px 50px 200px 200px;
+            -o-border-radius: 50px 50px 200px 200px;
+            &::before {
+                content: "";
+                position: absolute;
+                left: -20px;
+                top: 5px;
+                width: 7px;
+                height: 40px;
+                background-image: linear-gradient(to bottom, #ffc107, #222831);
+                border-radius: 50px;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                -ms-border-radius: 50px;
+                -o-border-radius: 50px;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                left: 195px;
+                top: 100px;
+                width: 7px;
+                height: 40px;
+                background-image: linear-gradient(to bottom, #ffc107, #222831);
+                border-radius: 50px;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                -ms-border-radius: 50px;
+                -o-border-radius: 50px;
+            }
+            #about-image {
+                position: absolute;
+                width: 11.4em;
+                bottom: 0;
+            }
+            .about-effect {
+                position: absolute;
+                left: -20px;
+                top: 170px;
+                z-index: 1000;
+                width: 7px;
+                height: 40px;
+                background-image: linear-gradient(to bottom, #ffc107, #222831);
+                border-radius: 50px;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                -ms-border-radius: 50px;
+                -o-border-radius: 50px;
+            }
+        }
+        .about-react {
+            position: absolute;
+            right: 25px;
+            bottom: 50px;
+            width: 8em;
+            height: 3em;
+            background-color: rgba(238, 238, 238, 0.3);
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            -ms-border-radius: 50px;
+            -o-border-radius: 50px;
+        }
+    }
+    .swiper-slide {
+        p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+        .timeline {
+            box-shadow: 0px 0px 5px 2px rgba(255, 193, 7, 1);
+        }
+        .card {
+            border-radius: 30px;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            -ms-border-radius: 30px;
+            -o-border-radius: 30px;
+        }
+    }
+}
+
+// /About-Section
