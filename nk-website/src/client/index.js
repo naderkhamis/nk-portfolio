@@ -9,6 +9,7 @@ import wow from "../client/media/wow.png"
 import skills from "../client/media/skills.png"
 import adobe_xd from "../client/media/adobe-xd.png"
 import adobe_ill from "../client/media/adobe-ill.png"
+import hire_image from "../client/media/hire-me-bg.png"
 let favIcon = document.getElementById('fav-icon'),
     headerLogo = document.getElementById('header-logo'),
     landingImage = document.getElementById('nader-image'),
@@ -19,8 +20,8 @@ let favIcon = document.getElementById('fav-icon'),
     wowImage = document.getElementById('react-wow'),
     skillsImage = document.getElementById('skills-image'),
     adobeXdImage = document.getElementById('adobe-xd'),
-    adobeIllImage = document.getElementById('adobe-ill');
-
+    adobeIllImage = document.getElementById('adobe-ill'),
+    hireMeSection = document.getElementById('hire-me');
 // Use-Photos
 favIcon.href = headerLogo.src = header_logo;
 landingImage.src = landing_image;
@@ -32,6 +33,7 @@ wowImage.src = wow;
 skillsImage.src = skills;
 adobeXdImage.src = adobe_xd;
 adobeIllImage.src = adobe_ill;
+hireMeSection.style.backgroundImage = `url(${hire_image})`;
 
 // Progress-Bars
 $(document).ready(function() {
