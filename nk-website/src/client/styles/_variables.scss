@@ -7,6 +7,11 @@ $secondary-color :#222831;
 $third-color:#eeeeee;
 $info-color:#6e6e6e;
 // /Color-Variables
+// Border-Radius
+$primary-border: 5px solid $primary-color;
+$secondary-border: 5px solid $secondary-color;
+$border-radius: 50px;
+// /Border-Radius
 // Font-Variables
 $font-family: 'Roboto',
 sans-serif;

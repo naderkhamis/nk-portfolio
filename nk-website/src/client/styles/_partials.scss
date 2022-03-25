@@ -310,3 +310,57 @@
 }
 
 // /Hire-Me-Section
+// Services-Section
+#services {
+    position: relative;
+    .section-header {
+        font-size: 4.2em;
+    }
+    .services-container {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 0 20px;
+        .service {
+            margin-bottom: 20px;
+            border-radius: $border-radius;
+            -webkit-border-radius: $border-radius;
+            -moz-border-radius: $border-radius;
+            -ms-border-radius: $border-radius;
+            -o-border-radius: $border-radius;
+            overflow: hidden;
+            .service-content {
+                // border-radius: $border-radius;
+                // -webkit-border-radius: $border-radius;
+                // -moz-border-radius: $border-radius;
+                // -ms-border-radius: $border-radius;
+                // -o-border-radius: $border-radius;
+                .service-img {
+                    position: absolute;
+                    left: 0;
+                    height: 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                .blur-effect {
+                    background-color: rgba(43, 42, 42, 0.2);
+                }
+                i {
+                    padding: 20px 15px 15px;
+                    font-size: 3em;
+                }
+                h2 {
+                    padding: 0px 15px;
+                    color: $primary-color;
+                }
+                p {
+                    padding: 0px 15px;
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+}
+
+// /Services-Section

@@ -10,6 +10,9 @@ import skills from "../client/media/skills.png"
 import adobe_xd from "../client/media/adobe-xd.png"
 import adobe_ill from "../client/media/adobe-ill.png"
 import hire_image from "../client/media/hire-me-bg.png"
+import ui_design from "../client/media/ui-design.jpg"
+import web_design from "../client/media/web-design.jpg"
+let servicesImagesUrl = [ui_design, web_design];
 let favIcon = document.getElementById('fav-icon'),
     headerLogo = document.getElementById('header-logo'),
     landingImage = document.getElementById('nader-image'),
@@ -21,7 +24,8 @@ let favIcon = document.getElementById('fav-icon'),
     skillsImage = document.getElementById('skills-image'),
     adobeXdImage = document.getElementById('adobe-xd'),
     adobeIllImage = document.getElementById('adobe-ill'),
-    hireMeSection = document.getElementById('hire-me');
+    hireMeSection = document.getElementById('hire-me'),
+    servicesImages = document.getElementsByClassName('service-img');
 // Use-Photos
 favIcon.href = headerLogo.src = header_logo;
 landingImage.src = landing_image;
@@ -34,6 +38,10 @@ skillsImage.src = skills;
 adobeXdImage.src = adobe_xd;
 adobeIllImage.src = adobe_ill;
 hireMeSection.style.backgroundImage = `url(${hire_image})`;
+
+for (let i = 0; i < servicesImages.length; i++) {
+    servicesImages[i].style.backgroundImage = `url(${servicesImagesUrl[i]})`;
+}
 
 // Progress-Bars
 $(document).ready(function() {

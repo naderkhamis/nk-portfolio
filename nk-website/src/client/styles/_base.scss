@@ -161,6 +161,22 @@ body {
         }
     }
     // /Carousel
+    // Effects
+    .blur-effect {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(238, 238, 238, 0.3);
+        backdrop-filter: blur(5px);
+        border-radius: $border-radius;
+        -webkit-border-radius: $border-radius;
+        -moz-border-radius: $border-radius;
+        -ms-border-radius: $border-radius;
+        -o-border-radius: $border-radius;
+    }
+    // /Effects
 }
 
 // Media-Query
