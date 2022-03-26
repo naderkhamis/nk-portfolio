@@ -40,9 +40,13 @@
 // /Landing-Section
 // About-Section
 #about {
-    padding: $section-padding;
+    .section-header {
+        position: static;
+    }
     .about-img-contianer {
         position: relative;
+        bottom: -50px;
+        padding-bottom: 50px;
         .about-img-bg {
             width: 12em;
             height: 17em;
@@ -105,7 +109,7 @@
         .about-react {
             position: absolute;
             right: 25px;
-            bottom: 50px;
+            bottom: 90px;
             width: 8em;
             height: 3em;
             background-color: rgba(238, 238, 238, 0.3);
@@ -138,16 +142,16 @@
 // /About-Section
 // Skills-Section
 #skills {
+    .primary-section {
+        padding-top: 10px;
+        .section-header {
+            top: 40px;
+        }
+    }
     #tech-skills {
         .skills-img-container {
-            position: relative;
             .skills-img-bg {
-                height: 12em;
-                position: relative;
-                #skills-image {
-                    position: absolute;
-                    bottom: 0;
-                }
+                padding-bottom: 10px;
             }
         }
         .swiper-slide {
@@ -196,8 +200,6 @@
             font-size: 4em;
         }
         .progress-container {
-            position: relative;
-            bottom: 50px;
             .progress-circle {
                 .progress {
                     width: 150px;
@@ -286,13 +288,9 @@
                     }
                 }
             }
-            .progress-circle:not(:last-child) {
+            .progress-circle {
                 padding-bottom: 20px;
             }
-        }
-        #btn-pos {
-            position: relative;
-            bottom: 30px;
         }
     }
 }
@@ -300,6 +298,9 @@
 // /Skills-Section
 // Hire-Me-Section
 #hire {
+    .primary-section {
+        padding-top: 30px;
+    }
     #hire-me {
         background-size: cover;
         p {
@@ -312,17 +313,11 @@
 // /Hire-Me-Section
 // Services-Section
 #services {
-    position: relative;
     .section-header {
         font-size: 4.2em;
     }
     .services-container {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        padding: 0 20px;
         .service {
-            margin-bottom: 20px;
             border-radius: $border-radius;
             -webkit-border-radius: $border-radius;
             -moz-border-radius: $border-radius;
@@ -330,11 +325,6 @@
             -o-border-radius: $border-radius;
             overflow: hidden;
             .service-content {
-                // border-radius: $border-radius;
-                // -webkit-border-radius: $border-radius;
-                // -moz-border-radius: $border-radius;
-                // -ms-border-radius: $border-radius;
-                // -o-border-radius: $border-radius;
                 .service-img {
                     position: absolute;
                     left: 0;
@@ -359,6 +349,9 @@
                     font-size: 1.2em;
                 }
             }
+        }
+        .service:not(:last-child) {
+            margin-bottom: 20px;
         }
     }
 }
