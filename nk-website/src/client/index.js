@@ -1,3 +1,7 @@
+// Import-Library
+import mixitup from 'mixitup';
+// /Import-Library
+
 // Import-Photos
 import header_logo from "../client/media/headerlogo.png"
 import landing_image from "../client/media/nader-khamis.png"
@@ -12,7 +16,19 @@ import adobe_ill from "../client/media/adobe-ill.png"
 import hire_image from "../client/media/hire-me-bg.png"
 import ui_design from "../client/media/ui-design.jpg"
 import web_design from "../client/media/web-design.jpg"
+import traveler from "../client/media/traveler.jpeg"
+import hostingo from "../client/media/hostingo.jpeg"
+import aroma_clinic from "../client/media/aroma-clinic.jpeg"
+// /Import-Photos
+
+// Images-Paths
 let servicesImagesUrl = [ui_design, web_design];
+let webProjectsImagesUrl = [traveler, hostingo, aroma_clinic];
+let uiProjectsImagesUrl = [traveler, hostingo, aroma_clinic];
+let logoProjectsImagesUrl = [traveler, hostingo, aroma_clinic];
+// /Images-Paths
+
+// Dom-Manipulation
 let favIcon = document.getElementById('fav-icon'),
     headerLogo = document.getElementById('header-logo'),
     landingImage = document.getElementById('nader-image'),
@@ -25,7 +41,11 @@ let favIcon = document.getElementById('fav-icon'),
     adobeXdImage = document.getElementById('adobe-xd'),
     adobeIllImage = document.getElementById('adobe-ill'),
     hireMeSection = document.getElementById('hire-me'),
-    servicesImages = document.getElementsByClassName('service-img');
+    servicesImages = document.getElementsByClassName('service-img'),
+    webProjectsImages = document.getElementsByClassName('web-project-img'),
+    uiProjectsImages = document.getElementsByClassName('ui-project-img'),
+    logoProjectsImages = document.getElementsByClassName('logo-project-img');
+
 // Use-Photos
 favIcon.href = headerLogo.src = header_logo;
 landingImage.src = landing_image;
@@ -43,6 +63,23 @@ for (let i = 0; i < servicesImages.length; i++) {
     servicesImages[i].style.backgroundImage = `url(${servicesImagesUrl[i]})`;
 }
 
+for (let i = 0; i < webProjectsImages.length; i++) {
+    webProjectsImages[i].src = webProjectsImagesUrl[i];
+}
+
+for (let i = 0; i < uiProjectsImages.length; i++) {
+    uiProjectsImages[i].src = uiProjectsImagesUrl[i];
+}
+
+for (let i = 0; i < logoProjectsImages.length; i++) {
+    logoProjectsImages[i].src = logoProjectsImagesUrl[i];
+}
+// /Use-Photos
+
+// 
+
+// /Dom-Manipulation
+
 // Progress-Bars
 $(document).ready(function() {
     $('.progress-value > span').each(function() {
@@ -58,6 +95,35 @@ $(document).ready(function() {
     });
 });
 // /Progress-Bars
+
+// Swiper-Initialization
+var swiper = new Swiper(".mySwiper", {
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+
+    },
+    autoHeight: true
+});
+var webSlider = new Swiper(".project-slider", {
+    lazy: true,
+    slidesPerView: 1.1,
+    spaceBetween: 20,
+    grabCursor: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    }
+});
+// /Swiper-Initialization
+
+// MixItUp-Initialization
+var mixer = mixitup(".box-list", {
+    load: {
+        filter: '.web-development'
+    }
+});
+// /MixItUp-Initialization
 
 // Main-Style
 import '../client/styles/style.scss'
