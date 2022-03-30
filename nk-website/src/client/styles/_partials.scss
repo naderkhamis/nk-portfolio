@@ -505,3 +505,58 @@
 }
 
 // /Portfolio-Section
+// Processes-Section
+#processes {
+    .section-header {
+        font-size: 3.8em;
+    }
+    .process-img-container {
+        .process-img-bg {
+            padding-bottom: 20px;
+        }
+    }
+    .processes-container {
+        .process-card {
+            width: 290px;
+            height: 410px;
+            padding: 40px;
+            color: $third-color;
+            background-color: $secondary-color;
+            border: $primary-border;
+            border-radius: $border-radius;
+            -webkit-border-radius: $border-radius;
+            -moz-border-radius: $border-radius;
+            -ms-border-radius: $border-radius;
+            -o-border-radius: $border-radius;
+            i {
+                font-size: 6em;
+                margin-bottom: 40px;
+            }
+            p {
+                font-size: 2.2em;
+                text-transform: uppercase;
+                margin-bottom: 40px;
+            }
+            span {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 1.5em;
+                font-weight: 900;
+                color: $secondary-color;
+                background-color: $primary-color;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+            }
+        }
+        .process-card:not(:last-child) {
+            margin-bottom: 25px;
+        }
+    }
+}
+
+// /Processes-Section
