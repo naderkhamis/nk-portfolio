@@ -560,3 +560,50 @@
 }
 
 // /Processes-Section
+// Statistics-Section
+#statistics {
+    .section-header {
+        font-size: 3.6em;
+    }
+    .statistic-img-container {
+        .statistic-img-bg {
+            padding-bottom: 20px;
+        }
+    }
+    .statistics-container {
+        .statistic-card {
+            color: $secondary-color;
+            i {
+                font-size: 8em;
+                margin-bottom: 20px;
+            }
+            span {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                margin-bottom: 20px;
+                font-size: 2em;
+                font-weight: 900;
+                color: $secondary-color;
+                background-color: $primary-color;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+            }
+            p {
+                font-size: 1.5em;
+                font-weight: 900;
+                text-transform: uppercase;
+                margin-bottom: 0;
+            }
+        }
+        .statistic-card:not(:last-child) {
+            margin-bottom: 25px;
+        }
+    }
+}
+
+// /Statistics-Section
