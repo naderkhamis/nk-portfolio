@@ -21,6 +21,8 @@ import hostingo from "../client/media/hostingo.jpeg"
 import aroma_clinic from "../client/media/aroma-clinic.jpeg"
 import process from "../client/media/process.png"
 import statistics from "../client/media/statistics.png"
+import footer_border from "../client/media/footer-border.png"
+import footer_logo from "../client/media/footerlogo.png"
 // /Import-Photos
 
 // Images-Paths
@@ -48,7 +50,9 @@ let favIcon = document.getElementById('fav-icon'),
     uiProjectsImages = document.getElementsByClassName('ui-project-img'),
     logoProjectsImages = document.getElementsByClassName('logo-project-img'),
     processImage = document.getElementById('process-image'),
-    statisticImage = document.getElementById('statistic-image');
+    statisticImage = document.getElementById('statistic-image'),
+    footerBorder = document.getElementById('footer-border'),
+    footerLogo = document.getElementById('footer-logo');
 
 // Use-Photos
 favIcon.href = headerLogo.src = header_logo;
@@ -64,6 +68,8 @@ adobeIllImage.src = adobe_ill;
 hireMeSection.style.backgroundImage = `url(${hire_image})`;
 processImage.src = process;
 statisticImage.src = statistics;
+footerBorder.src = footer_border;
+footerLogo.src = footer_logo;
 
 for (let i = 0; i < servicesImages.length; i++) {
     servicesImages[i].style.backgroundImage = `url(${servicesImagesUrl[i]})`;
