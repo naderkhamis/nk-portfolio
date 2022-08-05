@@ -30,6 +30,10 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
                 type: 'asset/resource',
+            },
+            {
+                test: /\.(mp4|ogg)$/,
+                use: ['file-loader']
             }
         ]
     },

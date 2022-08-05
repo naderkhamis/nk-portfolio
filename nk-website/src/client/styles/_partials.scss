@@ -561,6 +561,80 @@
 }
 
 // /Processes-Section
+// Client-Says-Section
+#client-says {
+    .secondary-section {
+        overflow: hidden;
+        padding-top: 65px;
+        padding-bottom: 0;
+        .video-container {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            video {
+                height: 100%;
+                position: absolute;
+            }
+            .blur-effect {
+                border-radius: 0;
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                -ms-border-radius: 0;
+                -o-border-radius: 0;
+            }
+            .swiper {
+                .swiper-wrapper {
+                    margin-top: 20px;
+                    .swiper-slide {
+                        padding: 50px 15px;
+                        .client-say {
+                            position: relative;
+                            padding: 50px 20px 20px;
+                            text-align: center;
+                            border: $primary-border;
+                            border-radius: $border-radius;
+                            -webkit-border-radius: $border-radius;
+                            -moz-border-radius: $border-radius;
+                            -ms-border-radius: $border-radius;
+                            -o-border-radius: $border-radius;
+                            .client-image {
+                                width: 90px;
+                                height: 90px;
+                                position: absolute;
+                                top: 0;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                -webkit-transform: translate(-50%, -50%);
+                                -moz-transform: translate(-50%, -50%);
+                                -ms-transform: translate(-50%, -50%);
+                                -o-transform: translate(-50%, -50%);
+                                border: $primary-border;
+                                border-radius: 50%;
+                                -webkit-border-radius: 50%;
+                                -moz-border-radius: 50%;
+                                -ms-border-radius: 50%;
+                                -o-border-radius: 50%;
+                                overflow: hidden;
+                            }
+                            p {
+                                font-size: 1.2em;
+                                margin-bottom: 5px;
+                            }
+                            h3 {
+                                color: $primary-color;
+                            }
+                            h5 {
+                                font-style: italic;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// /Client-Says-Section
 // Statistics-Section
 #statistics {
     .section-header {

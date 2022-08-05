@@ -23,13 +23,20 @@ import process from "../client/media/process.png"
 import statistics from "../client/media/statistics.png"
 import footer_border from "../client/media/footer-border.png"
 import footer_logo from "../client/media/footerlogo.png"
+import client1 from "../client/media/client1.jpg"
+import client2 from "../client/media/client2.jpg"
+import client3 from "../client/media/client3.jpg"
 // /Import-Photos
-
+// Import-Videos
+import client_says_mp4 from "../client/media/clients-says.mp4"
+import client_says_ogg from "../client/media/clients-says.ogg"
+// /Import-Videos
 // Images-Paths
 let servicesImagesUrl = [ui_design, web_design];
 let webProjectsImagesUrl = [traveler, hostingo, aroma_clinic];
 let uiProjectsImagesUrl = [traveler, hostingo, aroma_clinic];
 let logoProjectsImagesUrl = [traveler, hostingo, aroma_clinic];
+let clientsImagesUrl = [client1, client2, client3];
 // /Images-Paths
 
 // Dom-Manipulation
@@ -52,7 +59,10 @@ let favIcon = document.getElementById('fav-icon'),
     processImage = document.getElementById('process-image'),
     statisticImage = document.getElementById('statistic-image'),
     footerBorder = document.getElementById('footer-border'),
-    footerLogo = document.getElementById('footer-logo');
+    footerLogo = document.getElementById('footer-logo'),
+    clientSaysMP4 = document.getElementById('client-says-mp4'),
+    clientSaysOgg = document.getElementById('client-says-ogg'),
+    clientsImages = document.getElementsByClassName('client-img');
 
 // Use-Photos
 favIcon.href = headerLogo.src = header_logo;
@@ -86,9 +96,15 @@ for (let i = 0; i < uiProjectsImages.length; i++) {
 for (let i = 0; i < logoProjectsImages.length; i++) {
     logoProjectsImages[i].src = logoProjectsImagesUrl[i];
 }
+
+for (let i = 0; i < clientsImages.length; i++) {
+    clientsImages[i].src = clientsImagesUrl[i];
+}
 // /Use-Photos
 
-// 
+// Use-Videos
+clientSaysMP4.src = client_says_mp4;
+clientSaysOgg.src = client_says_ogg;
 
 // /Dom-Manipulation
 
@@ -126,6 +142,23 @@ var webSlider = new Swiper(".project-slider", {
         el: ".swiper-pagination",
         clickable: true,
     }
+});
+var clientSlider = new Swiper(".clientSaySlider", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 1,
+    coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
 });
 // /Swiper-Initialization
 
