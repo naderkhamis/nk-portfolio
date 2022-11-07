@@ -1,102 +1,227 @@
 header {
-    .navbar {
-        background-color: $secondary-color;
-        .navbar-brand {
-            #header-logo {
-                width: 2.5em;
-                height: auto;
-            }
-            strong {
-                font-size: 1em;
-                line-height: 2.5em;
-                span {
-                    color: $primary-color;
-                }
-            }
-        }
-        .navbar-toggler {
-            padding: 0;
-            border: none;
-            color: $primary-color;
-            .navbar-toggler-icon {
-                background: none;
-                &::before {
-                    content: '\f0c9';
-                    font-family: 'Font Awesome 5 Free';
-                    font-size: 1.3em;
-                    font-weight: 900;
-                }
-            }
-        }
-        .navbar-collapse {
-            .navbar-nav {
-                .nav-item {
-                    position: relative;
-                    overflow: hidden;
-                    .nav-link {
-                        color: $third-color;
-                        transition: all 0.3s ease-in-out;
-                        -webkit-transition: all 0.3s ease-in-out;
-                        -moz-transition: all 0.3s ease-in-out;
-                        -ms-transition: all 0.3s ease-in-out;
-                        -o-transition: all 0.3s ease-in-out;
-                        &::before {
-                            content: "";
-                            position: absolute;
-                            width: 50%;
-                            height: 3px;
-                            background-color: $primary-color;
-                            border-radius: 3px;
-                            -webkit-border-radius: 3px;
-                            -moz-border-radius: 3px;
-                            -ms-border-radius: 3px;
-                            -o-border-radius: 3px;
-                            bottom: 0;
-                            left: -100%;
-                            transition: all 0.3s ease-in-out;
-                            -webkit-transition: all 0.3s ease-in-out;
-                            -moz-transition: all 0.3s ease-in-out;
-                            -ms-transition: all 0.3s ease-in-out;
-                            -o-transition: all 0.3s ease-in-out;
-                        }
-                        &:hover,
-                        &:active {
-                            color: $primary-color;
-                            &::before {
-                                left: 15%;
-                            }
-                        }
-                    }
-                }
-            }
-            @include breakpoint(mobile) {
-                background-color: $primary-color;
-                border-radius: 10px 0 10px 10px;
-                -webkit-border-radius: 10px 0 10px 10px;
-                -moz-border-radius: 10px 0 10px 10px;
-                -ms-border-radius: 10px 0 10px 10px;
-                -o-border-radius: 10px 0 10px 10px;
-                text-align: center;
-                .navbar-nav {
-                    .nav-item {
-                        .nav-link {
-                            color: $secondary-color;
-                            font-weight: 600;
-                            &::before {
-                                width: 100%;
-                                background-color: $secondary-color;
-                            }
-                            &:hover,
-                            &:active {
-                                color: $secondary-color;
-                                &::before {
-                                    left: 0;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+  .progress-bar-container {
+    content: "";
+    width: 100%;
+    height: 3px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: hidden;
+    .header-progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: $primary-color;
+      transition: all linear 0s;
+      -webkit-transition: all linear 0s;
+      -moz-transition: all linear 0s;
+      -ms-transition: all linear 0s;
+      -o-transition: all linear 0s;
     }
+  }
+  .navbar {
+    background-color: $secondary-color;
+    .navbar-brand {
+      #header-logo {
+        width: 2.5em;
+        height: auto;
+      }
+      strong {
+        font-size: 1em;
+        line-height: 2.5em;
+        span {
+          color: $primary-color;
+        }
+      }
+    }
+    .navbar-toggler {
+      padding: 0;
+      border: none;
+      #nav-icon {
+        width: 40px;
+        height: 35px;
+        position: relative;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: 0.5s ease-in-out;
+        -moz-transition: 0.5s ease-in-out;
+        -o-transition: 0.5s ease-in-out;
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+        -ms-transform: rotate(0deg);
+        -ms-transition: 0.5s ease-in-out;
+      }
+      #nav-icon span {
+        display: block;
+        position: absolute;
+        height: 5px;
+        width: 50%;
+        background: $primary-color;
+        opacity: 1;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: 0.25s ease-in-out;
+        -moz-transition: 0.25s ease-in-out;
+        -o-transition: 0.25s ease-in-out;
+        transition: 0.25s ease-in-out;
+      }
+      #nav-icon span:nth-child(even) {
+        left: 50%;
+        border-radius: 0 9px 9px 0;
+      }
+      #nav-icon span:nth-child(odd) {
+        left: 0px;
+        border-radius: 9px 0 0 9px;
+      }
+      #nav-icon span:nth-child(1),
+      #nav-icon span:nth-child(2) {
+        top: 0px;
+      }
+      #nav-icon span:nth-child(3),
+      #nav-icon span:nth-child(4) {
+        top: 12px;
+      }
+      #nav-icon span:nth-child(5),
+      #nav-icon span:nth-child(6) {
+        top: 24px;
+      }
+      #nav-icon.open span:nth-child(1),
+      #nav-icon.open span:nth-child(6) {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+      }
+      #nav-icon.open span:nth-child(2),
+      #nav-icon.open span:nth-child(5) {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+      }
+      #nav-icon.open span:nth-child(1) {
+        left: 4px;
+        top: 10px;
+      }
+      #nav-icon.open span:nth-child(2) {
+        left: calc(50% - 4px);
+        top: 10px;
+      }
+      #nav-icon.open span:nth-child(3) {
+        left: -50%;
+        opacity: 0;
+      }
+      #nav-icon.open span:nth-child(4) {
+        left: 100%;
+        opacity: 0;
+      }
+      #nav-icon.open span:nth-child(5) {
+        left: 4px;
+        top: 22px;
+      }
+      #nav-icon.open span:nth-child(6) {
+        left: calc(50% - 4px);
+        top: 22px;
+      }
+    }
+    .navbar-collapse {
+      text-align: left;
+      .navbar-nav {
+        .nav-item {
+          .nav-link {
+            padding-left: 20px;
+            color: $third-color;
+            border-top: solid 2px $secondary-color;
+            font-size: 1.2em;
+            font-weight: 600;
+            &::before {
+              width: 0%;
+              background-color: $secondary-color;
+            }
+            &:hover,
+            &:active {
+              background-color: $primary-color;
+              color: $secondary-color;
+            }
+          }
+          .active {
+            color: $secondary-color;
+            background-color: $primary-color;
+          }
+        }
+      }
+      @include breakpoint(laptop-desktop) {
+        .navbar-nav {
+          .nav-item {
+            position: relative;
+            overflow: hidden;
+            .nav-link {
+              padding-left: 0;
+              border-top: none;
+              font-weight: 500;
+              background-color: $secondary-color;
+              transition: all 0.3s ease-in-out;
+              -webkit-transition: all 0.3s ease-in-out;
+              -moz-transition: all 0.3s ease-in-out;
+              -ms-transition: all 0.3s ease-in-out;
+              -o-transition: all 0.3s ease-in-out;
+              &::before {
+                content: "";
+                position: absolute;
+                width: 50%;
+                height: 3px;
+                background-color: $primary-color;
+                border-radius: 3px;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                -ms-border-radius: 3px;
+                -o-border-radius: 3px;
+                bottom: 0;
+                left: -100%;
+                transition: all 0.3s ease-in-out;
+                -webkit-transition: all 0.3s ease-in-out;
+                -moz-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                -o-transition: all 0.3s ease-in-out;
+              }
+              &:hover,
+              &:active {
+                background-color: $secondary-color;
+                color: $primary-color;
+                &::before {
+                  left: 0%;
+                }
+              }
+            }
+            .active {
+              color: $primary-color;
+              &::before {
+                left: 0%;
+              }
+            }
+          }
+          .nav-item:not(:first-child) {
+            margin-left: 10px;
+            @include breakpoint(extra-large-devices) {
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .nav-shadow {
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.25);
+    transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+  }
 }

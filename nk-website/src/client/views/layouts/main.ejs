@@ -1,16 +1,19 @@
 <%= require("./header.ejs")() %>
 
-    <main class="mt-4 pt-5">
-        <%= require("../partials/landing.ejs")() %>
-            <%= require("../partials/about.ejs")() %>
-                <%= require("../partials/skills.ejs")() %>
-                    <%= require("../partials/hire.ejs")() %>
-                        <%= require("../partials/services.ejs")() %>
-                            <%= require("../partials/portfolio.ejs")() %>
-                                <%= require("../partials/client-says.ejs")() %>
-                                    <%= require("../partials/process.ejs")() %>
-                                        <%= require("../partials/statistics.ejs")() %>
-                                            <%= require("../partials/contact.ejs")() %>
-    </main>
-
-    <%= require("./footer.ejs")() %>
+<main>
+  <%= require("../partials/landing.ejs")() %> <%=
+  require("../partials/about.ejs")() %> <%= require("../partials/skills.ejs")()
+  %> <%= require("../partials/hire.ejs")() %> <%=
+  require("../partials/services.ejs")() %> <%=
+  require("../partials/portfolio.ejs")() %> <%=
+  require("../partials/client-says.ejs")() %> <%=
+  require("../partials/process.ejs")() %> <%=
+  require("../partials/statistics.ejs")() %> <%=
+  require("../partials/contact.ejs")() %>
+</main>
+<!-- Scroll-To-Top-Button -->
+<button class="custom-icon scrollToTopBtn">
+  <i class="fas fa-chevron-up"></i>
+</button>
+<!-- /Scroll-To-Top-Button -->
+<%= require("./footer.ejs")() %>

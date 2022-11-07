@@ -2,19 +2,17 @@
 $section-padding: 50px 0px;
 // /Section-Padding
 // Color-Variables
-$primary-color:#ffc107;
-$secondary-color :#222831;
-$third-color:#eeeeee;
-$info-color:#6e6e6e;
+$primary-color: #ffc107;
+$secondary-color: #222831;
+$third-color: #eeeeee;
+$info-color: #808080;
 // /Color-Variables
 // Border-Radius
 $primary-border: 5px solid $primary-color;
 $secondary-border: 5px solid $secondary-color;
-$border-radius: 50px;
+$border-radius: 30px;
 // /Border-Radius
 // Font-Variables
-$font-family: 'Roboto',
-sans-serif;
-$section-font-family: 'Fugaz One',
-cursive;
+$font-family: "Roboto", sans-serif;
+$header-font-family: "Raleway", sans-serif;
 // /Font-Variables
