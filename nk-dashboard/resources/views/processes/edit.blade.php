@@ -26,8 +26,8 @@
                         <!-- Process-Name -->
                         <div class="form-group col-12">
                             <label for="name">Process Name</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                                placeholder="Please enter process name" value="{{ $process->name }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                id="name" placeholder="Please enter process name" value="{{ $process->name }}">
                             @error('name')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -44,28 +44,11 @@
                             @enderror
                         </div>
                         <!-- /Process-Icon -->
-                        <!-- Process-Developer -->
-                        <div class="form-group col-12">
-                            <label for="developer">Developer</label>
-                            <span class="text-warning float-right">{{ $process->developer->name }}</span>
-                            <select name="dev_id" id="developer"
-                                class="custom-select @error('dev_id') is-invalid @enderror">
-                                <option selected disabled>Select a developer</option>
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('dev_id')
-                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <!-- /Process-Developer -->
                         <!-- Process-Description -->
                         <div class="form-group col-12">
                             <label for="description">Description</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                id="description" cols="30" rows="9"
-                                placeholder="Please enter process description">{{ $process->description }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                                cols="30" rows="9" placeholder="Please enter process description">{{ $process->description }}</textarea>
                             @error('description')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror

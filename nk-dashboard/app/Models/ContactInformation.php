@@ -10,9 +10,4 @@ class ContactInformation extends Model
     use HasFactory;
 
     protected $table = 'contact_information';
-
-    public function developer()
-    {
-        return $this->belongsTo(related: 'App\Models\Developer', foreignKey: 'dev_id');
-    }
 }

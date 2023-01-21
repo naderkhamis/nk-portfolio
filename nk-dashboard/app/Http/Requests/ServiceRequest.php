@@ -27,7 +27,6 @@ class ServiceRequest extends FormRequest
             'name' => 'required|regex:/^[a-zA-Z\s]+$/|min:3|max:50',
             'icon' => 'required|alpha-dash|min:3|max:20',
             'image' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
-            'dev_id' => 'required|numeric',
             'description' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:100|max:500'
         ];
     }
@@ -52,8 +51,6 @@ class ServiceRequest extends FormRequest
             'image.image' => 'Please upload an image file (jpg,jpeg,png,svg).',
             'image.mimes' => 'You\'re allowed to upload these Ext. (jpg,jpeg,png,svg).',
             'image.max' => 'Image is too large, select image less than 2MB.',
-            'dev_id.required' => 'Please select a developer.',
-            'dev_id.numeric' => 'Developer id must be a number.',
             'description.required' => 'Please enter description name.',
             'description.regex' => 'Special characters are not allowed.',
             'description.min' => 'Please enter at least 100 characters.',

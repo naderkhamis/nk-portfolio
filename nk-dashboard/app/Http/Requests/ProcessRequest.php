@@ -27,7 +27,6 @@ class ProcessRequest extends FormRequest
             'name' => 'required|regex:/^[a-zA-Z\s]+$/|min:3|max:50',
             'icon' => 'required|alpha-dash|min:3|max:20',
             'description' => 'required|string|min:100|max:500',
-            'dev_id' => 'numeric',
         ];
     }
 
@@ -50,8 +49,7 @@ class ProcessRequest extends FormRequest
             'description.required' => 'Please enter description name.',
             'description.string' => 'Special characters are not allowed.',
             'description.min' => 'Please enter at least 100 characters.',
-            'description.max' => 'Please enter less than 500 characters.',
-            'dev_id.numeric' => 'Developer id must be a number.'
+            'description.max' => 'Please enter less than 500 characters.'
         ];
     }
 }

@@ -28,25 +28,6 @@
                     <!-- TOKEN -->
                     @csrf
                     <!-- /TOKEN -->
-                    <!-- Contacts-Developer-Select -->
-                    <div class="form-group">
-                        <label for="icon">Developer</label>
-                        @if ($developers)
-                            <select name="dev_id" id="developer"
-                                class="custom-select  @error('dev_id') is-invalid @enderror">
-                                <option selected disabled>Please select a developer</option>
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            <!-- Error-Message -->
-                            @error('dev_id')
-                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                            @enderror
-                            <!-- /Error-Message -->
-                        @endif
-                    </div>
-                    <!-- /Contacts-Developer-Select -->
                     <!-- Address-Input -->
                     <div class="form-group">
                         <label for="address">Address</label>
@@ -126,11 +107,6 @@
                         <!-- Contacts-Card -->
                         <div class="px-2">
                             <div class="card card-warning card-outline bg-dark">
-                                <!-- Contacts-Developer-Name -->
-                                <div class="card-header">
-                                    <h5 class="card-title text-warning py-2">{{ $contact->developer->name }}</h5>
-                                </div>
-                                <!-- /Contacts-Developer-Name -->
                                 <!-- Contact-Information -->
                                 <div class="px-4">
                                     <ul class="list-group list-group-unbordered">

@@ -23,7 +23,7 @@
                     <h3 class="card-title">Create Developer</h3>
                 </div>
                 <!-- /Form-Header -->
-                <form action="{{ route('store-developer') }}" method="post" class="row"
+                <form action="{{ route('store-personal-information') }}" method="post" class="row"
                     enctype="multipart/form-data">
                     <!-- TOKEN -->
                     @csrf
@@ -31,8 +31,8 @@
                     <!-- Developer-Name -->
                     <div class="form-group col-12">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                            placeholder="Enter a name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            id="name" placeholder="Enter a name">
                         @error('name')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -82,8 +82,8 @@
                     <!-- Developer-Introduction -->
                     <div class="form-group col-12">
                         <label for="introduction">About Me</label>
-                        <textarea class="form-control @error('introduction') is-invalid @enderror" name="introduction"
-                            id="introduction" cols="30" rows="9" placeholder="Type about yourself"></textarea>
+                        <textarea class="form-control @error('introduction') is-invalid @enderror" name="introduction" id="introduction"
+                            cols="30" rows="9" placeholder="Type about yourself"></textarea>
                         @error('introduction')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -103,39 +103,38 @@
         </div>
         <!-- /Information-Form -->
         <!-- Information-Section -->
-        @if (count($developers))
+        @if (count($personal_information))
             <div class="col-md-6 col-xl-8 order-1 order-md-2">
                 <!-- Information-Container -->
                 <div class="row row-cols-1 row-cols-xl-3">
-                    @foreach ($developers as $developer)
+                    @foreach ($personal_information as $info)
                         <!-- Information-Card -->
                         <div class="card-deck px-2">
                             <div class="card card-warning card-outline bg-dark">
                                 <!-- Developer-Image -->
-                                <img src="{{ asset($developer->image) }}" class="card-img-top rounded"
-                                    alt="Developer Image">
+                                <img src="{{ asset($info->image) }}" class="card-img-top rounded" alt="Developer Image">
                                 <!-- /Developer-Image -->
                                 <!-- Developer-Information -->
                                 <div class="card-body box-profile">
                                     <!-- Developer-Name -->
-                                    <h5 class="card-title text-warning py-2">{{ $developer->name }}</h5>
+                                    <h5 class="card-title text-warning py-2">{{ $info->name }}</h5>
                                     <!-- /Developer-Name -->
                                     <!-- Developer-Introduction -->
-                                    <p class="card-text">{{ $developer->introduction }}</p>
+                                    <p class="card-text">{{ $info->introduction }}</p>
                                     <!-- /Developer-Introduction -->
                                 </div>
                                 <!-- /Developer-Information -->
                                 <!-- Information-Actions -->
                                 <div class="card-footer">
-                                    <a href="{{ route('show-developer', $developer->id) }}"
+                                    <a href="{{ route('show-personal-information', $info->id) }}"
                                         class="btn btn-primary rounded-circle mr-md-2">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('edit-developer', $developer->id) }}"
+                                    <a href="{{ route('edit-personal-information', $info->id) }}"
                                         class="btn btn-success rounded-circle mr-md-2">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <a href="{{ route('delete-developer', $developer->id) }}"
+                                    <a href="{{ route('delete-personal-information', $info->id) }}"
                                         class="btn btn-danger rounded-circle">
                                         <i class="fas fa-trash"></i>
                                     </a>

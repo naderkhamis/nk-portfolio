@@ -10,9 +10,4 @@ class ClientReview extends Model
     use HasFactory;
 
     protected $table = 'clients_reviews';
-
-    public function developer()
-    {
-        return $this->belongsTo(related: 'App\Models\Developer', foreignKey: 'dev_id');
-    }
 }

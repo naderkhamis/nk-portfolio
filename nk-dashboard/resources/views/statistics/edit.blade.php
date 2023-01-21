@@ -56,26 +56,6 @@
                             @enderror
                         </div>
                         <!-- /Statistic-Icon -->
-                        <!-- Statistic-Developer -->
-                        <div class="form-group">
-                            <label for="name">
-                                Developer
-                            </label>
-                            <span class="float-right text-warning">
-                                {{ $statistic->developer->name }}
-                            </span>
-                            <select name="dev_id" id="developer"
-                                class="custom-select  @error('dev_id') is-invalid @enderror">
-                                <option disabled selected>Please select a developer</option>
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('dev_id')
-                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <!-- /Statistic-Developer -->
                         <!-- Form-Submit-Button -->
                         <div class="col-lg-3">
                             <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">

@@ -15,8 +15,8 @@ use Carbon\Carbon;
                 <!-- Card-Body -->
                 <div class="row card-body p-0 pr-md-3">
                     <!-- Company-Image -->
-                    <div class="col-md-3">
-                        <img class="rounded img-fluid" src="{{ asset($career->image) }}" alt="Company Logo">
+                    <div class="col-md-3 d-flex py-3 pl-4">
+                        <img class="rounded-circle img-fluid" src="{{ asset($career->image) }}" alt="Company Logo">
                     </div>
                     <!-- /Company-Image -->
                     <!-- Certificate-Information -->
@@ -36,7 +36,7 @@ use Carbon\Carbon;
                         <div>
                             <strong class="badge badge-warning p-2 mb-2 font-italic">
                                 From:
-                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('d M Y') }}
+                                {{ Carbon::parse($career->from_date)->format('d M Y') }}
                             </strong>
                         </div>
                         <!-- /Career-From-Date -->
@@ -45,7 +45,7 @@ use Carbon\Carbon;
                             <strong class="badge badge-warning p-2 font-italic">
                                 @if ($career->status === 0)
                                     To:
-                                    {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('d M Y') }}
+                                    {{ Carbon::parse($career->to_date)->format('d M Y') }}
                                 @else
                                     Till now
                                 @endif

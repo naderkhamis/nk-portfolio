@@ -10,9 +10,4 @@ class Service extends Model
     use HasFactory;
 
     protected $table = 'services';
-
-    public function developer()
-    {
-        return $this->belongsTo(related: 'App\Models\Developer', foreignKey: 'dev_id');
-    }
 }

@@ -28,8 +28,7 @@ class ProjectRequest extends FormRequest
             'cat_id' => 'nullable|numeric',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
             'url' => 'required|url|min:15|max:255',
-            'description' => 'required|string|min:100|max:255',
-            'dev_id' => 'nullable|numeric'
+            'description' => 'required|string|min:100|max:255'
         ];
     }
 
@@ -56,8 +55,7 @@ class ProjectRequest extends FormRequest
             'description.required' => 'Please enter a project description.',
             'description.string' => 'Special characters are not allowed.',
             'description.min' => 'Please enter at least 100 character.',
-            'description.max' => 'Please enter less than 255 character.',
-            'dev_id.numeric' => 'Developer id must be a number.'
+            'description.max' => 'Please enter less than 255 character.'
         ];
     }
 }

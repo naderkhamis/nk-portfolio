@@ -29,14 +29,6 @@
                         <!-- Process-Description -->
                         <p class="card-text">{{ $process->description }}</p>
                         <!-- /Process-Description -->
-                        <ul class="list-group list-group-unbordered">
-                            <li class="list-group-item bg-dark">
-                                <b>Developer</b>
-                                <span class="float-right text-warning">
-                                    {{ $process->developer->name }}
-                                </span>
-                            </li>
-                        </ul>
                     </div>
                     <!-- /Process-Information -->
                 </div>

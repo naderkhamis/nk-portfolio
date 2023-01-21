@@ -34,8 +34,8 @@ use Carbon\Carbon;
                     <!-- Job-Title -->
                     <div class="form-group col-12">
                         <label for="title">Job Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
-                            placeholder="Enter job title">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
+                            id="title" placeholder="Enter job title">
                         @error('title')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -64,7 +64,8 @@ use Carbon\Carbon;
                     <!-- Career-From-Date -->
                     <div class="form-group col-lg-6">
                         <label for="from">From</label>
-                        <input type="date" class="form-control @error('from') is-invalid @enderror" name="from" id="from">
+                        <input type="date" class="form-control @error('from') is-invalid @enderror" name="from"
+                            id="from">
                         @error('from')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -73,26 +74,13 @@ use Carbon\Carbon;
                     <!-- Career-To-Date -->
                     <div class="form-group col-lg-6">
                         <label for="to">To</label>
-                        <input type="date" class="form-control @error('to') is-invalid @enderror" name="to" id="to">
+                        <input type="date" class="form-control @error('to') is-invalid @enderror" name="to"
+                            id="to">
                         @error('to')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <!-- /Career-To-Date -->
-                    <!-- Career-Developer -->
-                    {{-- <div class="form-group col-lg-6">
-                        <label for="developer">Developer</label>
-                        <select name="dev_id" id="developer" class="custom-select @error('dev_id') is-invalid @enderror">
-                            <option selected disabled>Select a developer</option>
-                            @foreach ($developers as $developer)
-                                <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('dev_id')
-                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                        @enderror
-                    </div> --}}
-                    <!-- /Career-Developer -->
                     <!-- Career-Status -->
                     <div class="form-group col-12 d-flex">
                         <label class="m-0">Still working there? &nbsp;</label>
@@ -116,8 +104,8 @@ use Carbon\Carbon;
                     <!-- Career-Description -->
                     <div class="form-group col-12">
                         <label for="description">Description</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                            id="description" cols="30" rows="9" placeholder="Describe your job"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                            cols="30" rows="9" placeholder="Describe your job"></textarea>
                         @error('description')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -163,14 +151,16 @@ use Carbon\Carbon;
                                     <!-- Career-From-Date -->
                                     <strong class="badge badge-warning p-2 mb-2 font-italic">
                                         From:
-                                        {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('d M Y') }}
+                                        {{-- {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('d M Y') }} --}}
+                                        {{ Carbon::parse($career->from_date)->format('d M Y') }}
                                     </strong>
                                     <!-- /Career-From-Date -->
                                     <!-- Career-To-Date -->
                                     <strong class="badge badge-warning p-2 font-italic">
                                         @if ($career->status === 0)
                                             To:
-                                            {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('d M Y') }}
+                                            {{-- {{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('d M Y') }} --}}
+                                            {{ Carbon::parse($career->to_date)->format('d M Y') }}
                                         @else
                                             Till now
                                         @endif
@@ -202,7 +192,8 @@ use Carbon\Carbon;
             @else
                 <!-- Career-Alert -->
                 <div class="col-12 order-0">
-                    <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill" role="alert">
+                    <div class="col-md-8 col-lg-6 alert alert-danger alert-dismissible fade show rounded-pill"
+                        role="alert">
                         <strong>Sorry! </strong>There is no career to show!.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>

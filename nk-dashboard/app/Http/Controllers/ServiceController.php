@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-use App\Models\Developer;
 use App\Http\Requests\ServiceRequest;
 use App\Http\Traits\UploadFileTrait;
 
@@ -20,8 +19,7 @@ class ServiceController extends Controller
     {
         $services = new Service();
         $services = Service::get();
-        $developers = Developer::get(['id', 'name']);
-        return view('services.index', compact('services', 'developers'));
+        return view('services.index')->with('services',$services);
     }
 
     /**
@@ -47,7 +45,6 @@ class ServiceController extends Controller
         $service->name = $request->name;
         $service->icon = $request->icon;
         $service->image = $this->upload($request, $service->image);
-        $service->dev_id = $request->dev_id;
         $service->description = $request->description;
         $service->save();
         return redirect('/services/index');
@@ -74,8 +71,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::find($id);
-        $developers = Developer::get(['id', 'name']);
-        return view('services.edit', compact(['service', 'developers']));
+        return view('services.edit')->with('service',$service);
     }
 
     /**
@@ -91,7 +87,6 @@ class ServiceController extends Controller
         $service->name = $request->name;
         $service->icon = $request->icon;
         $service->image = $this->upload($request, $service->image);
-        $service->dev_id = $request->dev_id;
         $service->description = $request->description;
         $service->save();
         return redirect('/services/index');

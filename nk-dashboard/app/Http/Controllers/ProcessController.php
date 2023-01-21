@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Process;
-use App\Models\Developer;
 use App\Http\Requests\ProcessRequest;
 
 class ProcessController extends Controller
@@ -17,8 +16,7 @@ class ProcessController extends Controller
     {
         $processes = new Process();
         $processes = Process::get();
-        $developers = Developer::get(['id', 'name']);
-        return view('processes.index', compact('processes', 'developers'));
+        return view('processes.index')->with('processes',$processes);
     }
 
     /**
@@ -43,7 +41,6 @@ class ProcessController extends Controller
         $process->name = $request->name;
         $process->icon = $request->icon;
         $process->description = $request->description;
-        $process->dev_id = $request->dev_id;
         $process->save();
         return redirect('/processes/index');
     }
@@ -69,8 +66,7 @@ class ProcessController extends Controller
     public function edit($id)
     {
         $process = Process::find($id);
-        $developers = Developer::get(['id', 'name']);
-        return view('processes.edit', compact('process', 'developers'));
+        return view('processes.edit')->with('process',$process);
     }
 
     /**
@@ -86,11 +82,6 @@ class ProcessController extends Controller
         $process->name = $request->name;
         $process->icon = $request->icon;
         $process->description = $request->description;
-        if ($request->has('dev_id')) {
-            $process->dev_id = $request->dev_id;
-        } else {
-            $process->dev_id = $process->dev_id;
-        }
         $process->save();
         return redirect('/processes/index');
     }

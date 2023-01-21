@@ -12,8 +12,9 @@
                 <!-- Skill-Name-Input -->
                 <div class="form-group">
                     <label for="name">Skill Name</label>
-                    <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror"
-                        placeholder="Please enter skill name" value="{{ $skill->name }}">
+                    <input type="text" name="name" id="name"
+                        class="form-control  @error('name') is-invalid @enderror" placeholder="Please enter skill name"
+                        value="{{ $skill->name }}">
                     <!-- Error-Message -->
                     @error('name')
                         <span class="badge badge-pill badge-danger">{{ $message }}</span>
@@ -55,27 +56,6 @@
                     <!-- /Error-Message -->
                 </div>
                 <!-- /Skill-Performace-Input -->
-                <!-- Skill-Developer-Select -->
-                <div class="form-group">
-                    <label for="name">
-                        Developer
-                    </label>
-                    <span class="float-right text-warning">
-                        {{ $skill->developer->name }}
-                    </span>
-                    <select name="developer" id="developer" class="custom-select  @error('developer') is-invalid @enderror">
-                        <option disabled selected>Please select a developer</option>
-                        @foreach ($developers as $developer)
-                            <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                        @endforeach
-                    </select>
-                    <!-- Error-Message -->
-                    @error('dev_id')
-                        <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                    @enderror
-                    <!-- /Error-Message -->
-                </div>
-                <!-- /Skill-Developer-Select -->
                 <!-- TOKEN -->
                 <input name="_token" type="hidden" value="{{ csrf_token() }}" />
                 <!-- /TOKEN -->

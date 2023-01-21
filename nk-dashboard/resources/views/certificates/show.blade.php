@@ -16,7 +16,7 @@ use Carbon\Carbon;
                 <div class="row card-body p-0 pr-md-3">
                     <!-- Certificate-Image -->
                     <div class="col-md-5">
-                        <img class="rounded img-fluid h-100" src="{{ asset($certificate->image) }}"
+                        <img class="rounded-bottom img-fluid h-100" src="{{ asset($certificate->image) }}"
                             alt="Certificate Photo">
                     </div>
                     <!-- /Certificate-Image -->
@@ -50,7 +50,7 @@ use Carbon\Carbon;
                                 <b>Issue Date</b>
                                 <span class="float-right">
                                     <strong class="badge badge-warning p-2 font-italic float-right">
-                                        {{ Carbon::createFromFormat('Y-m-d H:i:s', $certificate->date)->format('d M Y') }}
+                                        {{ Carbon::parse($certificate->date)->format('d M Y') }}
                                     </strong>
                                 </span>
                             </li>
@@ -62,8 +62,7 @@ use Carbon\Carbon;
                 <!-- /Card-Body -->
                 <!-- Certificate-Actions -->
                 <div class="card-footer">
-                    <a href="{{ route('edit-certificate', $certificate->id) }}"
-                        class="btn btn-success rounded-circle mr-2">
+                    <a href="{{ route('edit-certificate', $certificate->id) }}" class="btn btn-success rounded-circle mr-2">
                         <i class="fas fa-pen"></i>
                     </a>
                     <a href="{{ route('delete-certificate', $certificate->id) }}" class="btn btn-danger rounded-circle">

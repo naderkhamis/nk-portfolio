@@ -15,8 +15,8 @@ use Carbon\Carbon;
                 <!-- Card-Body -->
                 <div class="row card-body p-0 pr-md-3">
                     <!-- Client-Company-Image -->
-                    <div class="col-md-3">
-                        <img class="rounded img-fluid h-100" src="{{ asset($clientReview->image) }}"
+                    <div class="col-md-3 d-flex py-3 pl-4">
+                        <img class="rounded-circle img-fluid" src="{{ asset($clientReview->image) }}"
                             alt="Client-Company Photo">
                     </div>
                     <!-- /Client-Company-Image -->
@@ -33,20 +33,12 @@ use Carbon\Carbon;
                         <!-- Company-Developer-Date -->
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item bg-dark">
-                                <b>Company</b>
-                                <span class="float-right">
-                                    {{ $clientReview->company }}
-                                </span>
-                            </li>
-                            <li class="list-group-item bg-dark">
-                                <b>Developer</b>
-                                <span class="float-right">
-                                    {{ $clientReview->developer->name }}
-                                </span>
+                                <b>{{ $clientReview->company }}</b>
                             </li>
                             <li class="list-group-item bg-dark">
                                 <strong class="badge badge-warning p-2 font-italic">
-                                    {{ Carbon::createFromFormat('Y-m-d H:i:s', $clientReview->date)->format('d M Y') }}
+                                    {{-- {{ Carbon::createFromFormat('Y-m-d H:i:s', $clientReview->date)->format('d M Y') }} --}}
+                                    {{ Carbon::parse($clientReview->date)->format('d M Y') }}
                                 </strong>
                             </li>
                         </ul>
@@ -55,8 +47,7 @@ use Carbon\Carbon;
                     <!-- /Review-Information -->
                     <!-- Review-Actions -->
                     <div class="card-footer">
-                        <a href="{{ route('edit-review', $clientReview->id) }}"
-                            class="btn btn-success rounded-circle mr-2">
+                        <a href="{{ route('edit-review', $clientReview->id) }}" class="btn btn-success rounded-circle mr-2">
                             <i class="fas fa-pen"></i>
                         </a>
                         <a href="{{ route('delete-review', $clientReview->id) }}" class="btn btn-danger rounded-circle">

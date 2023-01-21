@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Skill;
 use App\Models\SkillCategory;
-use App\Models\Developer;
 use App\Http\Requests\SkillRequest;
 
 class SkillController extends Controller
@@ -19,8 +18,7 @@ class SkillController extends Controller
         $categories = SkillCategory::get(['id', 'name']);
         $skills = new Skill();
         $skills = Skill::orderBy('cat_id')->get();
-        $developers = Developer::get(['id', 'name']);
-        return view('skills.index', compact(['categories', 'skills', 'developers']));
+        return view('skills.index', compact(['categories', 'skills']));
     }
 
     /**
@@ -45,7 +43,6 @@ class SkillController extends Controller
         $skill->name = $request->name;
         $skill->cat_id = $request->category;
         $skill->performance = $request->performance;
-        $skill->dev_id = $request->developer;
         $skill->save();
         return redirect('/skills/index');
     }
@@ -71,8 +68,7 @@ class SkillController extends Controller
     {
         $skill = Skill::find($id);
         $categories = SkillCategory::get(['id', 'name']);
-        $developers = Developer::get(['id', 'name']);
-        return view('skills.edit', compact(['categories', 'skill', 'developers']));
+        return view('skills.edit', compact(['categories', 'skill']));
     }
 
     /**
@@ -88,7 +84,6 @@ class SkillController extends Controller
         $skill->name = $request->name;
         $skill->cat_id = $request->category;
         $skill->performance = $request->performance;
-        $skill->dev_id = $request->developer;
         $skill->save();
         return redirect('/skills/index');
     }

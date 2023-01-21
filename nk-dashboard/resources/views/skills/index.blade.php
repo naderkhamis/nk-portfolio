@@ -197,23 +197,6 @@
                                     <!-- /Error-Message -->
                                 </div>
                                 <!-- /Skill-Performace-Input -->
-                                <!-- Skill-Developer-Select -->
-                                <div class="form-group">
-                                    <label for="name">Developer</label>
-                                    <select name="developer" id="developer"
-                                        class="custom-select  @error('developer') is-invalid @enderror">
-                                        <option disabled selected>Please select a developer</option>
-                                        @foreach ($developers as $developer)
-                                            <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!-- Error-Message -->
-                                    @error('developer')
-                                        <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                                    @enderror
-                                    <!-- /Error-Message -->
-                                </div>
-                                <!-- /Skill-Developer-Select -->
                                 <!-- TOKEN -->
                                 <input name="_token" type="hidden" value="{{ csrf_token() }}" />
                                 <!-- /TOKEN -->
@@ -299,29 +282,13 @@
                                     <!-- /Error-Message -->
                                 </div>
                                 <!-- /Skill-Performace-Input -->
-                                <!-- Skill-Developer-Select -->
-                                <div class="form-group">
-                                    <label for="name">Developer</label>
-                                    <select name="developer" id="developer"
-                                        class="custom-select  @error('developer') is-invalid @enderror">
-                                        <option disabled selected>Please select a developer</option>
-                                        @foreach ($developers as $developer)
-                                            <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!-- Error-Message -->
-                                    @error('developer')
-                                        <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                                    @enderror
-                                    <!-- /Error-Message -->
-                                </div>
-                                <!-- /Skill-Developer-Select -->
                                 <!-- TOKEN -->
                                 <input name="_token" type="hidden" value="{{ csrf_token() }}" />
                                 <!-- /TOKEN -->
                                 <!-- Form-Submit-Button -->
                                 <div class="col-md-4 p-0">
-                                    <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">
+                                    <button type="submit"
+                                        class="btn btn-block btn-warning font-weight-bold rounded-pill">
                                         Save
                                         <i class="fas fa-save"></i>
                                     </button>

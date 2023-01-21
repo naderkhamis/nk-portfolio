@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClientReview;
-use App\Models\Developer;
 use App\Http\Requests\ClientReviewRequest;
 use App\Http\Traits\UploadFileTrait;
 
@@ -19,8 +18,7 @@ class ClientReviewController extends Controller
     {
         $clientReviews = new ClientReview();
         $clientReviews = ClientReview::get();
-        $developers = Developer::get(['id', 'name']);
-        return view('clientReview.index', compact('clientReviews', 'developers'));
+        return view('clientReview.index')->with('clientReviews',$clientReviews);
     }
 
     /**
@@ -47,7 +45,6 @@ class ClientReviewController extends Controller
         $clientReview->company = $request->company;
         $clientReview->date = $request->date;
         $clientReview->image = $this->upload($request, $clientReview->image);
-        $clientReview->dev_id = $request->dev_id;
         $clientReview->review = $request->review;
         $clientReview->save();
         return redirect('/client-review/index');
@@ -73,9 +70,8 @@ class ClientReviewController extends Controller
      */
     public function edit($id)
     {
-        $developers = Developer::get(['id', 'name']);
         $clientReview = ClientReview::find($id);
-        return view('clientReview.edit', compact(['developers', 'clientReview']));
+        return view('clientReview.edit')->with('clientReview',$clientReview);
     }
 
     /**

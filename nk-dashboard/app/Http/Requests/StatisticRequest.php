@@ -26,8 +26,7 @@ class StatisticRequest extends FormRequest
         return [
             'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:3|max:100',
             'count' => 'required|numeric|min:1|max:20',
-            'icon' => 'required|alpha-dash|min:3|max:20',
-            'dev_id' => 'nullable|numeric'
+            'icon' => 'required|alpha-dash|min:3|max:20'
         ];
     }
 
@@ -50,8 +49,7 @@ class StatisticRequest extends FormRequest
             'icon.required' => 'Please enter a statistic icon.',
             'icon.alpha-dash' => 'Special characters and spaces are not allowed.',
             'icon.min' => 'Please enter at least 3 characters.',
-            'icon.max' => 'Please enter less than 20 character.',
-            'dev_id.numeric' => 'Developer id must be a number.'
+            'icon.max' => 'Please enter less than 20 character.'
         ];
     }
 }

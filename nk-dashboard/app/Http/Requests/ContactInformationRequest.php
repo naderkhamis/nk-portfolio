@@ -24,7 +24,6 @@ class ContactInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'dev_id' => 'numeric|unique:contact_information',
             'address' => 'required|string|min:10|max:100',
             'email' => 'required|unique:contact_information',
             'phone' => 'required|unique:contact_information|max:15'
@@ -40,8 +39,6 @@ class ContactInformationRequest extends FormRequest
     public function messages()
     {
         return [
-            'dev_id.numeric' => 'Developer id must be a number.',
-            'dev_id.unique' => 'This name already exist.',
             'address.required' => 'Please enter an address.',
             'address.string' => 'Special characters are not allowed.',
             'address.min' => 'Please enter at least 10 characters.',

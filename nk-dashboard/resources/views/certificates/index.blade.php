@@ -26,16 +26,15 @@ use Carbon\Carbon;
                     <h3 class="card-title">Create Certificate</h3>
                 </div>
                 <!-- /Form-Header -->
-                <form action="{{ route('store-certificate') }}" method="post" class="row"
-                    enctype="multipart/form-data">
+                <form action="{{ route('store-certificate') }}" method="post" class="row" enctype="multipart/form-data">
                     <!-- TOKEN -->
                     @csrf
                     <!-- /TOKEN -->
                     <!-- Certificate-Title -->
                     <div class="form-group col-lg-6">
                         <label for="title">Certificate Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
-                            placeholder="Enter certificate title">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
+                            id="title" placeholder="Enter certificate title">
                         @error('title')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -54,8 +53,8 @@ use Carbon\Carbon;
                     <!-- Certificate-Grade -->
                     <div class="form-group col-lg-6">
                         <label for="grade">Grade</label>
-                        <input type="text" class="form-control @error('grade') is-invalid @enderror" name="grade" id="grade"
-                            placeholder="Enter certificate grade">
+                        <input type="text" class="form-control @error('grade') is-invalid @enderror" name="grade"
+                            id="grade" placeholder="Enter certificate grade">
                         @error('grade')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -64,14 +63,15 @@ use Carbon\Carbon;
                     <!-- Certificate-Date -->
                     <div class="form-group col-lg-6">
                         <label for="date">Date</label>
-                        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date">
+                        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date"
+                            id="date">
                         @error('date')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <!-- /Certificate-Date -->
                     <!-- Certificate-Image -->
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-12">
                         <label for="image" class="control-label">Certificate Photo</label>
                         <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
                             id="image">
@@ -80,25 +80,11 @@ use Carbon\Carbon;
                         @enderror
                     </div>
                     <!-- /Certificate-Image -->
-                    <!-- Certificate-Developer -->
-                    <div class="form-group col-lg-6">
-                        <label for="developer">Developer</label>
-                        <select name="dev_id" id="developer" class="custom-select @error('dev_id') is-invalid @enderror">
-                            <option selected disabled>Select a developer</option>
-                            @foreach ($developers as $developer)
-                                <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('dev_id')
-                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <!-- /Certificate-Developer -->
                     <!-- Certificate-Description -->
                     <div class="form-group col-12">
                         <label for="description">Description</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                            id="description" cols="30" rows="9" placeholder="Enter certificate description"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                            cols="30" rows="9" placeholder="Enter certificate description"></textarea>
                         @error('description')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -150,7 +136,8 @@ use Carbon\Carbon;
                                     <!-- /Certificate-Grade -->
                                     <!-- Certificate-Date -->
                                     <strong class="badge badge-warning p-2 font-italic">
-                                        {{ Carbon::createFromFormat('Y-m-d H:i:s', $certificate->date)->format('d M Y') }}
+                                        {{-- {{ Carbon::createFromFormat('Y-m-d H:i:s', $certificate->date)->format('d M Y') }} --}}
+                                        {{ Carbon::parse($certificate->date)->format('d M Y') }}
                                     </strong>
                                     <!-- /Certificate-Date -->
                                 </div>

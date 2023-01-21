@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\ProjectCategory;
-use App\Models\Developer;
 use App\Http\Requests\ProjectRequest;
 use App\Http\Traits\UploadFileTrait;
 
@@ -32,8 +31,7 @@ class ProjectController extends Controller
     public function create()
     {
         $categories = ProjectCategory::get(['id', 'name']);
-        $developers = Developer::get(['id', 'name']);
-        return view('projects.create', compact('categories', 'developers'));
+        return view('projects.create')->with('categories',$categories);
     }
 
     /**
@@ -50,7 +48,6 @@ class ProjectController extends Controller
         $project->image = $this->upload($request, $project->image);
         $project->url = $request->url;
         $project->description = $request->description;
-        $project->dev_id = $request->dev_id;
         $project->save();
         return redirect('/projects/index');
     }
@@ -77,8 +74,7 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
         $categories = ProjectCategory::get(['id', 'name']);
-        $developers = Developer::get(['id', 'name']);
-        return view('projects.edit', compact('project', 'categories', 'developers'));
+        return view('projects.edit', compact('project', 'categories'));
     }
 
     /**
@@ -100,11 +96,6 @@ class ProjectController extends Controller
         $project->image = $this->upload($request, $project->image);
         $project->url = $request->url;
         $project->description = $request->description;
-        if ($request->has('dev_id')) {
-            $project->dev_id = $request->dev_id;
-        } else {
-            $project->dev_id = $project->dev_id;
-        }
         $project->save();
         return redirect('/projects/index');
     }

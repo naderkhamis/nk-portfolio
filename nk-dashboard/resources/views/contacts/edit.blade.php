@@ -24,26 +24,6 @@
                         <!-- Contact-ID -->
                         <input type="hidden" name="id" id="id" value="{{ $contact->id }}">
                         <!-- /Contact-ID -->
-                        <!-- Contacts-Developer-Select -->
-                        <div class="form-group">
-                            <label for="icon">Developer</label>
-                            <span class="text-warning float-right">{{ $contact->developer->name }}</span>
-                            @if ($developers)
-                                <select name="dev_id" id="developer"
-                                    class="custom-select  @error('icon') is-invalid @enderror">
-                                    <option selected disabled>Please select a developer</option>
-                                    @foreach ($developers as $developer)
-                                        <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                    @endforeach
-                                </select>
-                                <!-- Error-Message -->
-                                @error('dev_id')
-                                    <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                                @enderror
-                                <!-- /Error-Message -->
-                            @endif
-                        </div>
-                        <!-- /Contacts-Developer-Select -->
                         <!-- Address-Input -->
                         <div class="form-group">
                             <label for="address">Address</label>

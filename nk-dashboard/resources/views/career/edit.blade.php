@@ -11,7 +11,7 @@ use Carbon\Carbon;
         <!-- /Header -->
         @if ($career)
             <!-- Career-Form -->
-            <div class="col-md-6 col-xl-4 order-2 order-md-1">
+            <div class="col-md-6 col-xl-5 order-1 order-xl-0">
                 <!-- Edit-Career-Form -->
                 <div class="card card-warning card-outline card-body bg-dark pt-1">
                     <!-- Form-Header -->
@@ -48,21 +48,20 @@ use Carbon\Carbon;
                         </div>
                         <!-- /Career-Company -->
                         <!-- Company-Logo -->
-                        {{-- <div class="form-group col-lg-6">
+                        <div class="form-group col-12">
                             <label for="image" class="control-label">Company Logo</label>
-                            <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
-                                id="image">
+                            <input type="file" class="form-control-file @error('image') is-invalid @enderror"
+                                name="image" id="image">
                             @error('image')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
-                        </div> --}}
+                        </div>
                         <!-- /Company-Logo -->
                         <!-- Career-From-Date -->
                         <div class="form-group col-lg-6">
                             <label for="from">From</label>
                             <input type="date" class="form-control @error('from') is-invalid @enderror" name="from"
-                                id="from"
-                                value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $career->from_date)->format('Y-m-d') }}">
+                                id="from" value="{{ Carbon::parse($career->from_date)->format('d M Y') }}">
                             @error('from')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -72,8 +71,8 @@ use Carbon\Carbon;
                             <!-- Career-To-Date -->
                             <div class="form-group col-lg-6">
                                 <label for="to">To</label>
-                                <input type="date" class="form-control @error('to') is-invalid @enderror" name="to" id="to"
-                                    value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $career->to_date)->format('Y-m-d') }}">
+                                <input type="date" class="form-control @error('to') is-invalid @enderror" name="to"
+                                    id="to" value="{{ Carbon::parse($career->to_date)->format('d M Y') }}">
                                 @error('to')
                                     <span class="badge badge-pill badge-danger">{{ $message }}</span>
                                 @enderror
@@ -103,8 +102,8 @@ use Carbon\Carbon;
                             <!-- Career-To-Date -->
                             <div class="form-group col-lg-6">
                                 <label for="to">To</label>
-                                <input type="date" class="form-control @error('to') is-invalid @enderror" name="to" id="to"
-                                    value="{{ $currentDate }}">
+                                <input type="date" class="form-control @error('to') is-invalid @enderror" name="to"
+                                    id="to" value="{{ $currentDate }}">
                                 @error('to')
                                     <span class="badge badge-pill badge-danger">{{ $message }}</span>
                                 @enderror
@@ -131,25 +130,11 @@ use Carbon\Carbon;
                             </div>
                         @endif
                         <!-- /Career-Status -->
-                        <!-- Career-Developer -->
-                        {{-- <div class="form-group col-lg-6">
-                            <label for="developer">Developer</label>
-                            <select name="dev_id" id="developer" class="form-control">
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}" selected>{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('developer')
-                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                            @enderror
-                        </div> --}}
-                        <!-- /Career-Developer -->
                         <!-- Career-Description -->
                         <div class="form-group col-12">
                             <label for="description">Description</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                id="description" cols="30" rows="9"
-                                placeholder="Describe your job">{{ $career->description }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                                cols="30" rows="9" placeholder="Describe your job">{{ $career->description }}</textarea>
                             @error('description')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -168,6 +153,12 @@ use Carbon\Carbon;
                 <!-- /Edit-Career-Form -->
             </div>
             <!-- /Career-Form -->
+            <!-- Certificate-Existing-Image -->
+            <div class="col-md-6 col-xl-4 order-0 order-xl-1 pb-3">
+                <img src="{{ asset($career->image) }}" class="img-fluid border border-warning rounded"
+                    alt="Certificate Image">
+            </div>
+            <!-- /Certificate-Existing-Image -->
         @else
             <!-- Career-Alert -->
             <div class="col-12">

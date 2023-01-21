@@ -29,27 +29,27 @@
                     @csrf
                     <!-- /TOKEN -->
                     <!-- Service-Name -->
-                    <div class="form-group col-12">
+                    <div class="form-group col-md-6">
                         <label for="name">Service Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                            placeholder="Please enter service name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            id="name" placeholder="Please enter service name">
                         @error('name')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <!-- /Service-Name -->
                     <!-- Service-Icon -->
-                    <div class="form-group col-12">
+                    <div class="form-group col-md-6">
                         <label for="icon">service Icon</label>
-                        <input type="text" class="form-control @error('icon') is-invalid @enderror" name="icon" id="icon"
-                            placeholder="Please enter service icon name">
+                        <input type="text" class="form-control @error('icon') is-invalid @enderror" name="icon"
+                            id="icon" placeholder="Please enter service icon name">
                         @error('icon')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <!-- /Service-Icon -->
                     <!-- Service-Image -->
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-12">
                         <label for="image" class="control-label">Service Image</label>
                         <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
                             id="image">
@@ -58,25 +58,11 @@
                         @enderror
                     </div>
                     <!-- /Service-Image -->
-                    <!-- Service-Developer -->
-                    <div class="form-group col-lg-6">
-                        <label for="developer">Developer</label>
-                        <select name="dev_id" id="developer" class="custom-select @error('dev_id') is-invalid @enderror">
-                            <option selected disabled>Select a developer</option>
-                            @foreach ($developers as $developer)
-                                <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('dev_id')
-                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <!-- /Service-Developer -->
                     <!-- Service-Description -->
                     <div class="form-group col-12">
                         <label for="description">Description</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                            id="description" cols="30" rows="9" placeholder="Enter certificate description"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                            cols="30" rows="9" placeholder="Enter certificate description"></textarea>
                         @error('description')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -105,7 +91,8 @@
                         <div class="card-deck px-2">
                             <div class="card card-warning card-outline bg-dark">
                                 <!-- Service-Image -->
-                                <img src="{{ asset($service->image) }}" class="card-img-top rounded" alt="Project-Image">
+                                <img src="{{ asset($service->image) }}" class="card-img-top rounded-bottom"
+                                    alt="Project-Image">
                                 <!-- /Service-Image -->
                                 <!-- Service-Information -->
                                 <div class="card-body box-profile">

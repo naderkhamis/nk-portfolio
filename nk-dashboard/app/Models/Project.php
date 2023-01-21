@@ -15,9 +15,4 @@ class Project extends Model
     {
         return $this->belongsTo(related: 'App\Models\ProjectCategory', foreignKey: 'cat_id');
     }
-
-    public function developer()
-    {
-        return $this->belongsTo(related: 'App\Models\Developer', foreignKey: 'dev_id');
-    }
 }

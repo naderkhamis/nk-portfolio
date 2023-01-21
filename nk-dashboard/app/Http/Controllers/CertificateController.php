@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
-use App\Models\Developer;
 use App\Http\Requests\CertificateRequest;
 use App\Http\Traits\UploadFileTrait;
 
@@ -21,8 +20,7 @@ class CertificateController extends Controller
     {
         $certificates = new Certificate();
         $certificates = Certificate::get();
-        $developers = Developer::get(['id', 'name']);
-        return view('certificates.index', compact('certificates', 'developers'));
+        return view('certificates.index')->with('certificates',$certificates);
     }
 
     /**
@@ -49,7 +47,6 @@ class CertificateController extends Controller
         $certificate->grade = $request->grade;
         $certificate->date = $request->date;
         $certificate->image = $this->upload($request, $certificate->image);
-        $certificate->dev_id = $request->dev_id;
         $certificate->description = $request->description;
         $certificate->save();
         return redirect('/certificates/index');
@@ -75,9 +72,8 @@ class CertificateController extends Controller
      */
     public function edit($id)
     {
-        $developers = Developer::get(['id', 'name']);
         $certificate = Certificate::find($id);
-        return view('certificates.edit', compact(['developers', 'certificate']));
+        return view('certificates.edit')->with('certificate',$certificate);
     }
 
     /**
@@ -95,7 +91,6 @@ class CertificateController extends Controller
         $certificate->grade = $request->grade;
         $certificate->date = $request->date;
         $certificate->image = $this->upload($request, $certificate->image);
-        $certificate->dev_id = $request->dev_id;
         $certificate->description = $request->description;
         $certificate->save();
         return redirect('/certificates/index');

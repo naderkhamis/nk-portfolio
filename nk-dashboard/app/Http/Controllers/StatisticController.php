@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistic;
-use App\Models\Developer;
 use App\Http\Requests\StatisticRequest;
 
 class StatisticController extends Controller
@@ -17,8 +16,7 @@ class StatisticController extends Controller
     {
         $statistics = new Statistic();
         $statistics = Statistic::get();
-        $developers = Developer::get(['id', 'name']);
-        return view('statistics.index', compact('statistics', 'developers'));
+        return view('statistics.index')->with('statistics',$statistics);
     }
 
     /**
@@ -30,8 +28,7 @@ class StatisticController extends Controller
     {
         $statistics = new Statistic();
         $statistics = Statistic::get();
-        $developers = Developer::get(['id', 'name']);
-        return view('statistics.index', compact('statistics', 'developers'));
+        return view('statistics.index')->with('statistics',$statistics);
     }
 
     /**
@@ -46,7 +43,6 @@ class StatisticController extends Controller
         $statistic->name = $request->name;
         $statistic->count = $request->count;
         $statistic->icon = $request->icon;
-        $statistic->dev_id = $request->dev_id;
         $statistic->save();
         return redirect('/statistics/index');
     }
@@ -71,8 +67,7 @@ class StatisticController extends Controller
     public function edit($id)
     {
         $statistic = Statistic::find($id);
-        $developers = Developer::get(['id', 'name']);
-        return view('statistics.edit', compact('statistic', 'developers'));
+        return view('statistics.edit')->with('statistic',$statistic);
     }
 
     /**
@@ -88,11 +83,6 @@ class StatisticController extends Controller
         $statistic->name = $request->name;
         $statistic->count = $request->count;
         $statistic->icon = $request->icon;
-        if ($request->has('dev_id')) {
-            $statistic->dev_id = $request->dev_id;
-        } else {
-            $statistic->dev_id = $statistic->dev_id;
-        }
         $statistic->save();
         return redirect('/statistics/index');
     }

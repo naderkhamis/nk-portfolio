@@ -16,7 +16,7 @@ use Carbon\Carbon;
                 <div class="row card-body p-0 pr-md-3">
                     <!-- Service-Image -->
                     <div class="col-md-5">
-                        <img class="rounded img-fluid h-100" src="{{ asset($service->image) }}" alt="Certificate Photo">
+                        <img class="rounded-bottom img-fluid h-100" src="{{ asset($service->image) }}" alt="Certificate Photo">
                     </div>
                     <!-- /Service-Image -->
                     <!-- Service-Information -->

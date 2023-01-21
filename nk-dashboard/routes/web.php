@@ -36,19 +36,19 @@ Route::prefix('career')->middleware('auth')->group(function () {
 
 ######################################## /CAREER-CONTROLLER ROUTES ########################################
 
-######################################## DEVELOPER-CONTROLLER ROUTES ########################################
+######################################## PERSONAL-INFORMATION-CONTROLLER ROUTES ########################################
 
 Route::prefix('personal-information')->middleware('auth')->group(function () {
-    Route::get('index', 'DeveloperController@index')->name('developer-index');
-    Route::get('create', 'DeveloperController@create')->name('create-developer');
-    Route::post('store', 'DeveloperController@store')->name('store-developer');
-    Route::get('show/{id}', 'DeveloperController@show')->name('show-developer');
-    Route::get('edit/{id}', 'DeveloperController@edit')->name('edit-developer');
-    Route::post('update', 'DeveloperController@update')->name('update-developer');
-    Route::get('delete/{id}', 'DeveloperController@destroy')->name('delete-developer');
+    Route::get('index', 'PersonalInformationController@index')->name('personal-information-index');
+    Route::get('create', 'PersonalInformationController@create')->name('create-personal-information');
+    Route::post('store', 'PersonalInformationController@store')->name('store-personal-information');
+    Route::get('show/{id}', 'PersonalInformationController@show')->name('show-personal-information');
+    Route::get('edit/{id}', 'PersonalInformationController@edit')->name('edit-personal-information');
+    Route::post('update', 'PersonalInformationController@update')->name('update-personal-information');
+    Route::get('delete/{id}', 'PersonalInformationController@destroy')->name('delete-personal-information');
 });
 
-######################################## /DEVELOPER-CONTROLLER ROUTES ########################################
+######################################## /PERSONAL-INFORMATION-CONTROLLER ROUTES ########################################
 
 ######################################## CLIENT-REVIEW-CONTROLLER ROUTES ########################################
 

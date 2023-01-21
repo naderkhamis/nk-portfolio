@@ -31,7 +31,8 @@
                     <!-- Statistic-Name -->
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror"
+                        <input type="text" name="name" id="name"
+                            class="form-control  @error('name') is-invalid @enderror"
                             placeholder="Please enter statistic name">
                         @error('name')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
@@ -52,29 +53,14 @@
                     <!-- Statistic-Icon -->
                     <div class="form-group">
                         <label for="icon">Icon</label>
-                        <input type="text" name="icon" id="icon" class="form-control  @error('icon') is-invalid @enderror"
+                        <input type="text" name="icon" id="icon"
+                            class="form-control  @error('icon') is-invalid @enderror"
                             placeholder="Please enter statistic icon">
                         @error('icon')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <!-- /Statistic-Icon -->
-                    <!-- Statistic-Developer -->
-                    <div class="form-group">
-                        <label for="icon">Developer</label>
-                        @if ($developers)
-                            <select name="dev_id" id="developer" class="custom-select  @error('icon') is-invalid @enderror">
-                                <option selected disabled>Please select a developer</option>
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('dev_id')
-                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                            @enderror
-                        @endif
-                    </div>
-                    <!-- /Statistic-Developer -->
                     <!-- Form-Submit-Button -->
                     <div class="col-lg-3">
                         <button type="submit" class="btn btn-block btn-warning font-weight-bold rounded-pill">

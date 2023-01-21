@@ -11,7 +11,7 @@ use Carbon\Carbon;
         <!-- /Header -->
         @if ($certificate)
             <!-- Certificate-Form -->
-            <div class="col-md-8 col-xl-5 order-1 order-xl-0">
+            <div class="col-md-6 col-xl-5 order-1 order-xl-0">
                 <!-- Edit-Certificate-Form -->
                 <div class="card card-warning card-outline card-body bg-dark pt-1">
                     <!-- Form-Header -->
@@ -62,45 +62,27 @@ use Carbon\Carbon;
                         <div class="form-group col-md-6">
                             <label for="date">Date</label>
                             <input type="date" class="form-control @error('date') is-invalid @enderror" name="date"
-                                id="date"
-                                value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $certificate->date)->format('Y-m-d') }}">
+                                id="date" value="{{ Carbon::parse($certificate->date)->format('d M Y') }}">
                             @error('date')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <!-- /Certificate-Date -->
                         <!-- Certificate-Image -->
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-12">
                             <label for="image" class="control-label">Certificate Photo</label>
-                            <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
-                                id="image">
+                            <input type="file" class="form-control-file @error('image') is-invalid @enderror"
+                                name="image" id="image">
                             @error('image')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <!-- /Certificate-Image -->
-                        <!-- Certificate-Developer -->
-                        <div class="form-group col-md-6">
-                            <label for="developer">Developer</label>
-                            <span class="text-warning float-right">{{ $certificate->developer->name }}</span>
-                            <select name="dev_id" id="developer"
-                                class="custom-select @error('dev_id') is-invalid @enderror">
-                                <option selected disabled>Select a developer</option>
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('dev_id')
-                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <!-- /Certificate-Developer -->
                         <!-- Certificate-Description -->
                         <div class="form-group col-12">
                             <label for="description">Description</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                id="description" cols="30" rows="9"
-                                placeholder="Please enter certificate description">{{ $certificate->description }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                                cols="30" rows="9" placeholder="Please enter certificate description">{{ $certificate->description }}</textarea>
                             @error('description')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror

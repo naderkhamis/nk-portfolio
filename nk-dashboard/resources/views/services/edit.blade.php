@@ -16,7 +16,7 @@
                         <h3 class="card-title">Edit Service</h3>
                     </div>
                     <!-- /Form-Header -->
-                    <form action="{{ route('update-service', $process->id) }}" method="post" class="text-white row"
+                    <form action="{{ route('update-service', $service->id) }}" method="post" class="text-white row"
                         enctype="multipart/form-data">
                         <!-- TOKEN -->
                         @csrf
@@ -25,17 +25,17 @@
                         <input type="hidden" name="id" id="id" value="{{ $service->id }}">
                         <!-- /Hidden-Id -->
                         <!-- Service-Name -->
-                        <div class="form-group col-12">
+                        <div class="form-group col-md-6">
                             <label for="name">Service Name</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                                placeholder="Please enter service name" value="{{ $service->name }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                id="name" placeholder="Please enter service name" value="{{ $service->name }}">
                             @error('name')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <!-- /Service-Name -->
                         <!-- Service-Icon -->
-                        <div class="form-group col-12">
+                        <div class="form-group col-md-6">
                             <label for="icon">service Icon</label>
                             <input type="text" class="form-control @error('icon') is-invalid @enderror" name="icon"
                                 id="icon" placeholder="Please enter service icon name" value="{{ $service->icon }}">
@@ -45,37 +45,20 @@
                         </div>
                         <!-- /Service-Icon -->
                         <!-- Service-Image -->
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-12">
                             <label for="image" class="control-label">Service Image</label>
-                            <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image"
-                                id="image">
+                            <input type="file" class="form-control-file @error('image') is-invalid @enderror"
+                                name="image" id="image">
                             @error('image')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <!-- /Service-Image -->
-                        <!-- Service-Developer -->
-                        <div class="form-group col-md-6">
-                            <label for="developer">Developer</label>
-                            <span class="text-warning float-right">{{ $service->developer->name }}</span>
-                            <select name="dev_id" id="developer"
-                                class="custom-select @error('dev_id') is-invalid @enderror">
-                                <option selected disabled>Select a developer</option>
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('dev_id')
-                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <!-- /Service-Developer -->
                         <!-- Service-Description -->
                         <div class="form-group col-12">
                             <label for="description">Description</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                id="description" cols="30" rows="9"
-                                placeholder="Please enter certificate description">{{ $service->description }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                                cols="30" rows="9" placeholder="Please enter certificate description">{{ $service->description }}</textarea>
                             @error('description')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror

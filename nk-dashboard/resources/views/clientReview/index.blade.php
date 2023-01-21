@@ -26,16 +26,15 @@ use Carbon\Carbon;
                     <h3 class="card-title">Create Review</h3>
                 </div>
                 <!-- /Form-Header -->
-                <form action="{{ route('store-review') }}" method="post" class="form-row"
-                    enctype="multipart/form-data">
+                <form action="{{ route('store-review') }}" method="post" class="form-row" enctype="multipart/form-data">
                     <!-- TOKEN -->
                     @csrf
                     <!-- /TOKEN -->
                     <!-- Client-Name -->
                     <div class="form-group col-md-6">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                            placeholder="Please enter client's name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            id="name" placeholder="Please enter client's name">
                         @error('name')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -64,31 +63,18 @@ use Carbon\Carbon;
                     <!-- Review-Date -->
                     <div class="form-group col-md-6">
                         <label for="date">Date</label>
-                        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date">
+                        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date"
+                            id="date">
                         @error('date')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <!-- /Review-Date -->
-                    <!-- Developer-Name -->
-                    <div class="form-group col-12">
-                        <label for="developer">Developer</label>
-                        <select name="dev_id" id="developer" class="custom-select @error('dev_id') is-invalid @enderror">
-                            <option selected disabled>Select a developer</option>
-                            @foreach ($developers as $developer)
-                                <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('dev_id')
-                            <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <!-- /Developer-Name -->
                     <!-- Review -->
                     <div class="form-group col-12">
                         <label for="review">Reveiw</label>
-                        <textarea class="form-control @error('review') is-invalid @enderror" name="review" id="reveiw"
-                            cols="30" rows="9" placeholder="Please enter client's review"></textarea>
+                        <textarea class="form-control @error('review') is-invalid @enderror" name="review" id="reveiw" cols="30"
+                            rows="9" placeholder="Please enter client's review"></textarea>
                         @error('review')
                             <span class="badge badge-pill badge-danger">{{ $message }}</span>
                         @enderror
@@ -117,7 +103,7 @@ use Carbon\Carbon;
                         <div class="card-deck px-2">
                             <div class="card card-warning card-outline bg-dark">
                                 <!-- Client-Company-Image -->
-                                <img src="{{ asset($clientReview->image) }}" class="card-img-top rounded"
+                                <img src="{{ asset($clientReview->image) }}" class="card-img-top rounded-bottom"
                                     alt="Client-Company Image">
                                 <!-- /Client-Company-Image -->
                                 <!-- Review-Information -->

@@ -11,7 +11,7 @@ use Carbon\Carbon;
         <!-- /Header -->
         @if ($clientReview)
             <!-- Review-Form -->
-            <div class="col-md-8 col-xl-5 order-1 order-xl-0">
+            <div class="col-md-6 col-xl-5 order-1 order-xl-0">
                 <!-- /Edit-Information-Form -->
                 <div class="card card-warning card-outline card-body bg-dark pt-1">
                     <!-- Form-Header -->
@@ -30,8 +30,8 @@ use Carbon\Carbon;
                         <!-- Client-Name -->
                         <div class="form-group col-md-6">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                                placeholder="Please enter client's name" value="{{ $clientReview->name }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                id="name" placeholder="Please enter client's name" value="{{ $clientReview->name }}">
                             @error('name')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -63,35 +63,17 @@ use Carbon\Carbon;
                         <div class="form-group col-md-6">
                             <label for="date">Date</label>
                             <input type="date" class="form-control @error('date') is-invalid @enderror" name="date"
-                                id="date"
-                                value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $clientReview->date)->format('Y-m-d') }}">
+                                id="date" value="{{ Carbon::parse($clientReview->date)->format('d M Y') }}">
                             @error('date')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <!-- /Review-Date -->
-                        <!-- Developer-Name -->
-                        <div class="form-group col-12">
-                            <label for="developer">Developer</label>
-                            <span class="text-warning float-right">{{ $clientReview->developer->name }}</span>
-                            <select name="dev_id" id="developer"
-                                class="custom-select @error('dev_id') is-invalid @enderror">
-                                <option selected disabled>Select a developer</option>
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('dev_id')
-                                <span class="badge badge-pill badge-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <!-- /Developer-Name -->
                         <!-- Review -->
                         <div class="form-group col-12">
                             <label for="review">Review</label>
-                            <textarea class="form-control @error('review') is-invalid @enderror" name="review" id="review"
-                                cols="30" rows="9"
-                                placeholder="Type about yourself">{{ $clientReview->review }}</textarea>
+                            <textarea class="form-control @error('review') is-invalid @enderror" name="review" id="review" cols="30"
+                                rows="9" placeholder="Type about yourself">{{ $clientReview->review }}</textarea>
                             @error('review')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -110,7 +92,7 @@ use Carbon\Carbon;
             </div>
             <!-- /Review-Form -->
             <!-- Client-Company-Existing-Image -->
-            <div class="col-md-4 col-xl-2 order-0 order-xl-1 pb-3">
+            <div class="col-md-6 col-xl-4 order-0 order-xl-1 pb-3">
                 <img src="{{ asset($clientReview->image) }}" class="img-fluid border border-warning rounded"
                     alt="Client-Company Image">
             </div>

@@ -27,7 +27,6 @@ class SkillRequest extends FormRequest
             'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:3|max:50',
             'category' => 'required|numeric',
             'performance' => 'required|numeric|between:1,100',
-            'developer' => 'required|numeric'
         ];
     }
 
@@ -47,9 +46,7 @@ class SkillRequest extends FormRequest
             'category.numeric' => 'Category id must be a number.',
             'performance.required' => 'Please enter performance rate.',
             'performance.numeric' => 'Performance id must be a number.',
-            'performance.between' => 'Please enter a number between 1 to 100.',
-            'developer.required' => 'Please select a developer.',
-            'developer.numeric' => 'Developer id must be a number.'
+            'performance.between' => 'Please enter a number between 1 to 100.'
         ];
     }
 }

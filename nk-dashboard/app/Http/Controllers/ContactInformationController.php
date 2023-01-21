@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactInformation;
 use App\Http\Requests\ContactInformationRequest;
-use App\Models\Developer;
 
 class ContactInformationController extends Controller
 {
@@ -17,8 +16,7 @@ class ContactInformationController extends Controller
     {
         $contacts = new ContactInformation();
         $contacts = ContactInformation::get();
-        $developers = Developer::get(['id', 'name']);
-        return view('contacts.index', compact('contacts', 'developers'));
+        return view('contacts.index')->with('contacts',$contacts);
     }
 
     /**
@@ -40,7 +38,6 @@ class ContactInformationController extends Controller
     public function store(ContactInformationRequest $request)
     {
         $contact = new ContactInformation();
-        $contact->dev_id = $request->dev_id;
         $contact->address = $request->address;
         $contact->email = implode(',', $request->email);
         $contact->phone = implode(',', $request->phone);
@@ -68,8 +65,7 @@ class ContactInformationController extends Controller
     public function edit($id)
     {
         $contact = ContactInformation::find($id);
-        $developers = Developer::get(['id', 'name']);
-        return view('contacts.edit', compact('contact', 'developers'));
+        return view('contacts.edit')->with('contact',$contact);
     }
 
     /**
@@ -82,11 +78,6 @@ class ContactInformationController extends Controller
     public function update(ContactInformationRequest $request, ContactInformation $contactInformation)
     {
         $contact = ContactInformation::find($request->id);
-        if ($request->has('dev_id')) {
-            $contact->dev_id = $request->dev_id;
-        } else {
-            $contact->dev_id = $contact->dev_id;
-        }
         $contact->address = $request->address;
         $contact->email = implode(',', $request->email);
         $contact->phone = implode(',', $request->phone);

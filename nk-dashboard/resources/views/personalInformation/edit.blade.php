@@ -9,7 +9,7 @@ use Carbon\Carbon;
             <h1>Edit Infromation</h1>
         </div>
         <!-- /Header -->
-        @if ($developer)
+        @if ($personal_information)
             <!-- Certificate-Form -->
             <div class="col-md-8 col-xl-5 order-1 order-xl-0">
                 <!-- /Edit-Information-Form -->
@@ -19,19 +19,19 @@ use Carbon\Carbon;
                         <h3 class="card-title">Edit Certificate</h3>
                     </div>
                     <!-- /Form-Header -->
-                    <form action="{{ route('update-developer', $developer->id) }}" method="post" class="form-row"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('update-personal-information', $personal_information->id) }}" method="post"
+                        class="form-row" enctype="multipart/form-data">
                         <!-- TOKEN -->
                         @csrf
                         <!-- /TOKEN -->
                         <!-- Hidden-Id -->
-                        <input type="hidden" name="id" id="id" value="{{ $developer->id }}">
+                        <input type="hidden" name="id" id="id" value="{{ $personal_information->id }}">
                         <!-- /Hidden-Id -->
                         <!-- Developer-Name -->
                         <div class="form-group col-12">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                                placeholder="Enter a name" value="{{ $developer->name }}">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                id="name" placeholder="Enter a name" value="{{ $personal_information->name }}">
                             @error('name')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -42,7 +42,7 @@ use Carbon\Carbon;
                             <label for="nationality">Nationality</label>
                             <input type="text" class="form-control @error('nationality') is-invalid @enderror"
                                 name="nationality" id="nationality" placeholder="Enter a nationality"
-                                value="{{ $developer->nationality }}">
+                                value="{{ $personal_information->nationality }}">
                             @error('nationality')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -53,7 +53,7 @@ use Carbon\Carbon;
                             <label for="birth-date">Birth Date</label>
                             <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror"
                                 name="date_of_birth" id="birth-date"
-                                value="{{ Carbon::createFromFormat('Y-m-d H:i:s', $developer->date_of_birth)->format('Y-m-d') }}">
+                                value="{{ Carbon::parse($personal_information->date_of_birth)->format('d M Y') }}">
                             @error('date_of_birth')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -64,7 +64,7 @@ use Carbon\Carbon;
                             <label for="experience">Experience Years</label>
                             <input type="number" class="form-control @error('experience') is-invalid @enderror"
                                 name="experience" id="experience" placeholder="Enter experience years"
-                                value="{{ $developer->experience }}">
+                                value="{{ $personal_information->experience }}">
                             @error('experience')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -84,9 +84,8 @@ use Carbon\Carbon;
                         <!-- Developer-Introduction -->
                         <div class="form-group col-12">
                             <label for="introduction">About Me</label>
-                            <textarea class="form-control @error('introduction') is-invalid @enderror" name="introduction"
-                                id="introduction" cols="30" rows="9"
-                                placeholder="Type about yourself">{{ $developer->introduction }}</textarea>
+                            <textarea class="form-control @error('introduction') is-invalid @enderror" name="introduction" id="introduction"
+                                cols="30" rows="9" placeholder="Type about yourself">{{ $personal_information->introduction }}</textarea>
                             @error('introduction')
                                 <span class="badge badge-pill badge-danger">{{ $message }}</span>
                             @enderror
@@ -107,7 +106,7 @@ use Carbon\Carbon;
             <!-- /Certificate-Form -->
             <!-- Developer-Existing-Image -->
             <div class="col-md-4 col-xl-2 order-0 order-xl-1 pb-3">
-                <img src="{{ asset($developer->image) }}" class="img-fluid border border-warning rounded"
+                <img src="{{ asset($personal_information->image) }}" class="img-fluid border border-warning rounded"
                     alt="Certificate Image">
             </div>
             <!-- /Developer-Existing-Image -->
