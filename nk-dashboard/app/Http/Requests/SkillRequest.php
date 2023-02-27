@@ -25,7 +25,7 @@ class SkillRequest extends FormRequest
     {
         return [
             'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:3|max:50',
-            'category' => 'required|numeric',
+            'cat_id' => 'required|numeric',
             'performance' => 'required|numeric|between:1,100',
         ];
     }

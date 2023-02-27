@@ -11,6 +11,8 @@ class SkillCategory extends Model
 
     protected $table = 'skills_categories';
 
+    protected $hidden = ['created_at','updated_at'];
+
     public function skills()
     {
         return $this->hasMany(related: 'App\Models\Skill');

@@ -84,7 +84,6 @@ Route::prefix('skills-categories')->middleware('auth')->group(function () {
     Route::get('index', 'SkillCategoryController@index')->name('categories-index');
     Route::get('create', 'SkillCategoryController@create')->name('create-category');
     Route::post('store', 'SkillCategoryController@store')->name('store-category');
-    // Route::get('show/{id}', 'SkillCategoryController@show')->name('show-certificate');
     Route::get('edit/{id}', 'SkillCategoryController@edit')->name('edit-category');
     Route::post('update', 'SkillCategoryController@update')->name('update-category');
     Route::get('delete/{id}', 'SkillCategoryController@destroy')->name('delete-category');
@@ -98,7 +97,6 @@ Route::prefix('skills')->middleware('auth')->group(function () {
     Route::get('index', 'SkillController@index')->name('skills-index');
     Route::get('create', 'SkillController@create')->name('create-skill');
     Route::post('store', 'SkillController@store')->name('store-skill');
-    // Route::get('show/{id}', 'SkillController@show')->name('show-skill');
     Route::get('edit/{id}', 'SkillController@edit')->name('edit-skill');
     Route::post('update', 'SkillController@update')->name('update-skill');
     Route::get('delete/{id}', 'SkillController@destroy')->name('delete-skill');
@@ -108,15 +106,15 @@ Route::prefix('skills')->middleware('auth')->group(function () {
 
 ######################################## EMAILS-CONTROLLER ROUTES ########################################
 
-Route::prefix('emails')->middleware('auth')->group(function () {
-    Route::get('index', 'EmailController@index')->name('emails-index');
-    Route::get('create', 'EmailController@create')->name('create-email');
-    Route::post('store', 'EmailController@store')->name('store-email');
-    Route::get('show/{id}', 'EmailController@show')->name('show-email');
-    // Route::get('edit/{id}', 'EmailController@edit')->name('edit-skill');
-    // Route::post('update', 'EmailController@update')->name('update-skill');
-    Route::get('delete/{id}', 'EmailController@destroy')->name('delete-skill');
-});
+// Route::prefix('emails')->middleware('auth')->group(function () {
+//     Route::get('index', 'EmailController@index')->name('emails-index');
+//     Route::get('create', 'EmailController@create')->name('create-email');
+//     Route::post('store', 'EmailController@store')->name('store-email');
+//     Route::get('show/{id}', 'EmailController@show')->name('show-email');
+//     // Route::get('edit/{id}', 'EmailController@edit')->name('edit-skill');
+//     // Route::post('update', 'EmailController@update')->name('update-skill');
+//     Route::get('delete/{id}', 'EmailController@destroy')->name('delete-skill');
+// });
 
 ######################################## /EMAILS-CONTROLLER ROUTES ########################################
 

@@ -10,4 +10,6 @@ class Career extends Model
     use HasFactory;
 
     protected $table = 'career';
+
+    protected $hidden = ['created_at','updated_at', 'status'];
 }

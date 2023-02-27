@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use App\Http\Requests\CareerRequest;
 use App\Http\Traits\UploadFileTrait;
+use Carbon\Carbon;
 
 class CareerController extends Controller
 {
@@ -19,7 +20,7 @@ class CareerController extends Controller
     {
         $career = new Career();
         $career = Career::get();
-        return view('career.index')->with('career', $career);
+        return view('career.index')->with('career',$career);
     }
 
     /**

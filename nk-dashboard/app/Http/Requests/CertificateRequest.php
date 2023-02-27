@@ -24,8 +24,8 @@ class CertificateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:3|max:100',
-            'school' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:3|max:100',
+            'title' => 'required|string|min:3|max:100',
+            'school' => 'required|regex:/^[a-zA-Z0-9&\s]+$/|min:3|max:100',
             'grade' => 'nullable|alpha_num|min:1|max:20',
             'date' => 'required|date|before:tomorrow',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
@@ -42,7 +42,7 @@ class CertificateRequest extends FormRequest
     {
         return [
             'title.required' => 'Please enter a certificate title.',
-            'title.regex' => 'Special characters are not allowed.',
+            'title.string' => 'Special characters are not allowed.',
             'title.min' => 'Please enter at least 3 characters.',
             'title.max' => 'Please enter less than 100 characters.',
             'school.required' => 'Please enter a school name.',

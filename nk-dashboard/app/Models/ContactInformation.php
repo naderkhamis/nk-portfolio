@@ -10,4 +10,6 @@ class ContactInformation extends Model
     use HasFactory;
 
     protected $table = 'contact_information';
+
+    protected $hidden =['created_at','updated_at'];
 }

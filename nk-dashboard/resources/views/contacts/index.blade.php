@@ -5,14 +5,14 @@
         <!-- Header -->
         <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
             <h1>Contact Information</h1>
-            <!-- Create-New-Certificate -->
+            <!-- Create-New-Contact -->
             <div class="d-md-none">
                 <a href="#form-create" class="btn btn-warning font-weight-bold rounded-pill">
                     New
                     <i class="fas fa-plus"></i>
                 </a>
             </div>
-            <!-- /Create-New-Certificate -->
+            <!-- /Create-New-Contact -->
         </div>
         <!-- /Header -->
         <!-- Contact-Information-Form -->

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeveloperRequest extends FormRequest
+class PersonalInformationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,9 +27,9 @@ class DeveloperRequest extends FormRequest
             'name' => 'required|regex:/^[a-zA-Z\s]+$/|min:3|max:255',
             'nationality' => 'required|regex:/^[a-zA-Z\s]+$/|min:5|max:50',
             'date_of_birth' => 'required|date|before:tomorrow',
-            'experience' => 'required|numeric|min:1|max:5',
+            'experience' => 'required|numeric|min:1|max:20',
             'image' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
-            'introduction' => 'required|string|min:100|max:500'
+            'introduction' => 'required|string|min:100|max:1000'
         ];
     }
 
@@ -63,7 +63,7 @@ class DeveloperRequest extends FormRequest
             'introduction.required' => 'Please enter an intro about the developer.',
             'introduction.string' => 'Special characters are not allowed.',
             'introduction.min' => 'Please enter at least 100 characters.',
-            'introduction.max' => 'Please enter less than 500 characters.'
+            'introduction.max' => 'Please enter less than 1000 characters.'
         ];
     }
 }

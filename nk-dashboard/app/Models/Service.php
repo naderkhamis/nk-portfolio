@@ -10,4 +10,6 @@ class Service extends Model
     use HasFactory;
 
     protected $table = 'services';
+
+    protected $hidden = ['created_at','updated_at'];
 }

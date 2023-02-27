@@ -41,7 +41,7 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-        $service = new Service();
+        $service = new Service();   
         $service->name = $request->name;
         $service->icon = $request->icon;
         $service->image = $this->upload($request, $service->image);

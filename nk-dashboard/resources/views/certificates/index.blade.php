@@ -107,10 +107,10 @@ use Carbon\Carbon;
         @if (count($certificates))
             <div class="col-md-6 col-xl-8 order-1 order-md-2">
                 <!-- Certificates-Container -->
-                <div class="row row-cols-1 row-cols-xl-3">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
                     @foreach ($certificates as $certificate)
                         <!-- Certificate-Card -->
-                        <div class="card-deck px-2">
+                        <div class="card-deck px-2 pb-4">
                             <div class="card card-warning card-outline bg-dark pb-2">
                                 <!-- Certificate-Image -->
                                 <img src="{{ asset($certificate->image) }}" class="card-img-top rounded"
@@ -130,9 +130,11 @@ use Carbon\Carbon;
                                     </strong>
                                     <!-- /Certificate-School -->
                                     <!-- Certificate-Grade -->
-                                    <strong class="badge badge-warning p-2 font-italic">
-                                        {{ $certificate->grade }}
-                                    </strong>
+                                    @if ($certificate->grade)
+                                        <strong class="badge badge-warning p-2 font-italic">
+                                            {{ $certificate->grade }}
+                                        </strong>
+                                    @endif
                                     <!-- /Certificate-Grade -->
                                     <!-- Certificate-Date -->
                                     <strong class="badge badge-warning p-2 font-italic">

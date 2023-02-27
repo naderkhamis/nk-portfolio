@@ -10,4 +10,6 @@ class Process extends Model
     use HasFactory;
 
     protected $table = 'processes';
+
+    protected $hidden =['created_at','updated_at'];
 }

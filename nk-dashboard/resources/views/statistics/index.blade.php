@@ -78,10 +78,10 @@
         @if (count($statistics))
             <div class="col-md-6 col-xl-8 order-1 order-md-2">
                 <!-- Statistics-Container -->
-                <div class="row row-cols-1 row-cols-xl-3">
+                <div class="row row-cols-1 row-cols-lg-4 row-cols-xl-3">
                     @foreach ($statistics as $statistic)
                         <!-- Statistic-Card -->
-                        <div class="card-deck px-2">
+                        <div class="card-deck px-2 pb-4">
                             <div class="card card-warning card-outline bg-dark">
                                 <!-- Statistic-Information -->
                                 <div class="card-body text-center">

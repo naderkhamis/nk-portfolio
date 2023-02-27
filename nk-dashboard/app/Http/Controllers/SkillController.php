@@ -15,7 +15,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $categories = SkillCategory::get(['id', 'name']);
+        $categories = SkillCategory::get();
         $skills = new Skill();
         $skills = Skill::orderBy('cat_id')->get();
         return view('skills.index', compact(['categories', 'skills']));
@@ -28,7 +28,8 @@ class SkillController extends Controller
      */
     public function create()
     {
-        return view('skills.index');
+        $categories = SkillCategory::get(['id', 'name']);
+        return view('skills.create')->with('categories',$categories);
     }
 
     /**

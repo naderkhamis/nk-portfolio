@@ -11,6 +11,8 @@ class Project extends Model
 
     protected $table = 'projects';
 
+    protected $hidden =['created_at','updated_at'];
+
     public function category()
     {
         return $this->belongsTo(related: 'App\Models\ProjectCategory', foreignKey: 'cat_id');

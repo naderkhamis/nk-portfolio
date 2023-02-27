@@ -50,7 +50,8 @@
         <!-- /Navbar Search -->
         <!-- Messages Dropdown Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('emails-index') }}">
+            <a href="">
+                {{-- <a class="nav-link" href="{{ route('emails-index') }}"> --}}
                 <span class="text-warning">
                     <i class="fas fa-envelope"></i>
                 </span>
@@ -323,3 +324,5 @@
 <!-- /Main content -->
 
 @include('layouts.footer')
+
+@yield('scripts')

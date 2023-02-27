@@ -28,7 +28,7 @@ class ClientReviewRequest extends FormRequest
             'image' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
             'company' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:3|max:100',
             'date' => 'required|date|before:tomorrow',
-            'review' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:100|max:500'
+            'review' => 'required|string|min:100|max:500'
         ];
     }
 
@@ -56,7 +56,7 @@ class ClientReviewRequest extends FormRequest
             'date.date' => 'Please enter a valid date format.',
             'date.before' => 'Please select a date before tomorrow.',
             'review.required' => 'Please enter client\'s feedback.',
-            'review.regex' => 'Special characters are not allowed.',
+            'review.string' => 'Special characters are not allowed.',
             'review.min' => 'Please enter at least 100 characters.',
             'review.max' => 'Please enter less than 500 characters.'
         ];

@@ -10,4 +10,6 @@ class SocialAccount extends Model
     use HasFactory;
 
     protected $table = 'social_accounts';
+
+    protected $hidden = ['created_at','updated_at'];
 }

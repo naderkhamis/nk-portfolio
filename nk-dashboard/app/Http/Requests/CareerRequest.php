@@ -24,12 +24,12 @@ class CareerRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|regex:/^[a-zA-Z\s]+$/|min:3|max:255',
+            'title' => 'required|string|min:3|max:255',
             'company' => 'required|string|min:3|max:100',
             'from' => 'required|date|before:tomorrow',
             'to' => 'required_if:status,0|nullable|before:tomorrow|after:from',
             'status' => 'required|boolean',
-            'description' => 'required|regex:/^[a-zA-Z0-9\s]+$/|min:100|max:500'
+            'description' => 'required|string|min:100|max:1000'
         ];
     }
 
